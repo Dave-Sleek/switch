@@ -6,25 +6,19 @@
   <title>Dakota — Stablecoin Infrastructure Platform</title>
   <meta name="description" content="Dakota is a stablecoin platform for storing and moving money. Build, move, and manage stablecoins with enterprise-grade APIs." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            bg: '#0a0a0a',
-            fg: '#ffffff',
-            card: '#141414',
-            'muted-fg': '#a3a3a3',
-            surface: '#1a1a1a',
-            border: '#2a2a2a',
-            secondary: '#111111',
-            accent: '#d4d4d4',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'],
-            mono: ['IBM Plex Mono', 'monospace'],
+            bg: '#30065a',
+            fg: '#f0ebe1',
+            card: '#3a0f64',
+            'muted-fg': '#c4b5d1',
+            surface: '#441d6e',
+            border: '#5a3a78',
+            secondary: '#2e0b4f',
           }
         }
       }
@@ -32,29 +26,20 @@
   </script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #ffffff; -webkit-font-smoothing: antialiased; transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: -0.02em; }
-    .font-mono-nav { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+    body { font-family: 'Inter', sans-serif; background: #30065a; color: #f0ebe1; -webkit-font-smoothing: antialiased; transition: background-color 0.3s ease; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    .font-mono-nav { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; }
     .text-gradient-subtle {
-      background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+      background: linear-gradient(180deg, #f0ebe1 0%, #c4b5d1 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    /* Premium animations */
-    .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    /* Fade-in animation */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    .fade-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-left.visible { opacity: 1; transform: translateX(0); }
-    .fade-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    .fade-right { opacity: 0; transform: translateX(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-right.visible { opacity: 1; transform: translateX(0); }
-    
-    /* Premium hover effects */
-    .premium-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .premium-hover:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px -20px rgba(255,255,255,0.2);
-    }
     
     /* Theme Switcher Styles */
     .theme-dot {
@@ -63,137 +48,60 @@
       border-radius: 50%;
       cursor: pointer;
       border: 2px solid transparent;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s ease;
     }
     .theme-dot:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      transform: scale(1.1);
     }
     .theme-dot.active {
-      border-color: #ffffff;
-      box-shadow: 0 0 0 2px rgba(255,255,255,0.2);
+      border-color: #f0ebe1;
+      box-shadow: 0 0 0 2px rgba(240, 235, 225, 0.3);
     }
     .theme-panel {
-      background: rgba(10, 10, 10, 0.9);
-      backdrop-filter: blur(12px);
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
+      background: rgba(48, 6, 90, 0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid #5a3a78;
     }
-    
-    /* Premium card styles */
-    .premium-card {
-      background: linear-gradient(145deg, #141414 0%, #0f0f0f 100%);
-      border: 1px solid #2a2a2a;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .premium-card:hover {
-      border-color: #404040;
-      box-shadow: 0 30px 60px -30px rgba(255,255,255,0.1);
-    }
-    
-    /* Image placeholder premium style */
-    .image-placeholder {
-      background: linear-gradient(145deg, #1a1a1a 0%, #141414 100%);
-      border: 1px solid #2a2a2a;
-      position: relative;
-      overflow: hidden;
-    }
-    .image-placeholder::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-      animation: shimmer 2s infinite;
-    }
-    @keyframes shimmer {
-      100% { left: 100%; }
-    }
-    
-    /* Premium button styles */
-    .btn-primary {
-      background: #ffffff;
-      color: #0a0a0a;
-      padding: 0.75rem 2rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: none;
-    }
-    .btn-primary:hover {
-      background: #f0f0f0;
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px -20px rgba(255,255,255,0.3);
-    }
-    .btn-secondary {
-      background: transparent;
-      color: #ffffff;
-      padding: 0.75rem 2rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      border: 1px solid #2a2a2a;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .btn-secondary:hover {
-      border-color: #ffffff;
-      background: rgba(255,255,255,0.02);
-      transform: translateY(-2px);
+    .theme-panel button {
+      transition: all 0.2s ease;
     }
   </style>
 </head>
 <body id="body">
 
-  <!-- Theme Switcher (keeping functionality) -->
+  <!-- Theme Switcher -->
   <div class="fixed bottom-6 right-6 z-50">
-    <div class="theme-panel p-3 shadow-2xl">
+    <div class="theme-panel rounded-lg p-3 shadow-xl">
       <div class="flex items-center gap-2">
-        <button onclick="setTheme('#0a0a0a')" class="theme-dot active" style="background: #0a0a0a;" title="Premium Black"></button>
-        <button onclick="setTheme('#1a1a1a')" class="theme-dot" style="background: #1a1a1a;" title="Charcoal"></button>
-        <button onclick="setTheme('#0f172a')" class="theme-dot" style="background: #0f172a;" title="Deep Navy"></button>
-        <button onclick="setTheme('#1e1b1b')" class="theme-dot" style="background: #1e1b1b;" title="Rich Brown"></button>
-        <button onclick="setTheme('#0a1f1a')" class="theme-dot" style="background: #0a1f1a;" title="Forest"></button>
+        <button onclick="setTheme('#30065a')" class="theme-dot" style="background: #30065a;" title="Deep Purple"></button>
+        <button onclick="setTheme('#0a1929')" class="theme-dot" style="background: #0a1929;" title="Navy Blue"></button>
+        <button onclick="setTheme('#1a2f3f')" class="theme-dot" style="background: #1a2f3f;" title="Teal"></button>
+        <button onclick="setTheme('#2c1810')" class="theme-dot" style="background: #2c1810;" title="Rich Brown"></button>
+        <button onclick="setTheme('#1e3a2f')" class="theme-dot" style="background: #1e3a2f;" title="Forest Green"></button>
       </div>
       <div class="text-center mt-2">
-        <span class="text-[10px] text-muted-fg font-mono-nav tracking-wider">CUSTOMIZE THEME</span>
+        <span class="text-xs text-muted-fg font-mono-nav">CUSTOMIZE THEME</span>
       </div>
     </div>
   </div>
 
   <!-- Navbar -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 bg-bg/90 backdrop-blur-xl border-b border-border" style="background: rgba(10, 10, 10, 0.9);">
-    <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
-      <span class="font-mono-nav text-sm tracking-[0.25em] font-medium text-fg hover:opacity-80 transition-opacity cursor-default">DAKOTA</span>
-      <div class="hidden md:flex items-center gap-2">
-        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-all duration-300 relative group">
-          Products
-          <span class="absolute bottom-0 left-1/2 w-0 h-[1px] bg-fg group-hover:w-1/2 group-hover:left-1/4 transition-all duration-300"></span>
-        </a>
-        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-all duration-300 relative group">
-          Developers
-          <span class="absolute bottom-0 left-1/2 w-0 h-[1px] bg-fg group-hover:w-1/2 group-hover:left-1/4 transition-all duration-300"></span>
-        </a>
-        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-all duration-300 relative group">
-          Resources
-          <span class="absolute bottom-0 left-1/2 w-0 h-[1px] bg-fg group-hover:w-1/2 group-hover:left-1/4 transition-all duration-300"></span>
-        </a>
-        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-all duration-300 relative group">
-          Blog
-          <span class="absolute bottom-0 left-1/2 w-0 h-[1px] bg-fg group-hover:w-1/2 group-hover:left-1/4 transition-all duration-300"></span>
-        </a>
-        <a href="#" class="font-mono-nav px-6 py-2 ml-4 border border-border rounded-sm text-fg hover:bg-surface transition-all duration-300 premium-hover">Sign In</a>
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 bg-bg/80 backdrop-blur-md border-b border-border" style="background: rgba(48, 6, 90, 0.8);">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <span class="font-mono-nav text-sm tracking-[0.2em] font-medium text-fg">DAKOTA</span>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Products</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Developers</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Resources</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Blog</a>
+        <a href="#" class="font-mono-nav px-4 py-2 ml-2 border border-border rounded-sm text-fg hover:bg-secondary transition-colors">Sign In</a>
       </div>
       <button id="mobile-toggle" class="md:hidden text-fg">
         <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
         <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-bg border-b border-border px-8 pb-8 space-y-4" style="background: #0a0a0a;">
+    <div id="mobile-menu" class="hidden md:hidden bg-bg border-b border-border px-6 pb-6 space-y-3" style="background: #30065a;">
       <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Products</a>
       <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Developers</a>
       <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Resources</a>
@@ -203,20 +111,20 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative min-h-screen pt-20 overflow-hidden">
-    <div class="absolute inset-0 pt-20">
+  <section class="relative min-h-screen pt-16 overflow-hidden">
+    <div class="absolute inset-0 pt-16">
       <canvas id="globe-canvas" style="display:block;width:100%;height:100%"></canvas>
     </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-8 pt-32 md:pt-40">
-      <h1 class="fade-up text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.95] max-w-3xl text-gradient-subtle">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20 md:pt-32">
+      <h1 class="fade-up text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] max-w-2xl">
         Dakota is a stablecoin platform for storing and moving money
       </h1>
-      <p class="fade-up mt-8 text-lg md:text-xl text-muted-fg max-w-xl leading-relaxed tracking-wide" style="transition-delay:0.2s">
+      <p class="fade-up mt-8 text-lg md:text-xl text-muted-fg max-w-xl leading-relaxed" style="transition-delay:0.2s">
         Build, move, and manage stablecoins with enterprise-grade APIs. The foundation for issuing, transferring, and scaling digital dollars.
       </p>
-      <div class="fade-up mt-12 flex flex-wrap gap-4" style="transition-delay:0.4s">
-        <a href="#" class="btn-primary">Talk to Sales</a>
-        <a href="#" class="btn-secondary inline-flex items-center gap-2">
+      <div class="fade-up mt-10 flex flex-wrap gap-4" style="transition-delay:0.4s">
+        <a href="#" class="inline-flex items-center px-6 py-3 bg-fg text-bg text-sm font-medium rounded-sm hover:opacity-90 transition-colors">Talk to Sales</a>
+        <a href="#" class="inline-flex items-center gap-2 px-6 py-3 border border-border text-fg text-sm font-medium rounded-sm hover:bg-secondary transition-colors">
           View docs
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -226,56 +134,56 @@
 
   <!-- Features Section -->
   <section class="py-32 border-t border-border">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="fade-up">
-        <h2 class="text-4xl md:text-6xl font-medium max-w-2xl leading-tight">Built for the future of global payments</h2>
+        <h2 class="text-3xl md:text-5xl font-medium max-w-2xl leading-tight">Built for the future of global payments</h2>
         <p class="mt-6 text-muted-fg text-lg max-w-3xl leading-relaxed">
           Dakota powers companies moving money across borders and currencies. Our infrastructure makes stablecoin payments programmable, compliant, and scalable — so you can focus on building better financial products, not building rails.
         </p>
       </div>
-      <div class="mt-20 grid md:grid-cols-3 gap-8">
-        <div class="fade-up premium-card p-8 group">
-          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-all duration-300">
+      <div class="mt-20 grid md:grid-cols-3 gap-12">
+        <div class="fade-up group">
+          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
           </div>
-          <h3 class="font-mono-nav text-fg mb-3 tracking-wider">GLOBAL FROM DAY ONE</h3>
+          <h3 class="font-mono-nav text-fg mb-3">GLOBAL FROM DAY ONE</h3>
           <p class="text-muted-fg text-sm leading-relaxed">Reach 180+ countries with multi-currency support and local payment rails built for global scale.</p>
         </div>
-        <div class="fade-up premium-card p-8 group" style="transition-delay:0.15s">
-          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-all duration-300">
+        <div class="fade-up group" style="transition-delay:0.15s">
+          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
           </div>
-          <h3 class="font-mono-nav text-fg mb-3 tracking-wider">FAST BY DESIGN</h3>
+          <h3 class="font-mono-nav text-fg mb-3">FAST BY DESIGN</h3>
           <p class="text-muted-fg text-sm leading-relaxed">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
         </div>
-        <div class="fade-up premium-card p-8 group" style="transition-delay:0.3s">
-          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-all duration-300">
+        <div class="fade-up group" style="transition-delay:0.3s">
+          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M12 18a6 6 0 0 0 3-5 6 6 0 0 0-3-5 6 6 0 0 0-3 5 6 6 0 0 0 3 5"/></svg>
           </div>
-          <h3 class="font-mono-nav text-fg mb-3 tracking-wider">INTELLIGENT AT THE CORE</h3>
+          <h3 class="font-mono-nav text-fg mb-3">INTELLIGENT AT THE CORE</h3>
           <p class="text-muted-fg text-sm leading-relaxed">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Product Sections (maintaining placeholders) -->
+  <!-- Product Sections -->
   <section class="py-24 border-t border-border">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col lg:flex-row gap-16 items-center">
         <div class="lg:w-1/2 fade-left">
-          <span class="font-mono-nav text-muted-fg mb-4 block tracking-wider">PAYMENT ORCHESTRATION</span>
-          <h2 class="text-3xl md:text-5xl font-medium leading-tight">Unlock stablecoin and fiat payment orchestration</h2>
+          <span class="font-mono-nav text-muted-fg mb-4 block">PAYMENT ORCHESTRATION</span>
+          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Unlock stablecoin and fiat payment orchestration</h2>
           <p class="mt-5 text-muted-fg leading-relaxed">Simplify and automate payments across currencies with intelligent routing, near-instant processing, and institutional-grade infrastructure for seamless global transactions.</p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Virtual accounts</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Multi-currency support</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Real-time processing</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Virtual accounts</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Multi-currency support</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Real-time processing</span>
           </div>
         </div>
         <div class="lg:w-1/2 fade-right">
-          <div class="aspect-[4/3] image-placeholder flex items-center justify-center premium-hover">
-            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-surface to-secondary opacity-40"></div>
+          <div class="aspect-[4/3] rounded-sm bg-secondary/50 border border-border flex items-center justify-center">
+            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-secondary to-surface opacity-60"></div>
           </div>
         </div>
       </div>
@@ -283,21 +191,21 @@
   </section>
 
   <section class="py-24 border-t border-border">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col lg:flex-row-reverse gap-16 items-center">
         <div class="lg:w-1/2 fade-right">
-          <span class="font-mono-nav text-muted-fg mb-4 block tracking-wider">EMBEDDED WALLETS</span>
-          <h2 class="text-3xl md:text-5xl font-medium leading-tight">Embed multi-currency payments into your platform</h2>
+          <span class="font-mono-nav text-muted-fg mb-4 block">EMBEDDED WALLETS</span>
+          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Embed multi-currency payments into your platform</h2>
           <p class="mt-5 text-muted-fg leading-relaxed">Offer secure, globally scalable wallets that integrate seamlessly, automate payment workflows across currencies, and deliver always-on availability.</p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Programmable wallets</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Advanced policies</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Secure by design</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Programmable wallets</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Advanced policies</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Secure by design</span>
           </div>
         </div>
         <div class="lg:w-1/2 fade-left">
-          <div class="aspect-[4/3] image-placeholder flex items-center justify-center premium-hover">
-            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-surface to-secondary opacity-40"></div>
+          <div class="aspect-[4/3] rounded-sm bg-secondary/50 border border-border flex items-center justify-center">
+            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-secondary to-surface opacity-60"></div>
           </div>
         </div>
       </div>
@@ -305,21 +213,21 @@
   </section>
 
   <section class="py-24 border-t border-border">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col lg:flex-row gap-16 items-center">
         <div class="lg:w-1/2 fade-left">
-          <span class="font-mono-nav text-muted-fg mb-4 block tracking-wider">ACCEPT AND PAY OUT STABLECOINS</span>
-          <h2 class="text-3xl md:text-5xl font-medium leading-tight">Expand into new markets with stablecoin payments</h2>
+          <span class="font-mono-nav text-muted-fg mb-4 block">ACCEPT AND PAY OUT STABLECOINS</span>
+          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Expand into new markets with stablecoin payments</h2>
           <p class="mt-5 text-muted-fg leading-relaxed">Enable compliant, near-instant, and automated payments worldwide with intelligent routing, multi-currency support, and 99.99% uptime.</p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Global reach</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Fast settlement</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Compliance built-in</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Global reach</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Fast settlement</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Compliance built-in</span>
           </div>
         </div>
         <div class="lg:w-1/2 fade-right">
-          <div class="aspect-[4/3] image-placeholder flex items-center justify-center premium-hover">
-            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-surface to-secondary opacity-40"></div>
+          <div class="aspect-[4/3] rounded-sm bg-secondary/50 border border-border flex items-center justify-center">
+            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-secondary to-surface opacity-60"></div>
           </div>
         </div>
       </div>
@@ -327,21 +235,21 @@
   </section>
 
   <section class="py-24 border-t border-border">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col lg:flex-row-reverse gap-16 items-center">
         <div class="lg:w-1/2 fade-right">
-          <span class="font-mono-nav text-muted-fg mb-4 block tracking-wider">GLOBAL SETTLEMENTS IN MINUTES</span>
-          <h2 class="text-3xl md:text-5xl font-medium leading-tight">Receive near-instant settlements globally</h2>
+          <span class="font-mono-nav text-muted-fg mb-4 block">GLOBAL SETTLEMENTS IN MINUTES</span>
+          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Receive near-instant settlements globally</h2>
           <p class="mt-5 text-muted-fg leading-relaxed">Automate global money movement across currencies with always-on processing, seamless reconciliation, and low-cost, enterprise-grade reliability.</p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">24/7 processing</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Cross-border payments</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-sm text-muted-fg hover:bg-surface transition-all duration-300 cursor-default">Predictable fees</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">24/7 processing</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Cross-border payments</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Predictable fees</span>
           </div>
         </div>
         <div class="lg:w-1/2 fade-left">
-          <div class="aspect-[4/3] image-placeholder flex items-center justify-center premium-hover">
-            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-surface to-secondary opacity-40"></div>
+          <div class="aspect-[4/3] rounded-sm bg-secondary/50 border border-border flex items-center justify-center">
+            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-secondary to-surface opacity-60"></div>
           </div>
         </div>
       </div>
@@ -350,25 +258,25 @@
 
   <!-- Security Section -->
   <section class="py-32 border-t border-border">
-    <div class="max-w-7xl mx-auto px-8">
-      <h2 class="fade-up text-4xl md:text-6xl font-medium max-w-xl leading-tight">Secure, regulated, and scalable</h2>
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="fade-up text-3xl md:text-5xl font-medium max-w-xl leading-tight">Secure, regulated, and scalable</h2>
       <p class="fade-up mt-6 text-muted-fg text-lg max-w-3xl leading-relaxed" style="transition-delay:0.1s">
         Dakota powers global payments with bank-grade security, regulatory compliance, and enterprise reliability — so you can launch and scale with confidence.
       </p>
-      <div class="mt-20 grid md:grid-cols-3 gap-8">
-        <div class="fade-up premium-card p-8">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-6"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-          <h3 class="font-mono-nav text-fg mb-3 tracking-wider">BANK GRADE SECURITY</h3>
+      <div class="mt-20 grid md:grid-cols-3 gap-12">
+        <div class="fade-up p-6 rounded-sm bg-card border border-border">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-5"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <h3 class="font-mono-nav text-fg mb-3">BANK GRADE SECURITY</h3>
           <p class="text-muted-fg text-sm leading-relaxed">Secure by design with multi-layer encryption, SOC 2 compliance, and continuous monitoring.</p>
         </div>
-        <div class="fade-up premium-card p-8" style="transition-delay:0.12s">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-6"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
-          <h3 class="font-mono-nav text-fg mb-3 tracking-wider">REGULATORY COMPLIANCE</h3>
+        <div class="fade-up p-6 rounded-sm bg-card border border-border" style="transition-delay:0.12s">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-5"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+          <h3 class="font-mono-nav text-fg mb-3">REGULATORY COMPLIANCE</h3>
           <p class="text-muted-fg text-sm leading-relaxed">Built-in compliance frameworks across jurisdictions with automated reporting and audit trails.</p>
         </div>
-        <div class="fade-up premium-card p-8" style="transition-delay:0.24s">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-6"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
-          <h3 class="font-mono-nav text-fg mb-3 tracking-wider">ENTERPRISE RELIABILITY</h3>
+        <div class="fade-up p-6 rounded-sm bg-card border border-border" style="transition-delay:0.24s">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-5"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+          <h3 class="font-mono-nav text-fg mb-3">ENTERPRISE RELIABILITY</h3>
           <p class="text-muted-fg text-sm leading-relaxed">99.99% uptime SLA with globally distributed infrastructure and automatic failover.</p>
         </div>
       </div>
@@ -377,56 +285,56 @@
 
   <!-- Footer -->
   <footer class="border-t border-border py-16">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between gap-12">
         <div>
-          <span class="font-mono-nav text-sm tracking-[0.25em] font-medium text-fg">DAKOTA</span>
-          <p class="mt-4 text-muted-fg text-sm max-w-xs leading-relaxed">The stablecoin infrastructure platform for the next generation of global payments.</p>
+          <span class="font-mono-nav text-sm tracking-[0.2em] font-medium text-fg">DAKOTA</span>
+          <p class="mt-4 text-muted-fg text-sm max-w-xs">The stablecoin infrastructure platform for the next generation of global payments.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
-            <h4 class="font-mono-nav text-fg mb-4 tracking-wider text-xs">Products</h4>
-            <ul class="space-y-3">
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Payment Orchestration</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Embedded Wallets</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Payouts</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Settlements</a></li>
+            <h4 class="font-mono-nav text-fg mb-4">Products</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Payment Orchestration</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Embedded Wallets</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Payouts</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Settlements</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-mono-nav text-fg mb-4 tracking-wider text-xs">Developers</h4>
-            <ul class="space-y-3">
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Documentation</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">API Reference</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">SDKs</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Status</a></li>
+            <h4 class="font-mono-nav text-fg mb-4">Developers</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Documentation</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">API Reference</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">SDKs</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Status</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-mono-nav text-fg mb-4 tracking-wider text-xs">Resources</h4>
-            <ul class="space-y-3">
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Blog</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Case Studies</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Guides</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Changelog</a></li>
+            <h4 class="font-mono-nav text-fg mb-4">Resources</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Blog</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Case Studies</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Guides</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Changelog</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-mono-nav text-fg mb-4 tracking-wider text-xs">Company</h4>
-            <ul class="space-y-3">
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">About</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Careers</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Contact</a></li>
-              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors duration-300">Legal</a></li>
+            <h4 class="font-mono-nav text-fg mb-4">Company</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">About</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Careers</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Contact</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Legal</a></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-muted-fg text-xs tracking-wide">© 2026 Dakota. All rights reserved.</p>
-        <div class="flex gap-8">
-          <a href="#" class="text-muted-fg text-xs hover:text-fg transition-colors duration-300">Privacy Policy</a>
-          <a href="#" class="text-muted-fg text-xs hover:text-fg transition-colors duration-300">Terms of Service</a>
+        <p class="text-muted-fg text-xs">© 2026 Dakota. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-muted-fg text-xs hover:text-fg transition-colors">Privacy Policy</a>
+          <a href="#" class="text-muted-fg text-xs hover:text-fg transition-colors">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -449,7 +357,7 @@
     // Scroll-triggered animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.15 });
     document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => observer.observe(el));
 
     // Theme switcher functionality
@@ -462,82 +370,84 @@
         }
       });
 
-      // Update color schemes
+      // Update Tailwind config colors
       const colorSchemes = {
-        '#0a0a0a': {
-          bg: '#0a0a0a',
-          card: '#141414',
-          mutedFg: '#a3a3a3',
-          surface: '#1a1a1a',
-          border: '#2a2a2a',
-          secondary: '#111111'
+        '#30065a': {
+          bg: '#30065a',
+          card: '#3a0f64',
+          mutedFg: '#c4b5d1',
+          surface: '#441d6e',
+          border: '#5a3a78',
+          secondary: '#2e0b4f'
         },
-        '#1a1a1a': {
-          bg: '#1a1a1a',
-          card: '#242424',
-          mutedFg: '#b3b3b3',
-          surface: '#2a2a2a',
-          border: '#3a3a3a',
-          secondary: '#212121'
+        '#0a1929': {
+          bg: '#0a1929',
+          card: '#10233c',
+          mutedFg: '#8ba0bc',
+          surface: '#1a2f4a',
+          border: '#2d4059',
+          secondary: '#0b1a2c'
         },
-        '#0f172a': {
-          bg: '#0f172a',
-          card: '#1e293b',
-          mutedFg: '#94a3b8',
-          surface: '#334155',
-          border: '#475569',
-          secondary: '#1a2332'
+        '#1a2f3f': {
+          bg: '#1a2f3f',
+          card: '#233b4d',
+          mutedFg: '#9bb7d4',
+          surface: '#2d475d',
+          border: '#3f5b72',
+          secondary: '#18303f'
         },
-        '#1e1b1b': {
-          bg: '#1e1b1b',
-          card: '#2a2626',
-          mutedFg: '#b8b1b1',
-          surface: '#363131',
-          border: '#4a4444',
-          secondary: '#252121'
+        '#2c1810': {
+          bg: '#2c1810',
+          card: '#3a2219',
+          mutedFg: '#c9aea2',
+          surface: '#4a2e23',
+          border: '#624436',
+          secondary: '#2b1b14'
         },
-        '#0a1f1a': {
-          bg: '#0a1f1a',
-          card: '#17322a',
-          mutedFg: '#a8c3ba',
-          surface: '#23453b',
-          border: '#3a5f53',
-          secondary: '#112a22'
+        '#1e3a2f': {
+          bg: '#1e3a2f',
+          card: '#284a3d',
+          mutedFg: '#a8cfc0',
+          surface: '#325d4d',
+          border: '#4a7764',
+          secondary: '#1f3f33'
         }
       };
 
-      const scheme = colorSchemes[color] || colorSchemes['#0a0a0a'];
+      const scheme = colorSchemes[color] || colorSchemes['#30065a'];
 
-      // Update CSS variables through inline styles
+      // Update CSS variables
       document.body.style.backgroundColor = color;
       
-      // Update navbar and mobile menu
-      document.getElementById('navbar').style.background = `${color}e6`;
+      // Update navbar and mobile menu backgrounds
+      document.getElementById('navbar').style.background = `${color}cc`;
       document.getElementById('mobile-menu').style.background = color;
       
-      // Update background colors
-      document.querySelectorAll('.bg-bg').forEach(el => {
+      // Update Tailwind classes would require recompiling, so we use inline styles
+      // This is a simplified approach - in production you'd want to use CSS variables
+      const elements = document.querySelectorAll('.bg-bg');
+      elements.forEach(el => {
         if (el !== document.getElementById('navbar') && el !== document.getElementById('mobile-menu')) {
           el.style.backgroundColor = color;
         }
       });
       
-      document.querySelectorAll('.bg-card, .premium-card').forEach(el => el.style.backgroundColor = scheme.card);
+      document.querySelectorAll('.bg-card').forEach(el => el.style.backgroundColor = scheme.card);
       document.querySelectorAll('.bg-surface').forEach(el => el.style.backgroundColor = scheme.surface);
       document.querySelectorAll('.bg-secondary').forEach(el => el.style.backgroundColor = scheme.secondary);
       document.querySelectorAll('.border-border').forEach(el => el.style.borderColor = scheme.border);
       document.querySelectorAll('.text-muted-fg').forEach(el => el.style.color = scheme.mutedFg);
     }
 
-    // Particle Globe (enhanced)
+    // Particle Globe
     (function() {
       const canvas = document.getElementById('globe-canvas');
       const ctx = canvas.getContext('2d');
       let rotation = 0;
-      const numPoints = 2500;
+      const numPoints = 2000;
       const points = [];
       for (let i = 0; i < numPoints; i++) {
-        points.push({ lat: Math.acos(2*Math.random()-1)-Math.PI/2, lon: Math.random()*Math.PI*2, size: Math.random()*2+0.5 });
+        points.push({ lat: Math.acos(2*Math.random()-1)-Math.PI/2, lon: Math.random()*Math.PI*2, size: Math.random()*1.5+0.3 });
       }
       const rings = [{tilt:0.3,phase:0},{tilt:-0.5,phase:1.2},{tilt:0.1,phase:2.5}];
       const labels = [{text:'SWIFT',angle:1.2,dist:0.85},{text:'USDC',angle:4.8,dist:1.05},{text:'USDT',angle:3.0,dist:0.9}];
@@ -555,36 +465,35 @@
         const w=r.width, h=r.height;
         ctx.clearRect(0,0,w,h);
         const cx=w*0.6, cy=h*0.55, rad=Math.min(w,h)*0.38;
-        rotation+=0.0015;
+        rotation+=0.002;
 
         for (const p of points) {
           const x=rad*Math.cos(p.lat)*Math.cos(p.lon+rotation);
           const y=rad*Math.sin(p.lat);
           const z=rad*Math.cos(p.lat)*Math.sin(p.lon+rotation);
           if(z<0) continue;
-          const d=(z+rad)/(2*rad), a=0.2+d*0.6, s=p.size*(0.5+d*0.5);
+          const d=(z+rad)/(2*rad), a=0.15+d*0.7, s=p.size*(0.5+d*0.5);
           ctx.beginPath(); ctx.arc(cx+x,cy-y,s,0,Math.PI*2);
-          ctx.fillStyle=`rgba(255,255,255,${a})`; ctx.fill();
+          ctx.fillStyle=`rgba(240,235,225,${a})`; ctx.fill();
         }
 
         for (const ring of rings) {
-          ctx.beginPath(); ctx.strokeStyle='rgba(255,255,255,0.03)'; ctx.lineWidth=1.5;
+          ctx.beginPath(); ctx.strokeStyle='rgba(240,235,225,0.08)'; ctx.lineWidth=1;
           for(let a=0;a<Math.PI*2;a+=0.02){
-            const x=rad*1.2*Math.cos(a+ring.phase+rotation*0.3);
-            const y=rad*1.2*Math.sin(a+ring.phase+rotation*0.3)*Math.cos(ring.tilt);
+            const x=rad*1.15*Math.cos(a+ring.phase+rotation*0.5);
+            const y=rad*1.15*Math.sin(a+ring.phase+rotation*0.5)*Math.cos(ring.tilt);
             if(a===0) ctx.moveTo(cx+x,cy-y); else ctx.lineTo(cx+x,cy-y);
           }
           ctx.closePath(); ctx.stroke();
         }
 
         for (const l of labels) {
-          const lx=cx+rad*l.dist*Math.cos(l.angle+rotation*0.2);
-          const ly=cy-rad*l.dist*Math.sin(l.angle+rotation*0.2)*0.6;
+          const lx=cx+rad*l.dist*Math.cos(l.angle+rotation*0.3);
+          const ly=cy-rad*l.dist*Math.sin(l.angle+rotation*0.3)*0.6;
           ctx.font="10px 'IBM Plex Mono',monospace";
-          ctx.fillStyle='rgba(255,255,255,0.4)';
-          ctx.fillRect(lx-4,ly-4,8,8);
-          ctx.fillStyle='rgba(255,255,255,0.6)';
-          ctx.fillText(l.text,lx+12,ly+4);
+          ctx.fillStyle='rgba(240,235,225,0.5)';
+          ctx.fillRect(lx-3,ly-3,6,6);
+          ctx.fillText(l.text,lx+10,ly+4);
         }
         requestAnimationFrame(draw);
       }
