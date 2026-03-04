@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dakota — Stablecoin Infrastructure Platform</title>
+  <meta name="description" content="Dakota is a stablecoin platform for storing and moving money. Build, move, and manage stablecoins with enterprise-grade APIs." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#080808',
+            fg: '#f0ebe1',
+            card: '#0f0f0f',
+            'muted-fg': '#8c8c8c',
+            surface: '#141414',
+            border: '#262626',
+            secondary: '#1f1f1f',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #080808; color: #f0ebe1; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    .font-mono-nav { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .text-gradient-subtle {
+      background: linear-gradient(180deg, #f0ebe1 0%, #8c8c8c 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    /* Fade-in animation */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-left.visible { opacity: 1; transform: translateX(0); }
+    .fade-right { opacity: 0; transform: translateX(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-right.visible { opacity: 1; transform: translateX(0); }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <span class="font-mono-nav text-sm tracking-[0.2em] font-medium text-fg">DAKOTA</span>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Products</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Developers</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Resources</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Blog</a>
+        <a href="#" class="font-mono-nav px-4 py-2 ml-2 border border-border rounded-sm text-fg hover:bg-secondary transition-colors">Sign In</a>
+      </div>
+      <button id="mobile-toggle" class="md:hidden text-fg">
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-bg border-b border-border px-6 pb-6 space-y-3">
+      <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Products</a>
+      <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Developers</a>
+      <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Resources</a>
+      <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Blog</a>
+      <a href="#" class="block font-mono-nav py-2 text-fg">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen pt-16 overflow-hidden">
+    <div class="absolute inset-0 pt-16">
+      <canvas id="globe-canvas" style="display:block;width:100%;height:100%"></canvas>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20 md:pt-32">
+      <h1 class="fade-up text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] max-w-2xl">
+        Dakota is a stablecoin platform for storing and moving money
+      </h1>
+      <p class="fade-up mt-8 text-lg md:text-xl text-muted-fg max-w-xl leading-relaxed" style="transition-delay:0.2s">
+        Build, move, and manage stablecoins with enterprise-grade APIs. The foundation for issuing, transferring, and scaling digital dollars.
+      </p>
+      <div class="fade-up mt-10 flex flex-wrap gap-4" style="transition-delay:0.4s">
+        <a href="#" class="inline-flex items-center px-6 py-3 bg-fg text-bg text-sm font-medium rounded-sm hover:opacity-90 transition-colors">Talk to Sales</a>
+        <a href="#" class="inline-flex items-center gap-2 px-6 py-3 border border-border text-fg text-sm font-medium rounded-sm hover:bg-secondary transition-colors">
+          View docs
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-32 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="fade-up">
+        <h2 class="text-3xl md:text-5xl font-medium max-w-2xl leading-tight">Built for the future of global payments</h2>
+        <p class="mt-6 text-muted-fg text-lg max-w-3xl leading-relaxed">
+          Dakota powers companies moving money across borders and currencies. Our infrastructure makes stablecoin payments programmable, compliant, and scalable — so you can focus on building better financial products, not building rails.
+        </p>
+      </div>
+      <div class="mt-20 grid md:grid-cols-3 gap-12">
+        <div class="fade-up group">
+          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3 class="font-mono-nav text-fg mb-3">GLOBAL FROM DAY ONE</h3>
+          <p class="text-muted-fg text-sm leading-relaxed">Reach 180+ countries with multi-currency support and local payment rails built for global scale.</p>
+        </div>
+        <div class="fade-up group" style="transition-delay:0.15s">
+          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          </div>
+          <h3 class="font-mono-nav text-fg mb-3">FAST BY DESIGN</h3>
+          <p class="text-muted-fg text-sm leading-relaxed">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
+        </div>
+        <div class="fade-up group" style="transition-delay:0.3s">
+          <div class="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center mb-6 group-hover:bg-surface transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M12 18a6 6 0 0 0 3-5 6 6 0 0 0-3-5 6 6 0 0 0-3 5 6 6 0 0 0 3 5"/></svg>
+          </div>
+          <h3 class="font-mono-nav text-fg mb-3">INTELLIGENT AT THE CORE</h3>
+          <p class="text-muted-fg text-sm leading-relaxed">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Sections -->
+  <section class="py-24 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
+        <div class="lg:w-1/2 fade-left">
+          <span class="font-mono-nav text-muted-fg mb-4 block">PAYMENT ORCHESTRATION</span>
+          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Unlock stablecoin and fiat payment orchestration</h2>
+          <p class="mt-5 text-muted-fg leading-relaxed">Simplify and automate payments across currencies with intelligent routing, near-instant processing, and institutional-grade infrastructure for seamless global transactions.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Virtual accounts</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Multi-currency support</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Real-time processing</span>
+          </div>
+        </div>
+        <div class="lg:w-1/2 fade-right">
+          <div class="aspect-[4/3] rounded-sm bg-secondary/50 border border-border flex items-center justify-center">
+            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-secondary to-surface opacity-60"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row-reverse gap-16 items-center">
+        <div class="lg:w-1/2 fade-right">
+          <span class="font-mono-nav text-muted-fg mb-4 block">EMBEDDED WALLETS</span>
+          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Embed multi-currency payments into your platform</h2>
+          <p class="mt-5 text-muted-fg leading-relaxed">Offer secure, globally scalable wallets that integrate seamlessly, automate payment workflows across currencies, and deliver always-on availability.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Programmable wallets</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Advanced policies</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Secure by design</span>
+          </div>
+        </div>
+        <div class="lg:w-1/2 fade-left">
+          <div class="aspect-[4/3] rounded-sm bg-secondary/50 border border-border flex items-center justify-center">
+            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-secondary to-surface opacity-60"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
+        <div class="lg:w-1/2 fade-left">
+          <span class="font-mono-nav text-muted-fg mb-4 block">ACCEPT AND PAY OUT STABLECOINS</span>
+          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Expand into new markets with stablecoin payments</h2>
+          <p class="mt-5 text-muted-fg leading-relaxed">Enable compliant, near-instant, and automated payments worldwide with intelligent routing, multi-currency support, and 99.99% uptime.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Global reach</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Fast settlement</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Compliance built-in</span>
+          </div>
+        </div>
+        <div class="lg:w-1/2 fade-right">
+          <div class="aspect-[4/3] rounded-sm bg-secondary/50 border border-border flex items-center justify-center">
+            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-secondary to-surface opacity-60"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row-reverse gap-16 items-center">
+        <div class="lg:w-1/2 fade-right">
+          <span class="font-mono-nav text-muted-fg mb-4 block">GLOBAL SETTLEMENTS IN MINUTES</span>
+          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Receive near-instant settlements globally</h2>
+          <p class="mt-5 text-muted-fg leading-relaxed">Automate global money movement across currencies with always-on processing, seamless reconciliation, and low-cost, enterprise-grade reliability.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">24/7 processing</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Cross-border payments</span>
+            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-sm text-muted-fg">Predictable fees</span>
+          </div>
+        </div>
+        <div class="lg:w-1/2 fade-left">
+          <div class="aspect-[4/3] rounded-sm bg-secondary/50 border border-border flex items-center justify-center">
+            <div class="w-3/4 h-3/4 rounded-sm bg-gradient-to-br from-secondary to-surface opacity-60"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Section -->
+  <section class="py-32 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="fade-up text-3xl md:text-5xl font-medium max-w-xl leading-tight">Secure, regulated, and scalable</h2>
+      <p class="fade-up mt-6 text-muted-fg text-lg max-w-3xl leading-relaxed" style="transition-delay:0.1s">
+        Dakota powers global payments with bank-grade security, regulatory compliance, and enterprise reliability — so you can launch and scale with confidence.
+      </p>
+      <div class="mt-20 grid md:grid-cols-3 gap-12">
+        <div class="fade-up p-6 rounded-sm bg-card border border-border">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-5"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <h3 class="font-mono-nav text-fg mb-3">BANK GRADE SECURITY</h3>
+          <p class="text-muted-fg text-sm leading-relaxed">Secure by design with multi-layer encryption, SOC 2 compliance, and continuous monitoring.</p>
+        </div>
+        <div class="fade-up p-6 rounded-sm bg-card border border-border" style="transition-delay:0.12s">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-5"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+          <h3 class="font-mono-nav text-fg mb-3">REGULATORY COMPLIANCE</h3>
+          <p class="text-muted-fg text-sm leading-relaxed">Built-in compliance frameworks across jurisdictions with automated reporting and audit trails.</p>
+        </div>
+        <div class="fade-up p-6 rounded-sm bg-card border border-border" style="transition-delay:0.24s">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-fg mb-5"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+          <h3 class="font-mono-nav text-fg mb-3">ENTERPRISE RELIABILITY</h3>
+          <p class="text-muted-fg text-sm leading-relaxed">99.99% uptime SLA with globally distributed infrastructure and automatic failover.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-border py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between gap-12">
+        <div>
+          <span class="font-mono-nav text-sm tracking-[0.2em] font-medium text-fg">DAKOTA</span>
+          <p class="mt-4 text-muted-fg text-sm max-w-xs">The stablecoin infrastructure platform for the next generation of global payments.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div>
+            <h4 class="font-mono-nav text-fg mb-4">Products</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Payment Orchestration</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Embedded Wallets</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Payouts</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Settlements</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-mono-nav text-fg mb-4">Developers</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Documentation</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">API Reference</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">SDKs</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Status</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-mono-nav text-fg mb-4">Resources</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Blog</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Case Studies</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Guides</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Changelog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-mono-nav text-fg mb-4">Company</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">About</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Careers</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Contact</a></li>
+              <li><a href="#" class="text-muted-fg text-sm hover:text-fg transition-colors">Legal</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-muted-fg text-xs">© 2026 Dakota. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-muted-fg text-xs hover:text-fg transition-colors">Privacy Policy</a>
+          <a href="#" class="text-muted-fg text-xs hover:text-fg transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    let open = false;
+    toggle.addEventListener('click', () => {
+      open = !open;
+      menu.classList.toggle('hidden', !open);
+      menuIcon.classList.toggle('hidden', open);
+      closeIcon.classList.toggle('hidden', !open);
+    });
+
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => observer.observe(el));
+
+    // Particle Globe
+    (function() {
+      const canvas = document.getElementById('globe-canvas');
+      const ctx = canvas.getContext('2d');
+      let rotation = 0;
+      const numPoints = 2000;
+      const points = [];
+      for (let i = 0; i < numPoints; i++) {
+        points.push({ lat: Math.acos(2*Math.random()-1)-Math.PI/2, lon: Math.random()*Math.PI*2, size: Math.random()*1.5+0.3 });
+      }
+      const rings = [{tilt:0.3,phase:0},{tilt:-0.5,phase:1.2},{tilt:0.1,phase:2.5}];
+      const labels = [{text:'SWIFT',angle:1.2,dist:0.85},{text:'USDC',angle:4.8,dist:1.05},{text:'USDT',angle:3.0,dist:0.9}];
+
+      function resize() {
+        const dpr = window.devicePixelRatio||1;
+        const r = canvas.getBoundingClientRect();
+        canvas.width = r.width*dpr; canvas.height = r.height*dpr;
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+      resize(); window.addEventListener('resize', resize);
+
+      function draw() {
+        const r = canvas.getBoundingClientRect();
+        const w=r.width, h=r.height;
+        ctx.clearRect(0,0,w,h);
+        const cx=w*0.6, cy=h*0.55, rad=Math.min(w,h)*0.38;
+        rotation+=0.002;
+
+        for (const p of points) {
+          const x=rad*Math.cos(p.lat)*Math.cos(p.lon+rotation);
+          const y=rad*Math.sin(p.lat);
+          const z=rad*Math.cos(p.lat)*Math.sin(p.lon+rotation);
+          if(z<0) continue;
+          const d=(z+rad)/(2*rad), a=0.15+d*0.7, s=p.size*(0.5+d*0.5);
+          ctx.beginPath(); ctx.arc(cx+x,cy-y,s,0,Math.PI*2);
+          ctx.fillStyle=`rgba(240,235,225,${a})`; ctx.fill();
+        }
+
+        for (const ring of rings) {
+          ctx.beginPath(); ctx.strokeStyle='rgba(240,235,225,0.08)'; ctx.lineWidth=1;
+          for(let a=0;a<Math.PI*2;a+=0.02){
+            const x=rad*1.15*Math.cos(a+ring.phase+rotation*0.5);
+            const y=rad*1.15*Math.sin(a+ring.phase+rotation*0.5)*Math.cos(ring.tilt);
+            if(a===0) ctx.moveTo(cx+x,cy-y); else ctx.lineTo(cx+x,cy-y);
+          }
+          ctx.closePath(); ctx.stroke();
+        }
+
+        for (const l of labels) {
+          const lx=cx+rad*l.dist*Math.cos(l.angle+rotation*0.3);
+          const ly=cy-rad*l.dist*Math.sin(l.angle+rotation*0.3)*0.6;
+          ctx.font="10px 'IBM Plex Mono',monospace";
+          ctx.fillStyle='rgba(240,235,225,0.5)';
+          ctx.fillRect(lx-3,ly-3,6,6);
+          ctx.fillText(l.text,lx+10,ly+4);
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>

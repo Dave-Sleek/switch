@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dakota — The Standard for Stablecoin Infrastructure</title>
+  <meta name="description" content="Enterprise-grade stablecoin infrastructure powering the future of global payments. Issue, move, and manage digital assets at scale." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: #1a0735; /* This will be overridden by saved theme */
+      color: #ffffff; 
+      -webkit-font-smoothing: antialiased; 
+      transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 { 
+      font-family: 'Syne', sans-serif; 
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    
+    .font-mono-nav { 
+      font-family: 'Space Grotesk', monospace; 
+      font-size: 0.75rem; 
+      letter-spacing: 0.1em; 
+      text-transform: uppercase; 
+      font-weight: 500;
+    }
+    
+    /* Premium gradient text effects */
+    .text-gradient-premium {
+      background: linear-gradient(135deg, #ffffff 0%, currentColor 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+    }
+    
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+    
+    /* Parallax effects */
+    .parallax {
+      transform: translateZ(0);
+      transition: transform 0.1s ease-out;
+      will-change: transform;
+    }
+    
+    /* Glass morphism - will adapt to theme */
+    .glass-premium {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    
+    .glass-card {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Animated border */
+    .animated-border {
+      position: relative;
+      border-radius: 0.125rem;
+    }
+    
+    .animated-border::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #8b5cf6, #a78bfa, #c4b5fd, #8b5cf6);
+      background-size: 300% 300%;
+      border-radius: 0.25rem;
+      z-index: -1;
+      animation: borderGlow 6s ease infinite;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .animated-border:hover::before {
+      opacity: 1;
+    }
+    
+    @keyframes borderGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #1a0735;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #4a2b6e, #8b5cf6);
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #5a3a7e, #9b6cf6);
+    }
+    
+    /* Loading animation */
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 3px solid rgba(139, 92, 246, 0.3);
+      border-radius: 50%;
+      border-top-color: #8b5cf6;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-scale.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* Counter animation */
+    .counter {
+      font-feature-settings: "tnum";
+      font-variant-numeric: tabular-nums;
+    }
+    
+    /* Particle canvas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Animation delays */
+    .animation-delay-1000 { animation-delay: 1s; }
+    .animation-delay-2000 { animation-delay: 2s; }
+    .animation-delay-3000 { animation-delay: 3s; }
+    
+    /* Floating particles */
+    .floating-particle {
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(10px, -10px); }
+      50% { transform: translate(-5px, 15px); }
+      75% { transform: translate(-15px, -5px); }
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Loading screen transition */
+    #loading-screen {
+      transition: opacity 1s ease-in-out;
+    }
+    
+    /* Navbar scroll effect */
+    #navbar {
+      transition: all 0.3s ease;
+    }
+    
+    /* Theme dot active state */
+    .theme-dot.border-accent-glow {
+      border-color: #a78bfa;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    }
+    
+    /* Hidden class for mobile menu */
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="relative">
+
+  <!-- Particle Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Premium Loading Screen -->
+  <div id="loading-screen" class="fixed inset-0 bg-bg-darker z-[100] flex items-center justify-center transition-opacity duration-1000">
+    <div class="text-center">
+      <div class="loader mx-auto mb-8"></div>
+      <div class="font-mono-nav text-accent-glow tracking-[0.3em]">DAKOTA</div>
+      <div class="h-1 w-48 bg-border rounded-full mt-8 overflow-hidden">
+        <div id="loading-progress" class="h-full bg-gradient-to-r from-accent to-accent-glow" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Switcher - User Controls Background -->
+  <div class="fixed bottom-8 right-8 z-50">
+    <div class="glass-premium rounded-2xl p-4 shadow-2xl backdrop-blur-xl" id="theme-switcher-panel">
+      <div class="flex items-center gap-3">
+        <button onclick="setTheme('#1a0735')" class="theme-dot w-8 h-8 rounded-full bg-[#1a0735] border-2 border-accent-glow hover:scale-110 transition-all duration-300 shadow-lg shadow-accent/20" id="theme-deep-violet" title="Deep Violet"></button>
+        <button onclick="setTheme('#000000')" class="theme-dot w-8 h-8 rounded-full bg-[#000000] border-2 border-transparent hover:border-accent-glow hover:scale-110 transition-all duration-300" id="theme-midnight-black" title="Midnight Black"></button>
+        <button onclick="setTheme('#0a0a1f')" class="theme-dot w-8 h-8 rounded-full bg-[#0a0a1f] border-2 border-transparent hover:border-accent-glow hover:scale-110 transition-all duration-300" id="theme-navy-blue" title="Navy Blue"></button>
+        <button onclick="setTheme('#1a1f2e')" class="theme-dot w-8 h-8 rounded-full bg-[#1a1f2e] border-2 border-transparent hover:border-accent-glow hover:scale-110 transition-all duration-300" id="theme-slate-gray" title="Slate Gray"></button>
+        <button onclick="setTheme('#2d1b2c')" class="theme-dot w-8 h-8 rounded-full bg-[#2d1b2c] border-2 border-transparent hover:border-accent-glow hover:scale-110 transition-all duration-300" id="theme-burgundy" title="Burgundy"></button>
+      </div>
+      <div class="text-center mt-3">
+        <span class="text-[10px] text-muted-fg font-mono-nav tracking-wider">CURATED PALETTE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 glass-premium border-b border-accent/20 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-12">
+        <span class="font-mono-nav text-lg tracking-[0.3em] font-bold text-gradient-premium">DAKOTA</span>
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="#" class="font-mono-nav px-5 py-2.5 text-muted-fg hover:text-fg transition-all duration-300 relative group">
+            Products
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-accent group-hover:w-1/2 group-hover:left-0 transition-all duration-300"></span>
+            <span class="absolute bottom-0 right-1/2 w-0 h-0.5 bg-accent group-hover:w-1/2 group-hover:right-0 transition-all duration-300"></span>
+          </a>
+          <a href="#" class="font-mono-nav px-5 py-2.5 text-muted-fg hover:text-fg transition-all duration-300 relative group">
+            Developers
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-accent group-hover:w-1/2 group-hover:left-0 transition-all duration-300"></span>
+            <span class="absolute bottom-0 right-1/2 w-0 h-0.5 bg-accent group-hover:w-1/2 group-hover:right-0 transition-all duration-300"></span>
+          </a>
+          <a href="#" class="font-mono-nav px-5 py-2.5 text-muted-fg hover:text-fg transition-all duration-300 relative group">
+            Resources
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-accent group-hover:w-1/2 group-hover:left-0 transition-all duration-300"></span>
+            <span class="absolute bottom-0 right-1/2 w-0 h-0.5 bg-accent group-hover:w-1/2 group-hover:right-0 transition-all duration-300"></span>
+          </a>
+          <a href="#" class="font-mono-nav px-5 py-2.5 text-muted-fg hover:text-fg transition-all duration-300 relative group">
+            Blog
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-accent group-hover:w-1/2 group-hover:left-0 transition-all duration-300"></span>
+            <span class="absolute bottom-0 right-1/2 w-0 h-0.5 bg-accent group-hover:w-1/2 group-hover:right-0 transition-all duration-300"></span>
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="font-mono-nav px-6 py-2.5 text-fg hover:text-accent-glow transition-all duration-300">Sign In</a>
+        <a href="#" class="animated-border font-mono-nav px-6 py-2.5 bg-accent text-bg rounded-sm hover:bg-accent-glow transition-all duration-300 shadow-lg shadow-accent/30">
+          Get Started
+        </a>
+      </div>
+      <button id="mobile-toggle" class="lg:hidden text-fg">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden glass-premium px-8 py-6 space-y-4">
+      <a href="#" class="block font-mono-nav py-3 text-muted-fg hover:text-fg transition-colors border-b border-border/50">Products</a>
+      <a href="#" class="block font-mono-nav py-3 text-muted-fg hover:text-fg transition-colors border-b border-border/50">Developers</a>
+      <a href="#" class="block font-mono-nav py-3 text-muted-fg hover:text-fg transition-colors border-b border-border/50">Resources</a>
+      <a href="#" class="block font-mono-nav py-3 text-muted-fg hover:text-fg transition-colors">Blog</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen overflow-hidden">
+    <!-- Animated background orbs - these will adapt to theme -->
+    <div class="absolute top-20 left-10 w-96 h-96 bg-accent/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+    <div class="absolute bottom-20 right-10 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] animate-pulse-slow animation-delay-2000"></div>
+    
+    <!-- Floating particles -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="floating-particle w-2 h-2 bg-accent/30 rounded-full absolute top-1/4 left-1/4 animate-float"></div>
+      <div class="floating-particle w-3 h-3 bg-accent-glow/20 rounded-full absolute top-3/4 left-3/4 animate-float animation-delay-1000"></div>
+      <div class="floating-particle w-1.5 h-1.5 bg-white/30 rounded-full absolute top-1/2 left-1/2 animate-float animation-delay-2000"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-8 pt-40">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <!-- Live indicator -->
+          <div class="flex items-center gap-3 mb-8 reveal">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+            </span>
+            <span class="font-mono-nav text-accent-glow tracking-wider">LIVE MAINNET • 99.99% UPTIME</span>
+          </div>
+          
+          <h1 class="reveal text-5xl lg:text-7xl font-bold leading-[1.1] mb-8">
+            <span class="block">The standard for</span>
+            <span class="text-gradient-premium">stablecoin infrastructure</span>
+          </h1>
+          
+          <p class="reveal text-xl text-muted-fg leading-relaxed max-w-xl mb-10" style="transition-delay: 0.1s">
+            Enterprise-grade APIs for issuing, moving, and managing digital assets at scale. 
+            Trusted by the world's leading financial institutions.
+          </p>
+          
+          <div class="reveal flex flex-wrap gap-4 mb-12" style="transition-delay: 0.2s">
+            <a href="#" class="group relative px-8 py-4 bg-accent text-bg font-semibold rounded-sm overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/40">
+              <span class="relative z-10">Start Building →</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-accent to-accent-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+            <a href="#" class="group px-8 py-4 border-2 border-accent/30 text-fg font-semibold rounded-sm hover:border-accent hover:bg-accent/10 transition-all duration-300">
+              View Documentation
+            </a>
+          </div>
+          
+          <!-- Trust indicators -->
+          <div class="reveal grid grid-cols-3 gap-8 pt-8 border-t border-border/50" style="transition-delay: 0.3s">
+            <div>
+              <div class="text-3xl font-bold text-gradient-premium counter" data-target="500">0</div>
+              <div class="text-sm text-muted-fg mt-1">Enterprise Clients</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-gradient-premium counter" data-target="180">0</div>
+              <div class="text-sm text-muted-fg mt-1">Countries</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-gradient-premium counter" data-target="99.99">0</div>
+              <div class="text-sm text-muted-fg mt-1">Uptime SLA</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 3D Globe Visualization -->
+        <div class="reveal-right relative" style="transition-delay: 0.2s">
+          <div class="relative w-full aspect-square">
+            <canvas id="globe-canvas" class="absolute inset-0 w-full h-full"></canvas>
+            
+            <!-- Floating stats cards - will adapt to theme -->
+            <div class="absolute top-10 left-0 glass-card rounded-xl p-4 animate-float" style="background: rgba(0,0,0,0.4);">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
+                  <i class="fas fa-bolt text-accent"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-muted-fg">Transaction Speed</div>
+                  <div class="text-lg font-bold">0.3s finality</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="absolute bottom-10 right-0 glass-card rounded-xl p-4 animate-float animation-delay-1000" style="background: rgba(0,0,0,0.4);">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
+                  <i class="fas fa-shield-alt text-accent"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-muted-fg">Security Score</div>
+                  <div class="text-lg font-bold">SOC 2 Type II</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted By Section -->
+  <section class="py-20 border-y border-border/30">
+    <div class="max-w-7xl mx-auto px-8">
+      <p class="text-center text-muted-fg font-mono-nav mb-12 reveal">TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
+        <div class="reveal-scale opacity-50 hover:opacity-100 transition-opacity duration-300">
+          <i class="fab fa-microsoft text-4xl text-muted-fg"></i>
+        </div>
+        <div class="reveal-scale opacity-50 hover:opacity-100 transition-opacity duration-300" style="transition-delay: 0.05s">
+          <i class="fab fa-google text-4xl text-muted-fg"></i>
+        </div>
+        <div class="reveal-scale opacity-50 hover:opacity-100 transition-opacity duration-300" style="transition-delay: 0.1s">
+          <i class="fab fa-amazon text-4xl text-muted-fg"></i>
+        </div>
+        <div class="reveal-scale opacity-50 hover:opacity-100 transition-opacity duration-300" style="transition-delay: 0.15s">
+          <i class="fab fa-stripe text-4xl text-muted-fg"></i>
+        </div>
+        <div class="reveal-scale opacity-50 hover:opacity-100 transition-opacity duration-300" style="transition-delay: 0.2s">
+          <i class="fab fa-paypal text-4xl text-muted-fg"></i>
+        </div>
+        <div class="reveal-scale opacity-50 hover:opacity-100 transition-opacity duration-300" style="transition-delay: 0.25s">
+          <i class="fab fa-meta text-4xl text-muted-fg"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-32">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="font-mono-nav text-accent-glow mb-4 block reveal">WHY DAKOTA</span>
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6 reveal">
+          Built for the new era of<br><span class="text-gradient-premium">global finance</span>
+        </h2>
+        <p class="text-muted-fg text-lg leading-relaxed reveal">
+          Everything you need to build, scale, and secure stablecoin operations — all in one platform.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="glass-card rounded-2xl p-8 reveal-scale group hover:translate-y-[-8px] transition-all duration-500" style="background: rgba(0,0,0,0.3);">
+          <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/30 transition-all duration-300">
+            <i class="fas fa-globe-americas text-3xl text-accent"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Global Reach</h3>
+          <p class="text-muted-fg leading-relaxed mb-6">Access 180+ countries with local payment rails and multi-currency support.</p>
+          <a href="#" class="inline-flex items-center text-accent group-hover:gap-3 transition-all duration-300">
+            Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="glass-card rounded-2xl p-8 reveal-scale group hover:translate-y-[-8px] transition-all duration-500" style="transition-delay: 0.1s; background: rgba(0,0,0,0.3);">
+          <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/30 transition-all duration-300">
+            <i class="fas fa-bolt text-3xl text-accent"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Instant Settlement</h3>
+          <p class="text-muted-fg leading-relaxed mb-6">Near-instant finality with 24/7 processing and real-time visibility.</p>
+          <a href="#" class="inline-flex items-center text-accent group-hover:gap-3 transition-all duration-300">
+            Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="glass-card rounded-2xl p-8 reveal-scale group hover:translate-y-[-8px] transition-all duration-500" style="transition-delay: 0.2s; background: rgba(0,0,0,0.3);">
+          <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/30 transition-all duration-300">
+            <i class="fas fa-shield-halved text-3xl text-accent"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Bank-Grade Security</h3>
+          <p class="text-muted-fg leading-relaxed mb-6">SOC 2 Type II certified with multi-layer encryption and compliance.</p>
+          <a href="#" class="inline-flex items-center text-accent group-hover:gap-3 transition-all duration-300">
+            Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="glass-card rounded-2xl p-8 reveal-scale group hover:translate-y-[-8px] transition-all duration-500" style="background: rgba(0,0,0,0.3);">
+          <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/30 transition-all duration-300">
+            <i class="fas fa-chart-line text-3xl text-accent"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Scalable Infrastructure</h3>
+          <p class="text-muted-fg leading-relaxed mb-6">Handle millions of transactions with enterprise-grade reliability.</p>
+          <a href="#" class="inline-flex items-center text-accent group-hover:gap-3 transition-all duration-300">
+            Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="glass-card rounded-2xl p-8 reveal-scale group hover:translate-y-[-8px] transition-all duration-500" style="transition-delay: 0.1s; background: rgba(0,0,0,0.3);">
+          <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/30 transition-all duration-300">
+            <i class="fas fa-code text-3xl text-accent"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Developer First</h3>
+          <p class="text-muted-fg leading-relaxed mb-6">Beautiful APIs, comprehensive docs, and powerful SDKs.</p>
+          <a href="#" class="inline-flex items-center text-accent group-hover:gap-3 transition-all duration-300">
+            Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="glass-card rounded-2xl p-8 reveal-scale group hover:translate-y-[-8px] transition-all duration-500" style="transition-delay: 0.2s; background: rgba(0,0,0,0.3);">
+          <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/30 transition-all duration-300">
+            <i class="fas fa-clock text-3xl text-accent"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">24/7 Availability</h3>
+          <p class="text-muted-fg leading-relaxed mb-6">99.99% uptime SLA with globally distributed infrastructure.</p>
+          <a href="#" class="inline-flex items-center text-accent group-hover:gap-3 transition-all duration-300">
+            Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Showcase -->
+  <section class="py-32 bg-gradient-to-b from-transparent to-black/20">
+    <div class="max-w-7xl mx-auto px-8">
+      <!-- Product 1 -->
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+        <div class="reveal-left">
+          <span class="font-mono-nav text-accent-glow mb-4 block">PAYMENT ORCHESTRATION</span>
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6">Unify stablecoin<br>and fiat payments</h2>
+          <p class="text-muted-fg text-lg leading-relaxed mb-8">
+            Simplify complex payment flows with intelligent routing, automated compliance, 
+            and real-time processing across 180+ countries.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-2 glass-card rounded-full text-sm" style="background: rgba(0,0,0,0.3);">Virtual Accounts</span>
+            <span class="px-4 py-2 glass-card rounded-full text-sm" style="background: rgba(0,0,0,0.3);">Multi-currency</span>
+            <span class="px-4 py-2 glass-card rounded-full text-sm" style="background: rgba(0,0,0,0.3);">Real-time Processing</span>
+            <span class="px-4 py-2 glass-card rounded-full text-sm" style="background: rgba(0,0,0,0.3);">Smart Routing</span>
+          </div>
+          <a href="#" class="inline-flex items-center text-accent hover:gap-3 transition-all duration-300">
+            Explore Payment Orchestration <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        <div class="reveal-right">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-accent/30 to-accent-glow/30 rounded-3xl blur-3xl"></div>
+            <div class="relative glass-card rounded-3xl p-8" style="background: rgba(0,0,0,0.4);">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between p-4 bg-black/30 rounded-xl">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
+                      <i class="fas fa-dollar-sign text-accent"></i>
+                    </div>
+                    <div>
+                      <div class="text-sm text-muted-fg">USD → EUR</div>
+                      <div class="font-bold">$1.5M transferred</div>
+                    </div>
+                  </div>
+                  <span class="text-accent">0.3s</span>
+                </div>
+                <div class="flex items-center justify-between p-4 bg-black/30 rounded-xl">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
+                      <i class="fas fa-euro-sign text-accent"></i>
+                    </div>
+                    <div>
+                      <div class="text-sm text-muted-fg">EUR → GBP</div>
+                      <div class="font-bold">€890K transferred</div>
+                    </div>
+                  </div>
+                  <span class="text-accent">0.4s</span>
+                </div>
+                <div class="flex items-center justify-between p-4 bg-black/30 rounded-xl">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
+                      <i class="fas fa-yen-sign text-accent"></i>
+                    </div>
+                    <div>
+                      <div class="text-sm text-muted-fg">JPY → USD</div>
+                      <div class="font-bold">¥120M transferred</div>
+                    </div>
+                  </div>
+                  <span class="text-accent">0.3s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product 2 -->
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+        <div class="reveal-left order-2 lg:order-1">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-accent/30 to-accent-glow/30 rounded-3xl blur-3xl"></div>
+            <div class="relative glass-card rounded-3xl p-8" style="background: rgba(0,0,0,0.4);">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="p-4 bg-black/30 rounded-xl text-center">
+                  <i class="fas fa-wallet text-3xl text-accent mb-2"></i>
+                  <div class="text-sm text-muted-fg">Active Wallets</div>
+                  <div class="text-2xl font-bold">2.4M</div>
+                </div>
+                <div class="p-4 bg-black/30 rounded-xl text-center">
+                  <i class="fas fa-arrows-spin text-3xl text-accent mb-2"></i>
+                  <div class="text-sm text-muted-fg">Transactions</div>
+                  <div class="text-2xl font-bold">8.1M</div>
+                </div>
+                <div class="p-4 bg-black/30 rounded-xl text-center">
+                  <i class="fas fa-clock text-3xl text-accent mb-2"></i>
+                  <div class="text-sm text-muted-fg">Avg. Speed</div>
+                  <div class="text-2xl font-bold">0.3s</div>
+                </div>
+                <div class="p-4 bg-black/30 rounded-xl text-center">
+                  <i class="fas fa-shield text-3xl text-accent mb-2"></i>
+                  <div class="text-sm text-muted-fg">Uptime</div>
+                  <div class="text-2xl font-bold">99.99%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right order-1 lg:order-2">
+          <span class="font-mono-nav text-accent-glow mb-4 block">EMBEDDED WALLETS</span>
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6">Programmable wallets<br>at your fingertips</h2>
+          <p class="text-muted-fg text-lg leading-relaxed mb-8">
+            Offer secure, compliant wallets that integrate seamlessly into your platform. 
+            Automate payment workflows with advanced policies and controls.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-2 glass-card rounded-full text-sm" style="background: rgba(0,0,0,0.3);">Programmable</span>
+            <span class="px-4 py-2 glass-card rounded-full text-sm" style="background: rgba(0,0,0,0.3);">Compliant</span>
+            <span class="px-4 py-2 glass-card rounded-full text-sm" style="background: rgba(0,0,0,0.3);">Multi-currency</span>
+            <span class="px-4 py-2 glass-card rounded-full text-sm" style="background: rgba(0,0,0,0.3);">Secure by design</span>
+          </div>
+          <a href="#" class="inline-flex items-center text-accent hover:gap-3 transition-all duration-300">
+            Explore Embedded Wallets <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-32">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center reveal-scale">
+          <div class="text-5xl lg:text-6xl font-bold text-gradient-premium mb-2 counter" data-target="50">0</div>
+          <div class="text-sm text-muted-fg">Billion+ Processed</div>
+        </div>
+        <div class="text-center reveal-scale" style="transition-delay: 0.1s">
+          <div class="text-5xl lg:text-6xl font-bold text-gradient-premium mb-2 counter" data-target="180">0</div>
+          <div class="text-sm text-muted-fg">Countries Covered</div>
+        </div>
+        <div class="text-center reveal-scale" style="transition-delay: 0.2s">
+          <div class="text-5xl lg:text-6xl font-bold text-gradient-premium mb-2 counter" data-target="500">0</div>
+          <div class="text-sm text-muted-fg">Enterprise Clients</div>
+        </div>
+        <div class="text-center reveal-scale" style="transition-delay: 0.3s">
+          <div class="text-5xl lg:text-6xl font-bold text-gradient-premium mb-2 counter" data-target="99.99">0</div>
+          <div class="text-sm text-muted-fg">Uptime SLA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-32 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-accent/20 to-accent-glow/20"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/30 rounded-full blur-[150px]"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-8">
+      <h2 class="text-4xl lg:text-6xl font-bold mb-8 reveal">
+        Ready to build the<br><span class="text-gradient-premium">future of payments?</span>
+      </h2>
+      <p class="text-muted-fg text-xl mb-12 reveal">
+        Join the world's leading companies building on Dakota.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center reveal">
+        <a href="#" class="group relative px-10 py-5 bg-accent text-bg font-semibold rounded-sm overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/40 text-lg">
+          <span class="relative z-10">Start Building Free →</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-accent to-accent-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </a>
+        <a href="#" class="px-10 py-5 border-2 border-accent/30 text-fg font-semibold rounded-sm hover:border-accent hover:bg-accent/10 transition-all duration-300 text-lg">
+          Contact Sales
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-border/30 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
+        <div class="col-span-2">
+          <span class="font-mono-nav text-2xl tracking-[0.3em] font-bold text-gradient-premium block mb-4">DAKOTA</span>
+          <p class="text-muted-fg text-sm max-w-xs leading-relaxed">
+            The standard for stablecoin infrastructure, powering the next generation of global payments.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-mono-nav text-fg mb-4 text-sm">PRODUCT</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Payment Orchestration</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Embedded Wallets</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Payouts</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Settlements</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-mono-nav text-fg mb-4 text-sm">DEVELOPERS</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Documentation</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">API Reference</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">SDKs</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Status</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-mono-nav text-fg mb-4 text-sm">COMPANY</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">About</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Careers</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Contact</a></li>
+            <li><a href="#" class="text-muted-fg text-sm hover:text-accent transition-colors">Legal</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border/30">
+        <p class="text-muted-fg text-xs mb-4 md:mb-0">© 2026 Dakota. All rights reserved. Regulated in the United States and Europe.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-muted-fg text-xs hover:text-accent transition-colors">Privacy Policy</a>
+          <a href="#" class="text-muted-fg text-xs hover:text-accent transition-colors">Terms of Service</a>
+          <a href="#" class="text-muted-fg text-xs hover:text-accent transition-colors">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Color schemes for all themes
+    const colorSchemes = {
+      '#1a0735': {
+        bg: '#1a0735',
+        darker: '#0f0320',
+        card: '#2a1045',
+        surface: '#341a52',
+        border: '#4a2b6e',
+        accent: '#8b5cf6',
+        accentGlow: '#a78bfa',
+        mutedFg: '#b7a4d4',
+      },
+      '#000000': {
+        bg: '#000000',
+        darker: '#000000',
+        card: '#111111',
+        surface: '#1a1a1a',
+        border: '#333333',
+        accent: '#8b5cf6',
+        accentGlow: '#a78bfa',
+        mutedFg: '#a0a0a0',
+      },
+      '#0a0a1f': {
+        bg: '#0a0a1f',
+        darker: '#050510',
+        card: '#14142c',
+        surface: '#1e1e38',
+        border: '#2d2d4a',
+        accent: '#6366f1',
+        accentGlow: '#818cf8',
+        mutedFg: '#8ba0bc',
+      },
+      '#1a1f2e': {
+        bg: '#1a1f2e',
+        darker: '#0f131f',
+        card: '#252b3d',
+        surface: '#2f364a',
+        border: '#40485e',
+        accent: '#60a5fa',
+        accentGlow: '#93c5fd',
+        mutedFg: '#9bb7d4',
+      },
+      '#2d1b2c': {
+        bg: '#2d1b2c',
+        darker: '#1f121e',
+        card: '#3e253c',
+        surface: '#4e304b',
+        border: '#66405f',
+        accent: '#ec4899',
+        accentGlow: '#f472b6',
+        mutedFg: '#c9aea2',
+      }
+    };
+
+    // Save theme to localStorage
+    function saveTheme(color) {
+      localStorage.setItem('dakota-theme', color);
+    }
+
+    // Load saved theme
+    function loadSavedTheme() {
+      const savedTheme = localStorage.getItem('dakota-theme');
+      if (savedTheme && colorSchemes[savedTheme]) {
+        setTheme(savedTheme, false); // Don't save again
+      } else {
+        // Default to first theme (Deep Violet) if no saved theme
+        setTheme('#1a0735', false);
+      }
+    }
+
+    // Theme switcher function
+    function setTheme(color, shouldSave = true) {
+      const scheme = colorSchemes[color] || colorSchemes['#1a0735'];
+      
+      // Save to localStorage if requested
+      if (shouldSave) {
+        saveTheme(color);
+      }
+      
+      // Update body background
+      document.body.style.backgroundColor = scheme.bg;
+      
+      // Update theme dots active state
+      document.querySelectorAll('.theme-dot').forEach(dot => {
+        dot.classList.remove('border-accent-glow');
+        const dotColor = dot.style.backgroundColor || 
+                        window.getComputedStyle(dot).backgroundColor;
+        
+        // Convert rgb to hex for comparison (simplified)
+        if (dot.classList.contains(`bg-[${color}]`)) {
+          dot.classList.add('border-accent-glow');
+        }
+      });
+      
+      // Update glass elements backgrounds
+      document.querySelectorAll('.glass-premium').forEach(el => {
+        if (el.id !== 'theme-switcher-panel') {
+          el.style.background = `rgba(${parseInt(scheme.bg.slice(1,3), 16)}, ${parseInt(scheme.bg.slice(3,5), 16)}, ${parseInt(scheme.bg.slice(5,7), 16)}, 0.3)`;
+        }
+      });
+      
+      // Update theme switcher panel to stay visible
+      const panel = document.getElementById('theme-switcher-panel');
+      if (panel) {
+        panel.style.background = `rgba(${parseInt(scheme.bg.slice(1,3), 16)}, ${parseInt(scheme.bg.slice(3,5), 16)}, ${parseInt(scheme.bg.slice(5,7), 16)}, 0.3)`;
+      }
+      
+      // Update accent colors
+      document.querySelectorAll('.text-accent').forEach(el => {
+        el.style.color = scheme.accent;
+      });
+      
+      document.querySelectorAll('.bg-accent').forEach(el => {
+        el.style.backgroundColor = scheme.accent;
+      });
+      
+      document.querySelectorAll('.border-accent, .border-accent/20, .border-accent/30').forEach(el => {
+        el.style.borderColor = scheme.accent;
+      });
+      
+      document.querySelectorAll('.text-accent-glow').forEach(el => {
+        el.style.color = scheme.accentGlow;
+      });
+      
+      document.querySelectorAll('.text-muted-fg').forEach(el => {
+        el.style.color = scheme.mutedFg;
+      });
+      
+      document.querySelectorAll('.border-border, .border-border/30, .border-border/50').forEach(el => {
+        el.style.borderColor = scheme.border;
+      });
+      
+      // Update navbar background
+      const navbar = document.getElementById('navbar');
+      if (navbar) {
+        navbar.style.background = `rgba(${parseInt(scheme.bg.slice(1,3), 16)}, ${parseInt(scheme.bg.slice(3,5), 16)}, ${parseInt(scheme.bg.slice(5,7), 16)}, 0.3)`;
+      }
+      
+      // Update mobile menu
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) {
+        mobileMenu.style.background = `rgba(${parseInt(scheme.bg.slice(1,3), 16)}, ${parseInt(scheme.bg.slice(3,5), 16)}, ${parseInt(scheme.bg.slice(5,7), 16)}, 0.3)`;
+      }
+      
+      // Update gradient text to use new accent
+      document.querySelectorAll('.text-gradient-premium').forEach(el => {
+        el.style.background = `linear-gradient(135deg, #ffffff 0%, ${scheme.mutedFg} 50%, ${scheme.accent} 100%)`;
+        el.style.webkitBackgroundClip = 'text';
+        el.style.webkitTextFillColor = 'transparent';
+        el.style.backgroundClip = 'text';
+      });
+      
+      // Update loading screen background
+      const loadingScreen = document.getElementById('loading-screen');
+      if (loadingScreen) {
+        loadingScreen.style.backgroundColor = scheme.darker;
+      }
+      
+      // Update scrollbar track (optional)
+      const style = document.createElement('style');
+      style.textContent = `
+        ::-webkit-scrollbar-track {
+          background: ${scheme.bg};
+        }
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(180deg, ${scheme.border}, ${scheme.accent});
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(180deg, ${scheme.surface}, ${scheme.accentGlow});
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Loading screen
+    window.addEventListener('load', function() {
+      const loadingScreen = document.getElementById('loading-screen');
+      const progress = document.getElementById('loading-progress');
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 1000);
+        } else {
+          width += Math.random() * 30;
+          if (width > 100) width = 100;
+          progress.style.width = width + '%';
+        }
+      }, 200);
+      
+      // Load saved theme after page loads
+      loadSavedTheme();
+    });
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          
+          // Trigger counter animation when stats are visible
+          if (entry.target.classList.contains('counter')) {
+            animateCounter(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .counter').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Counter animation
+    function animateCounter(element) {
+      if (element.classList.contains('animated')) return;
+      element.classList.add('animated');
+      
+      const target = parseFloat(element.getAttribute('data-target'));
+      const suffix = element.innerText.includes('%') ? '%' : '';
+      let current = 0;
+      const increment = target / 50;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.innerText = target + suffix;
+          clearInterval(timer);
+        } else {
+          element.innerText = Math.round(current) + suffix;
+        }
+      }, 20);
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      const currentBg = document.body.style.backgroundColor;
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+        navbar.style.background = currentBg + 'cc';
+      } else {
+        navbar.classList.remove('scrolled');
+        const scheme = colorSchemes[localStorage.getItem('dakota-theme')] || colorSchemes['#1a0735'];
+        navbar.style.background = `rgba(${parseInt(scheme.bg.slice(1,3), 16)}, ${parseInt(scheme.bg.slice(3,5), 16)}, ${parseInt(scheme.bg.slice(5,7), 16)}, 0.3)`;
+      }
+    });
+
+    // Enhanced particle globe
+    (function() {
+      const canvas = document.getElementById('globe-canvas');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      let rotation = 0;
+      const numPoints = 3000;
+      const points = [];
+      
+      for (let i = 0; i < numPoints; i++) {
+        points.push({ 
+          lat: Math.acos(2 * Math.random() - 1) - Math.PI/2, 
+          lon: Math.random() * Math.PI * 2, 
+          size: Math.random() * 1.5 + 0.5,
+        });
+      }
+      
+      function resize() {
+        const container = canvas.parentElement;
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+      }
+      
+      resize();
+      window.addEventListener('resize', resize);
+      
+      function draw() {
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+        
+        const cx = w * 0.5;
+        const cy = h * 0.5;
+        const rad = Math.min(w, h) * 0.4;
+        
+        rotation += 0.002;
+        
+        // Draw connection lines
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(139, 92, 246, 0.1)';
+        ctx.lineWidth = 1;
+        
+        for (let i = 0; i < 10; i++) {
+          const lat1 = Math.sin(Date.now() * 0.001 + i) * Math.PI/3;
+          const lon1 = rotation + i * Math.PI/5;
+          const x1 = cx + rad * Math.cos(lat1) * Math.cos(lon1);
+          const y1 = cy + rad * Math.sin(lat1);
+          
+          for (let j = 0; j < 5; j++) {
+            const lat2 = Math.sin(Date.now() * 0.001 + j + 2) * Math.PI/3;
+            const lon2 = rotation + j * Math.PI/3 + 0.5;
+            const x2 = cx + rad * Math.cos(lat2) * Math.cos(lon2);
+            const y2 = cy + rad * Math.sin(lat2);
+            
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.strokeStyle = `rgba(139, 92, 246, 0.05)`;
+            ctx.stroke();
+          }
+        }
+        
+        // Draw points
+        for (const p of points) {
+          const x = rad * Math.cos(p.lat) * Math.cos(p.lon + rotation);
+          const y = rad * Math.sin(p.lat);
+          const z = rad * Math.cos(p.lat) * Math.sin(p.lon + rotation);
+          
+          if (z < 0) continue;
+          
+          const d = (z + rad) / (2 * rad);
+          const a = 0.2 + d * 0.6;
+          const s = p.size * (0.5 + d * 0.5);
+          
+          ctx.beginPath();
+          ctx.arc(cx + x, cy - y, s, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
+          ctx.fill();
+        }
+        
+        requestAnimationFrame(draw);
+      }
+      
+      draw();
+    })();
+
+    // Particle background
+    (function() {
+      const canvas = document.getElementById('particle-canvas');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initParticles();
+      }
+      
+      function initParticles() {
+        particles = [];
+        const numParticles = 50;
+        
+        for (let i = 0; i < numParticles; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            speedX: (Math.random() - 0.5) * 0.2,
+            speedY: (Math.random() - 0.5) * 0.2,
+            opacity: Math.random() * 0.3 + 0.1,
+          });
+        }
+      }
+      
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (const p of particles) {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(139, 92, 246, ${p.opacity})`;
+          ctx.fill();
+        }
+        
+        requestAnimationFrame(draw);
+      }
+      
+      resize();
+      window.addEventListener('resize', resize);
+      draw();
+    })();
+  </script>
+</body>
+</html>
