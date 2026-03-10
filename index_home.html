@@ -22,70 +22,71 @@
       padding: 0; 
     }
 
-                @font-face {
-            font-family: 'Ivar Soft';
-            src: url('/fonts/ivar-soft.woff2') format('woff2'),
-                url('/fonts/ivar-soft.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
+    @font-face {
+      font-family: 'Ivar Soft';
+      src: url('/fonts/ivar-soft.woff2') format('woff2'),
+          url('/fonts/ivar-soft.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-            @font-face {
-            font-family: 'Maison Neue';
-            src: url('/fonts/MaisonNeue.woff2') format('woff2'),
-                url('/fonts/MaisonNeue.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
+    @font-face {
+      font-family: 'Ivar Soft';
+      src: url('/fonts/ivar-soft-bold.woff2') format('woff2'),
+          url('/fonts/ivar-soft-bold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+    }
 
-            @font-face {
-            font-family: 'Maison Neue Bold';
-            src: url('/fonts/MaisonNeueBold.woff2') format('woff2'),
-                url('/fonts/MaisonNeueBold.woff') format('woff');
-            font-weight: bold;
-            font-style: normal;
-            }
+    @font-face {
+      font-family: 'Maison Neue';
+      src: url('/fonts/MaisonNeue.woff2') format('woff2'),
+          url('/fonts/MaisonNeue.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-            @font-face {
-            font-family: 'Maison Neue Mono';
-            src: url('/fonts/Maison-neue-mono.woff2') format('woff2'),
-                url('/fonts/Maison-neue-mono.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
+    @font-face {
+      font-family: 'Maison Neue Bold';
+      src: url('/fonts/MaisonNeueBold.woff2') format('woff2'),
+          url('/fonts/MaisonNeueBold.woff') format('woff');
+      font-weight: bold;
+      font-style: normal;
+    }
 
-    
+    @font-face {
+      font-family: 'Maison Neue Mono';
+      src: url('/fonts/Maison-neue-mono.woff2') format('woff2'),
+          url('/fonts/Maison-neue-mono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body { 
-      font-family: 'Ivar Soft', sans-serif; 
+      font-family: 'Ivar Soft', serif; 
       background: #000000;
       color: #ffffff; 
       -webkit-font-smoothing: antialiased; 
       overflow-x: hidden;
     }
     
-    /* h1, h2, h3, h4, h5, h6 { 
-     font-family: 'Inter', sans-serif;  
-      font-weight: 600;
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Ivar Soft', serif;
+      font-weight: 700;
       letter-spacing: -0.02em;
-    } */
+    }
 
-    h1, h2, h3 {
-  font-family: 'Ivar Soft', sans-serif;
-  font-weight: 700;
-}
+    p {
+      font-family: 'Maison Neue', sans-serif;
+    }
 
-p {
-  font-family: 'Maison Neue', sans-serif;
-}
+    strong {
+      font-family: 'Maison Neue Bold', sans-serif;
+    }
 
-strong {
-  font-family: 'Maison Neue Bold', sans-serif;
-}
-
-code, pre {
-  font-family: 'Maison Neue Mono', monospace;
-}
-
+    code, pre, .font-mono {
+      font-family: 'Maison Neue Mono', monospace;
+    }
     
     .font-mono-nav { 
       font-family: 'Maison Neue Mono', monospace; 
@@ -122,7 +123,7 @@ code, pre {
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: white;
       padding: 0.75rem 2rem;
-      font-family: 'Space Grotesk', monospace;
+      font-family: 'Maison Neue Mono', monospace;
       font-size: 0.875rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -139,7 +140,7 @@ code, pre {
       background: #8A2BE2;
       color: white;
       padding: 0.75rem 2rem;
-      font-family: 'Space Grotesk', monospace;
+      font-family: 'Maison Neue Mono', monospace;
       font-size: 0.875rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -331,7 +332,7 @@ code, pre {
       color: white;
       padding: 0.25rem 0.5rem;
       font-size: 0.75rem;
-      font-family: 'Space Grotesk', monospace;
+      font-family: 'Maison Neue Mono', monospace;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
@@ -459,7 +460,7 @@ code, pre {
     .stat-number {
       font-size: 3.5rem;
       font-weight: 600;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Ivar Soft', serif;
       color: white;
     }
 
@@ -468,6 +469,7 @@ code, pre {
       font-size: 0.875rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      font-family: 'Maison Neue Mono', monospace;
     }
 
     /* Footer links */
@@ -475,6 +477,7 @@ code, pre {
       color: rgba(255, 255, 255, 0.5);
       transition: color 0.3s ease;
       font-size: 0.875rem;
+      font-family: 'Maison Neue', sans-serif;
     }
 
     .footer-link:hover {
@@ -483,15 +486,15 @@ code, pre {
 
     /* Three.js canvas positioning */
     #globe {
-        position: absolute;   /* make it fill the hero section */
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 1;           /* keep it behind your hero content */
-        background: transparent !important; /* ensure no background color */
-        pointer-events: none; /* prevent blocking clicks */
-        }
+        z-index: 1;
+        background: transparent !important;
+        pointer-events: none;
+    }
 
     /* Hero content positioning */
     .hero-content {
@@ -502,61 +505,77 @@ code, pre {
       align-items: center;
     }
 
-    /* Responsive globe positioning */
-    /* @media (min-width: 1024px) {
-      #globe-canvas {
-        top: 100%;
-        transform: translateY(-50%);
-        height: 200%;
-      }
-    } */
+    .relative {
+      position: relative;
+    }
 
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      pointer-events: auto;
+    }
 
-    /* Add this to your existing CSS */
-.relative {
-  position: relative;
-}
+    .globe-container {
+      position: absolute;
+      left: 0;
+      bottom: -350px;
+      width: 100%;
+      height: 650px;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-/* #globe {
-  background: transparent !important;
-}
-canvas {
-  background: transparent !important;
-} */
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, #000);
+      pointer-events: none;
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  pointer-events: auto; /* Ensure content remains clickable */
-}
+    /* Globe label styling - gray background, white text, border radius */
+    .globe-label {
+      position: absolute;
+      color: white;
+      font-family: 'Ivar Soft', serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: rgba(60, 60, 60, 0.95);
+      padding: 6px 16px;
+      /*border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.2);*/
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      white-space: nowrap;
+      z-index: 100;
+      transition: opacity 0.3s ease;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
 
+    /* Feature card headings */
+    .feature-card h3 {
+      font-family: 'Ivar Soft', serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
 
-.globe-container{
-position:absolute;
-left:0;
-bottom:-350px;
-width:100%;
-height:650px;
-pointer-events:none;
-z-index:1;
-}
+    /* Product section headings */
+    .product-section h2 {
+      font-family: 'Ivar Soft', serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-
-.hero::after{
-content:"";
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:200px;
-background:linear-gradient(to bottom, transparent, #000);
-pointer-events:none;
-}
-
-/* Make sure the canvas doesn't block interactions */
-/* canvas {
-  pointer-events: none !important;
-} */
+    /* Rounded square class for tags */
+    .rounded-square {
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body class="bg-dark-100">
@@ -575,10 +594,10 @@ pointer-events:none;
       <div class="flex items-center gap-12">
         <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img w-40 h-auto">
         <div class="hidden lg:flex items-center gap-8">
-          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors">Products</a>
-          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors">Developers</a>
-          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors">Resources</a>
-          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors">Blog</a>
+          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors font-mono-nav">Products</a>
+          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors font-mono-nav">Developers</a>
+          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors font-mono-nav">Resources</a>
+          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors font-mono-nav">Blog</a>
         </div>
       </div>
       <div class="flex items-center gap-3">
@@ -589,50 +608,47 @@ pointer-events:none;
       </button>
     </div>
     <div id="mobile-menu" class="hidden lg:hidden bg-dark-200 px-8 py-6 space-y-4">
-      <a href="#" class="block text-white/70 hover:text-white transition-colors">Products</a>
-      <a href="#" class="block text-white/70 hover:text-white transition-colors">Developers</a>
-      <a href="#" class="block text-white/70 hover:text-white transition-colors">Resources</a>
-      <a href="#" class="block text-white/70 hover:text-white transition-colors">Blog</a>
+      <a href="#" class="block text-white/70 hover:text-white transition-colors font-mono-nav">Products</a>
+      <a href="#" class="block text-white/70 hover:text-white transition-colors font-mono-nav">Developers</a>
+      <a href="#" class="block text-white/70 hover:text-white transition-colors font-mono-nav">Resources</a>
+      <a href="#" class="block text-white/70 hover:text-white transition-colors font-mono-nav">Blog</a>
     </div>
   </nav>
 
   <!-- Hero Section with Three.js Globe -->
-  <!-- Hero Section -->
-<section class="relative min-h-screen overflow-hidden bg-dark-200">
-  <!-- Three.js Canvas -->
-  <div id="globe" class="globe-container"></div>
-  
-  <div class="hero-content">
-    <div class="relative z-20 max-w-7xl mx-auto px-8 w-full">
-      <div class="max-w-3xl">
-        <div class="flex items-center gap-3 mb-8 reveal">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
-          </span>
-          <span class="text-xs text-white/50 font-mono-nav tracking-wider">LIVE MAINNET • 99.99% UPTIME</span>
-        </div>
-        
-       <h1 class="reveal text-6xl lg:text-5xl leading-[1.1] mb-8" style="font-family:'Ivar soft', sans-serif; font-weight:700;">
+  <section class="relative min-h-screen overflow-hidden bg-dark-200">
+    <!-- Three.js Canvas -->
+    <div id="globe" class="globe-container"></div>
+    
+    <div class="hero-content">
+      <div class="relative z-20 max-w-7xl mx-auto px-8 w-full">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-8 reveal">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
+            </span>
+            <span class="text-xs text-white/50 font-mono-nav tracking-wider">LIVE MAINNET • 99.99% UPTIME</span>
+          </div>
+          
+          <h1 class="reveal text-6xl lg:text-5xl leading-[1.1] mb-8">
             <span class="block">Switch is a global platform for</span>
             <span class="text-white">accessing and moving money</span>
-        </h1>
+          </h1>
 
-
-        
-        <p class="reveal text-xl text-white leading-relaxed max-w-xl mb-12" style="transition-delay: 0.1s">
-          Trusted financial access for institutional clients and global businesses navigating cross-border payments,
-          liquidity, and international accounts across Latin America.
-        </p>
-        
-        <div class="reveal flex flex-wrap gap-4" style="transition-delay: 0.2s">
-          <a href="#" class="btn-secondary">Start a Conversation →</a>
-          <a href="#" class="btn-primary">Watch Demo</a>
+          <p class="reveal text-xl text-white leading-relaxed max-w-xl mb-12" style="transition-delay: 0.1s">
+            Trusted financial access for institutional clients and global businesses navigating cross-border payments,
+            liquidity, and international accounts across Latin America.
+          </p>
+          
+          <div class="reveal flex flex-wrap gap-4" style="transition-delay: 0.2s">
+            <a href="#" class="btn-secondary">Start a Conversation →</a>
+            <a href="#" class="btn-primary">Watch Demo</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Trusted By Section -->
   <section class="py-20 bg-dark-100">
@@ -664,53 +680,47 @@ pointer-events:none;
   <div class="section-divider"></div>
 
   <!-- Features Section -->
-<section class="py-32 bg-[#141414]">
-  <div class="max-w-7xl mx-auto px-8">
+  <section class="py-32 bg-[#141414]">
+    <div class="max-w-7xl mx-auto px-8">
+      <!-- Centered heading + paragraph -->
+      <div class="max-w-3xl mb-20 mx-auto text-center">
+        <h2 class="text-5xl lg:text-4xl font-bold mb-6 reveal">
+          A better way to move money globally
+        </h2>
+        <p class="text-white/60 text-lg leading-relaxed reveal">
+          Switch provides access to global accounts, liquidity, and cross-border payments. We orchestrate money movement across
+          international accounts and volatile currencies with liquidity, compliance, and reliability.
+        </p>
+      </div>
 
-    <!-- Centered heading + paragraph -->
-    <div class="max-w-3xl mb-20 mx-auto text-center">
-      <h2 class="text-5xl lg:text-4xl font-bold mb-6 reveal">
-        A better way to move money globally
-      </h2>
-      <p class="text-white/60 text-lg leading-relaxed reveal">
-        Switch provides access to global accounts, liquidity, and cross-border payments. We orchestrate money movement across
-        international accounts and volatile currencies with liquidity, compliance, and reliability.
-      </p>
+      <!-- Centered feature cards -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="feature-card p-8 reveal-scale group">
+          <div class="w-12 h-12 mb-6 mx-0">
+            <img src="images/global-day-one.svg" alt="Global Day One">
+          </div>
+          <h3 class="text-lg font-mono-nav text-white mb-3">GLOBAL FROM DAY ONE</h3>
+          <p class="text-white/40 text-sm leading-relaxed">Reach 180+ countries with multi-currency support and local payment rails built for global scale.</p>
+        </div>
+
+        <div class="feature-card p-8 reveal-scale group" style="transition-delay:0.15s">
+          <div class="w-12 h-12 mb-6 mx-0">
+            <img src="images/fast-by-design.svg" alt="Fast by Design">
+          </div>
+          <h3 class="text-lg font-mono-nav text-white mb-3">FAST BY DESIGN</h3>
+          <p class="text-white/40 text-sm leading-relaxed">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
+        </div>
+
+        <div class="feature-card p-8 reveal-scale group" style="transition-delay:0.3s">
+          <div class="w-12 h-12 mb-6 mx-0">
+            <img src="images/intelligent-at-the-core.svg" alt="Intelligent at the Core">
+          </div>
+          <h3 class="text-lg font-mono-nav text-white mb-3">INTELLIGENT AT THE CORE</h3>
+          <p class="text-white/40 text-sm leading-relaxed">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
+        </div>
+      </div>
     </div>
-
-    <!-- Centered feature cards -->
-    <div class="grid md:grid-cols-3 gap-8">
-
-  <div class="feature-card p-8 reveal-scale group">
-    <div class="w-12 h-12 mb-6 mx-0">
-      <img src="images/global-day-one.svg" alt="Global Day One">
-    </div>
-    <h3 class="text-lg font-mono-nav text-white mb-3">GLOBAL FROM DAY ONE</h3>
-    <p class="text-white/40 text-sm leading-relaxed">Reach 180+ countries with multi-currency support and local payment rails built for global scale.</p>
-  </div>
-
-  <div class="feature-card p-8 reveal-scale group" style="transition-delay:0.15s">
-    <div class="w-12 h-12 mb-6 mx-0">
-      <img src="images/fast-by-design.svg" alt="Fast by Design">
-    </div>
-    <h3 class="text-lg font-mono-nav text-white mb-3">FAST BY DESIGN</h3>
-    <p class="text-white/40 text-sm leading-relaxed">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
-  </div>
-
-  <div class="feature-card p-8 reveal-scale group" style="transition-delay:0.3s">
-    <div class="w-12 h-12 mb-6 mx-0">
-      <img src="images/intelligent-at-the-core.svg" alt="Intelligent at the Core">
-    </div>
-    <h3 class="text-lg font-mono-nav text-white mb-3">INTELLIGENT AT THE CORE</h3>
-    <p class="text-white/40 text-sm leading-relaxed">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
-  </div>
-
-</div>
-
-
-  </div>
-</section>
-
+  </section>
 
   <div class="section-divider"></div>
 
@@ -718,13 +728,12 @@ pointer-events:none;
   <section class="py-32 bg-dark-100">
     <div class="max-w-5xl mx-auto px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <!-- <span class="text-white/40 text-sm font-mono-nav mb-4 block reveal">VIDEO</span> -->
         <h2 class="text-4xl lg:text-5xl font-bold mb-6 reveal">
           Watch Demo
         </h2>
         <p class="text-white/60 text-lg leading-relaxed reveal">
-         See how to access global accounts, liquidity,
-            and move money across borders with Switch
+          See how to access global accounts, liquidity,
+          and move money across borders with Switch
         </p>
       </div>
 
@@ -738,8 +747,6 @@ pointer-events:none;
             <div class="video-play-button">
               <i class="fas fa-play"></i>
             </div>
-            
-            <!-- <span class="video-duration">3:24</span> -->
           </div>
         </div>
       </div>
@@ -760,247 +767,183 @@ pointer-events:none;
 
   <div class="section-divider"></div>
 
-<!-- Product Showcase -->
-<!-- Product Showcase -->
-<section class="py-48 bg-dark-100">
-  <div class="max-w-[1800px] mx-auto px-12 lg:px-32">
+  <!-- Product Showcase -->
+  <section class="py-48 bg-dark-100">
+    <div class="max-w-[1800px] mx-auto px-12 lg:px-32">
 
-    <!-- Product 1 -->
-    <div class="grid lg:grid-cols-[1.5fr_1fr] gap-32 items-center mb-56">
-      <div class="reveal-left">
-        <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
-          GLOBAL PAYMENTS
-        </span>
+      <!-- Product 1 -->
+      <div class="grid lg:grid-cols-[1.5fr_1fr] gap-32 items-center mb-56">
+        <div class="reveal-left">
+          <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
+            GLOBAL PAYMENTS
+          </span>
 
-        <h2 class="text-4xl lg:text-5xl font-bold leading-tight mb-10 mt-4">
-          Move money globally
-        </h2>
+          <h2 class="text-4xl lg:text-5xl font-bold leading-tight mb-10 mt-4">
+            Move money globally
+          </h2>
 
-        <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
-          Simplify and coordinate money movement across currencies with intelligent routing, liquidity access, and reliable infrastructure for seamless global payments.
-        </p>
+          <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
+            Simplify and coordinate money movement across currencies with intelligent routing, liquidity access, and reliable infrastructure for seamless global payments.
+          </p>
 
-        <div class="flex flex-wrap gap-3 mb-10">
-          <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm rounded-square">Global Virtual Accounts</span>
-          <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm rounded-square">Multi-Currency Liquidity</span>
-          <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm rounded-square">Same-Day Settlement</span>
-        </div>
-
-        <!-- <a href="#" class="inline-flex items-center text-white/60 hover:text-brand-purple transition-colors text-base">
-          Explore <i class="fas fa-arrow-right ml-2 text-sm"></i>
-        </a> -->
-      </div>
-
-      <div class="flex items-center justify-center">
-        <div class="aspect-[4/3] w-full max-w-4xl scale-150">
-          <div class="aspect-container">
-            <img src="images/global-payment.svg" alt="Global Payments">
+          <div class="flex flex-wrap gap-3 mb-10">
+            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Global Virtual Accounts</span>
+            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Multi-Currency Liquidity</span>
+            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Same-Day Settlement</span>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Product 2 -->
-    <div class="grid lg:grid-cols-[1fr_1fr] gap-32 items-center mb-56">
-      <div class="reveal-left order-2 lg:order-1">
-        <div class="flex items-center justify-center">
-          <div class="aspect-[4/3] w-full max-w-4xl scale-145">
-            <div class="aspect-container">
-              <img src="images/global-account.svg" alt="Global accounts">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal-right order-1 lg:order-2">
-        <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
-          GLOBAL ACCOUNTS
-        </span>
-
-        <h2 class="text-4xl lg:text-4xl font-bold leading-tight mb-10 mt-4">
-          Access international accounts and payment rails
-        </h2>
-
-        <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
-          Secure USD and multi-currency accounts connected to global banking networks and digital payment rails beyond SWIFT, ACH, IBAN, and other legacy systems.
-        </p>
-
-        <div class="flex flex-wrap gap-3 mb-10">
-          <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm rounded-square">Global USD Accounts</span>
-          <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm rounded-square">Multi-Currency Digital Access</span>
-          <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm rounded-square">Bank-Grade Security</span>
-        </div>
-
-        <!-- <a href="#" class="inline-flex items-center text-white/60 hover:text-brand-purple transition-colors text-base">
-          Explore <i class="fas fa-arrow-right ml-2 text-sm"></i>
-        </a> -->
-      </div>
-    </div>
-
-    <!-- Product 3 -->
-    <div class="grid lg:grid-cols-[1.5fr_1fr] gap-32 items-center mb-56">
-      <div class="reveal-left">
-        <span class="text-white/50 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
-          GLOBAL PAYMENT RAILS
-        </span>
-
-        <h2 class="text-4xl lg:text-5xl font-bold leading-tight mb-10 mt-4">
-            Reach new markets instantly
-            </h2>
-
-
-        <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
-          Enable compliant, near-instant digital payments worldwide without a local bank account, using settlement rails beyond SWIFT, ACH, and IBAN with intelligent routing and 99.99% uptime.
-        </p>
-
-        <div class="flex flex-wrap gap-3 mb-10">
-            <span class="px-5 py-3 bg-dark border border-white/50 p-4 text-white/60 text-sm rounded-square">Global reach</span>
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm rounded-square">Near-instant settlement</span>
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm rounded-square">Compliance built-in</span>
-        </div>
-
-
-        <!-- <a href="#" class="inline-flex items-center text-white/60 hover:text-brand-purple transition-colors text-base">
-          Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
-        </a> -->
-      </div>
-
-      <div class="reveal-right">
         <div class="flex items-center justify-center">
           <div class="aspect-[4/3] w-full max-w-4xl scale-150">
             <div class="aspect-container">
-              <img src="images/global-payment-rails.svg" alt="Global payment rails">
+              <img src="images/global-payment.svg" alt="Global Payments">
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-32 items-center mb-56">
+        <div class="reveal-left order-2 lg:order-1">
+          <div class="flex items-center justify-center">
+            <div class="aspect-[4/3] w-full max-w-4xl scale-145">
+              <div class="aspect-container">
+                <img src="images/global-account.svg" alt="Global accounts">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-right order-1 lg:order-2">
+          <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
+            GLOBAL ACCOUNTS
+          </span>
+
+          <h2 class="text-4xl lg:text-4xl font-bold leading-tight mb-10 mt-4">
+            Access international accounts and payment rails
+          </h2>
+
+          <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
+            Secure USD and multi-currency accounts connected to global banking networks and digital payment rails beyond SWIFT, ACH, IBAN, and other legacy systems.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-10">
+            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Global USD Accounts</span>
+            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Multi-Currency Digital Access</span>
+            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Bank-Grade Security</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="grid lg:grid-cols-[1.5fr_1fr] gap-32 items-center mb-56">
+        <div class="reveal-left">
+          <span class="text-white/50 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
+            GLOBAL PAYMENT RAILS
+          </span>
+
+          <h2 class="text-4xl lg:text-5xl font-bold leading-tight mb-10 mt-4">
+            Reach new markets instantly
+          </h2>
+
+          <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
+            Enable compliant, near-instant digital payments worldwide without a local bank account, using settlement rails beyond SWIFT, ACH, and IBAN with intelligent routing and 99.99% uptime.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-10">
+            <span class="px-5 py-3 bg-dark border border-white/50 p-4 text-white/60 text-sm font-mono-nav rounded-square">Global reach</span>
+            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Near-instant settlement</span>
+            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Compliance built-in</span>
+          </div>
+        </div>
+
+        <div class="reveal-right">
+          <div class="flex items-center justify-center">
+            <div class="aspect-[4/3] w-full max-w-4xl scale-150">
+              <div class="aspect-container">
+                <img src="images/global-payment-rails.svg" alt="Global payment rails">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-32 items-center mb-56">
+        <div class="reveal-left order-2 lg:order-1">
+          <div class="flex items-center justify-center">
+            <div class="aspect-[4/3] w-full max-w-3xl scale-145">
+              <div class="aspect-container">
+                <img src="images/global-liquidity.svg" alt="Global liquidity">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-right order-1 lg:order-2">
+          <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
+            GLOBAL LIQUIDITY
+          </span>
+
+          <h2 class="text-4xl lg:text-4xl font-bold leading-tight mb-10 mt-4">
+            Navigate volatile currencies
+          </h2>
+
+          <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
+            Access deep global liquidity to convert volatile local currencies and move funds across borders reliably, with transparency, compliance, and trusted liquidity partners.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-10">
+            <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm font-mono-nav rounded-square">Volatile currency markets</span>
+            <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm font-mono-nav rounded-square">Alternative payment rails</span>
+            <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm font-mono-nav rounded-square">Compliant settlement</span>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Product 4 -->
-    <div class="grid lg:grid-cols-[1fr_1fr] gap-32 items-center mb-56">
-      <div class="reveal-left order-2 lg:order-1">
-        <div class="flex items-center justify-center">
-          <div class="aspect-[4/3] w-full max-w-3xl scale-145">
-            <div class="aspect-container">
-              <img src="images/global-liquidity.svg" alt="Global liquidity">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal-right order-1 lg:order-2">
-        <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
-          GLOBAL LIQUIDITY
-        </span>
-
-        <h2 class="text-4xl lg:text-4xl font-bold leading-tight mb-10 mt-4">
-          Navigate volatile currencies
+  <!-- Security Section -->
+  <section class="flex items-center justify-center min-h-screen bg-dark-100">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="max-w-3xl mx-auto mb-20 text-center">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6 reveal">
+          Secure, regulated, and scalable
         </h2>
-
-        <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
-          Access deep global liquidity to convert volatile local currencies and move funds across borders reliably, with transparency, compliance, and trusted liquidity partners.
+        <p class="text-white/60 text-lg leading-relaxed reveal">
+          Switch powers global payments with bank-grade security, regulatory compliance, and enterprise reliability so you can launch and scale with confidence.
         </p>
-
-        <div class="flex flex-wrap gap-3 mb-10">
-          <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm rounded-square rounded-square">Volatile currency markets</span>
-          <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm rounded-square rounded-square">Alternative payment rails</span>
-          <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm rounded-square rounded-square">Compliant settlement</span>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 justify-center">
+        <div class="feature-card p-8 reveal-scale text-left">
+          <img src="security/banks.svg" alt="Bank Grade Security" class="w-8 h-8 mb-5">
+          <h3 class="text-lg font-mono-nav text-white mb-3">BANK GRADE SECURITY</h3>
+          <p class="text-white/40 text-sm leading-relaxed">Designed with multi-layer encryption</p>
+        </div>
+        
+        <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.1s">
+          <img src="security/regulatory.svg" alt="Regulatory Compliance" class="w-8 h-8 mb-5">
+          <h3 class="text-lg font-mono-nav text-white mb-3">REGULATORY COMPLIANCE</h3>
+          <p class="text-white/40 text-sm leading-relaxed">Fully licensed and compliant across major jurisdictions</p>
+        </div>
+        
+        <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.2s">
+          <img src="security/enterprise.svg" alt="Enterprise Reliability" class="w-8 h-8 mb-5">
+          <h3 class="text-lg font-mono-nav text-white mb-3">ENTERPRISE RELIABILITY</h3>
+          <p class="text-white/40 text-sm leading-relaxed">99.99% uptime with redundant systems</p>
         </div>
 
-        <!-- <a href="#" class="inline-flex items-center text-white/60 hover:text-brand-purple transition-colors text-base">
-          Explore <i class="fas fa-arrow-right ml-2 text-sm"></i>
-        </a> -->
+        <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.3s">
+          <img src="security/global-scale.svg" alt="Global Scale" class="w-8 h-8 mb-5">
+          <h3 class="text-lg font-mono-nav text-white mb-3">GLOBAL SCALE</h3>
+          <p class="text-white/40 text-sm leading-relaxed">Built to handle millions of transactions per day</p>
+        </div>
       </div>
     </div>
-
-  </div>
-</section>
-
-
- <!-- Security Section -->
-<section class="flex items-center justify-center min-h-screen bg-dark-100">
-  <div class="max-w-7xl mx-auto px-8">
-    <div class="max-w-3xl mx-auto mb-20 text-center">
-      <h2 class="text-4xl lg:text-5xl font-bold mb-6 reveal">
-        Secure, regulated, and scalable
-      </h2>
-      <p class="text-white/60 text-lg leading-relaxed reveal">
-        Switch powers global payments with bank-grade security, regulatory compliance, and enterprise reliability so you can launch and scale with confidence.
-      </p>
-    </div>
-    
-    <div class="grid md:grid-cols-3 gap-8 justify-center">
-      <div class="feature-card p-8 reveal-scale text-left">
-        <img src="security/banks.svg" alt="Bank Grade Security" class="w-8 h-8 mb-5">
-        <h3 class="text-lg font-mono-nav text-white mb-3">BANK GRADE SECURITY</h3>
-        <p class="text-white/40 text-sm leading-relaxed">Designed with multi-layer encryption</p>
-      </div>
-      
-      <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.1s">
-        <img src="security/regulatory.svg" alt="Regulatory Compliance" class="w-8 h-8 mb-5">
-        <h3 class="text-lg font-mono-nav text-white mb-3">REGULATORY COMPLIANCE</h3>
-        <p class="text-white/40 text-sm leading-relaxed">Fully licensed and compliant across major jurisdictions</p>
-      </div>
-      
-      <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.2s">
-        <img src="security/enterprise.svg" alt="Enterprise Reliability" class="w-8 h-8 mb-5">
-        <h3 class="text-lg font-mono-nav text-white mb-3">ENTERPRISE RELIABILITY</h3>
-        <p class="text-white/40 text-sm leading-relaxed">99.99% uptime with redundant systems</p>
-      </div>
-
-      <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.3s">
-        <img src="security/global-scale.svg" alt="Global Scale" class="w-8 h-8 mb-5">
-        <h3 class="text-lg font-mono-nav text-white mb-3">GLOBAL SCALE</h3>
-        <p class="text-white/40 text-sm leading-relaxed">Built to handle millions of transactions per day</p>
-      </div>
-    </div>
-  </div>
-</section>
-
+  </section>
 
   <div class="section-divider"></div>
-
-  <!-- Stats Section -->
-  <!-- <section class="py-20 bg-dark-100">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
-        <div class="text-center reveal-scale">
-          <div class="stat-number counter" data-target="50">0</div>
-          <div class="stat-label mt-2">Billion+ Processed</div>
-        </div>
-        <div class="text-center reveal-scale" style="transition-delay: 0.1s">
-          <div class="stat-number counter" data-target="180">0</div>
-          <div class="stat-label mt-2">Countries Covered</div>
-        </div>
-        <div class="text-center reveal-scale" style="transition-delay: 0.2s">
-          <div class="stat-number counter" data-target="500">0</div>
-          <div class="stat-label mt-2">Enterprise Clients</div>
-        </div>
-        <div class="text-center reveal-scale" style="transition-delay: 0.3s">
-          <div class="stat-number counter" data-target="99.99">0</div>
-          <div class="stat-label mt-2">Uptime SLA</div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- <div class="section-divider"></div> -->
-
-  <!-- CTA Section -->
-  <!-- <section class="py-32 bg-dark-100">
-    <div class="max-w-4xl mx-auto text-center px-8">
-      <h2 class="text-5xl lg:text-6xl font-bold mb-8 reveal">
-        Ready to build the<br><span class="text-brand-purple">future of payments?</span>
-      </h2>
-      <p class="text-white/60 text-xl mb-12 reveal">
-        Join the world's leading companies building on Switch.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center reveal">
-        <a href="#" class="btn-secondary text-lg">Start Building Free →</a>
-        <a href="#" class="btn-primary text-lg">Contact Sales</a>
-      </div>
-    </div>
-  </section> -->
 
   <!-- Contact Section -->
   <section class="py-20 bg-[#141414]">
@@ -1030,7 +973,7 @@ pointer-events:none;
       <div class="flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="flex items-center gap-8">
           <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img w-32 h-auto">
-          <span class="text-white/30 text-sm">© 2026 Switch</span>
+          <span class="text-white/30 text-sm font-mono">© 2026 Switch</span>
         </div>
         
         <div class="flex gap-8">
@@ -1133,314 +1076,276 @@ pointer-events:none;
       }
     });
 
-    const scene = new THREE.Scene();
+    // Three.js Globe Implementation - All purple removed, now pure white/grayscale
+    (function() {
+      const container = document.getElementById('globe');
+      
+      if (container) {
+        container.style.position = 'absolute';
+        container.style.top = '0';
+        container.style.left = '0';
+        container.style.width = '100%';
+        container.style.height = '100%';
+        container.style.zIndex = '1';
+        container.style.pointerEvents = 'none';
+      }
 
-const camera = new THREE.PerspectiveCamera(
-75,
-window.innerWidth/window.innerHeight,
-0.1,
-1000
-);
+      /* ---------------------------
+         SCENE
+      --------------------------- */
+      const scene = new THREE.Scene();
 
-camera.position.z = 3;
+      const camera = new THREE.PerspectiveCamera(
+        45,
+        container.clientWidth / container.clientHeight,
+        0.1,
+        1000
+      );
 
-const renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+      camera.position.z = 3.1;
 
-document.body.appendChild(renderer.domElement);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setClearColor(0x000000, 0);
 
+      container.appendChild(renderer.domElement);
 
+      /* ---------------------------
+         GLOBE GROUP
+      --------------------------- */
+      const globeGroup = new THREE.Group();
+      scene.add(globeGroup);
 
-/* ---------------------------
-   GLOBE GROUP
---------------------------- */
-// Three.js Globe Implementation
-(function() {
+      globeGroup.position.y = -1.25;
+      globeGroup.scale.set(1.05, 1.05, 1.05);
+      globeGroup.position.x = 0.5;
 
-const container = document.getElementById('globe');
+      /* ---------------------------
+         PARTICLE GLOBE
+      --------------------------- */
+      const radius = 1.35;
+      const particles = 7000;
 
-if (container) {
-  container.style.position = 'absolute';
-  container.style.top = '0';
-  container.style.left = '0';
-  container.style.width = '100%';
-  container.style.height = '100%';
-  container.style.zIndex = '1';
-  container.style.pointerEvents = 'none';
-}
+      const geometry = new THREE.BufferGeometry();
+      const positions = [];
 
-/* ---------------------------
-   SCENE
---------------------------- */
+      for (let i = 0; i < particles; i++) {
+        const phi = Math.acos(-1 + (2 * i) / particles);
+        const theta = Math.sqrt(particles * Math.PI) * phi;
 
-const scene = new THREE.Scene();
+        const x = radius * Math.cos(theta) * Math.sin(phi);
+        const y = radius * Math.sin(theta) * Math.sin(phi);
+        const z = radius * Math.cos(phi);
 
-const camera = new THREE.PerspectiveCamera(
-  45,
-  container.clientWidth / container.clientHeight,
-  0.1,
-  1000
-);
+        positions.push(x, y, z);
+      }
 
-camera.position.z = 3.1;
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
 
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setClearColor(0x000000, 1);
-
-container.appendChild(renderer.domElement);
-
-/* ---------------------------
-   GLOBE GROUP
---------------------------- */
-
-const globeGroup = new THREE.Group();
-scene.add(globeGroup);
-
-globeGroup.position.y = -1.25;
-globeGroup.scale.set(1.05, 1.05, 1.05);
-globeGroup.position.x = 0.5;
-
-/* ---------------------------
-   PARTICLE GLOBE
---------------------------- */
-
-const radius = 1.35;
-const particles = 7000;
-
-const geometry = new THREE.BufferGeometry();
-const positions = [];
-
-for (let i = 0; i < particles; i++) {
-  const phi = Math.acos(-1 + (2 * i) / particles);
-  const theta = Math.sqrt(particles * Math.PI) * phi;
-
-  const x = radius * Math.cos(theta) * Math.sin(phi);
-  const y = radius * Math.sin(theta) * Math.sin(phi);
-  const z = radius * Math.cos(phi);
-
-  positions.push(x, y, z);
-}
-
-geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-
-const material = new THREE.PointsMaterial({
-  color: 0xffffff,
-  size: 0.008
-});
-
-const globe = new THREE.Points(geometry, material);
-globeGroup.add(globe);
-
-/* ---------------------------
-   LABEL DATA
---------------------------- */
-
-const labelData = [
-  { name: "ACH", position: new THREE.Vector3(1.5, 0.45, 0) },
-  { name: "SWIFT", position: new THREE.Vector3(-1.2, 0.3, 0.9) },
-  { name: "FEDWIRE", position: new THREE.Vector3(0, -0.75, 1.2) },
-  { name: "USDC", position: new THREE.Vector3(1.05, -0.3, -0.9) }
-];
-
-const labels = [];
-const nodes = [];
-
-const style = document.createElement('style');
-style.innerHTML = `
-.globe-label {
-  position: absolute;
-  color: white;
-  font-size: 13px;
-  background: #141414;
-  padding: 5px 10px;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  font-family: Arial;
-}
-`;
-document.head.appendChild(style);
-
-/* create labels + nodes */
-
-labelData.forEach(data => {
-  const div = document.createElement("div");
-  div.className = "globe-label";
-  div.textContent = data.name;
-
-  container.appendChild(div);
-
-  labels.push({
-    element: div,
-    position: data.position.clone()
-  });
-
-  const nodeGeo = new THREE.SphereGeometry(0.03, 16, 16);
-  const nodeMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-
-  const node = new THREE.Mesh(nodeGeo, nodeMat);
-  node.position.copy(data.position);
-
-  globeGroup.add(node);
-  nodes.push(node.position);
-});
-
-/* ---------------------------
-   NETWORK CURVES + LIGHT PULSES
---------------------------- */
-
-const curves = [];
-const pulses = [];
-
-nodes.forEach((start, i) => {
-  nodes.forEach((end, j) => {
-    if (i >= j) return;
-
-    const mid = start.clone().add(end).multiplyScalar(0.5);
-    mid.normalize().multiplyScalar(1.7);
-
-    const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
-    curves.push(curve);
-
-    const points = curve.getPoints(50);
-    const geo = new THREE.BufferGeometry().setFromPoints(points);
-
-    const line = new THREE.Line(
-      geo,
-      new THREE.LineBasicMaterial({
+      const material = new THREE.PointsMaterial({
         color: 0xffffff,
-        transparent: true,
-        opacity: 0.35
-      })
-    );
+        size: 0.008
+      });
 
-    globeGroup.add(line);
+      const globe = new THREE.Points(geometry, material);
+      globeGroup.add(globe);
 
-    /* glowing pulse */
-    const pulseGeo = new THREE.SphereGeometry(0.02, 16, 16);
-    const pulseMat = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.9
-    });
+      /* ---------------------------
+         LABEL DATA
+      --------------------------- */
+      const labelData = [
+        { name: "ACH", position: new THREE.Vector3(1.5, 0.45, 0) },
+        { name: "SWIFT", position: new THREE.Vector3(-1.2, 0.3, 0.9) },
+        { name: "FEDWIRE", position: new THREE.Vector3(0, -0.75, 1.2) },
+        { name: "USDC", position: new THREE.Vector3(1.05, -0.3, -0.9) }
+      ];
 
-    const pulse = new THREE.Mesh(pulseGeo, pulseMat);
-    pulse.scale.set(1.5, 1.5, 1.5);
+      const labels = [];
+      const nodes = [];
 
-    pulse.userData = {
-      curve: curve,
-      progress: Math.random()
-    };
+      /* create labels + nodes */
+      labelData.forEach(data => {
+        const div = document.createElement("div");
+        div.className = "globe-label";
+        div.textContent = data.name;
 
-    globeGroup.add(pulse);
-    pulses.push(pulse);
-  });
-});
+        container.appendChild(div);
 
-/* ---------------------------
-   ORBIT RINGS
---------------------------- */
+        labels.push({
+          element: div,
+          position: data.position.clone()
+        });
 
-function createRing(size) {
-  const geo = new THREE.RingGeometry(size, size + 0.003, 64);
+        const nodeGeo = new THREE.SphereGeometry(0.03, 16, 16);
+        const nodeMat = new THREE.MeshBasicMaterial({ 
+          color: 0xffffff  // Changed from purple to white
+        });
 
-  const mat = new THREE.MeshBasicMaterial({
-    color: 0xffffff,
-    transparent: true,
-    opacity: 0.15,
-    side: THREE.DoubleSide
-  });
+        const node = new THREE.Mesh(nodeGeo, nodeMat);
+        node.position.copy(data.position);
 
-  const ring = new THREE.Mesh(geo, mat);
-  ring.rotation.x = Math.PI / 2;
+        globeGroup.add(node);
+        nodes.push(node.position);
+      });
 
-  scene.add(ring);
-  return ring;
-}
+      /* ---------------------------
+         NETWORK CURVES + LIGHT PULSES
+      --------------------------- */
+      const curves = [];
+      const pulses = [];
 
-const ring1 = createRing(1.8);
-const ring2 = createRing(2.1);
+      nodes.forEach((start, i) => {
+        nodes.forEach((end, j) => {
+          if (i >= j) return;
 
-/* ---------------------------
-   MOUSE ROTATION
---------------------------- */
+          const mid = start.clone().add(end).multiplyScalar(0.5);
+          mid.normalize().multiplyScalar(1.7);
 
-let mouseY = 0;
+          const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
+          curves.push(curve);
 
-document.addEventListener("mousemove", (e) => {
-  mouseY = (e.clientY / window.innerHeight) - 0.5;
-});
+          const points = curve.getPoints(50);
+          const geo = new THREE.BufferGeometry().setFromPoints(points);
 
-/* ---------------------------
-   ANIMATION
---------------------------- */
+          const line = new THREE.Line(
+            geo,
+            new THREE.LineBasicMaterial({
+              color: 0xffffff,  // Changed from purple to white
+              transparent: true,
+              opacity: 0.25
+            })
+          );
 
-function animate() {
-  requestAnimationFrame(animate);
+          globeGroup.add(line);
 
-  /* slower rotation */
-  globeGroup.rotation.y += 0.0003;
+          /* glowing pulse */
+          const pulseGeo = new THREE.SphereGeometry(0.02, 16, 16);
+          const pulseMat = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.9
+          });
 
-  globeGroup.rotation.x += ((mouseY * 0.4) - globeGroup.rotation.x) * 0.02;
+          const pulse = new THREE.Mesh(pulseGeo, pulseMat);
+          pulse.scale.set(1.5, 1.5, 1.5);
 
-  ring1.rotation.z += 0.001;
-  ring2.rotation.z -= 0.0015;
+          pulse.userData = {
+            curve: curve,
+            progress: Math.random()
+          };
 
-  /* animate glowing pulses */
-  pulses.forEach(p => {
-    p.userData.progress += 0.006;
-    if (p.userData.progress > 1) p.userData.progress = 0;
+          globeGroup.add(pulse);
+          pulses.push(pulse);
+        });
+      });
 
-    const pos = p.userData.curve.getPointAt(p.userData.progress);
-    p.position.copy(pos);
+      /* ---------------------------
+         ORBIT RINGS
+      --------------------------- */
+      function createRing(size) {
+        const geo = new THREE.RingGeometry(size, size + 0.003, 64);
 
-    /* fade in/out glow */
-    p.material.opacity = Math.sin(p.userData.progress * Math.PI);
-  });
+        const mat = new THREE.MeshBasicMaterial({
+          color: 0xffffff,  // Changed from purple to white
+          transparent: true,
+          opacity: 0.1,
+          side: THREE.DoubleSide
+        });
 
-  /* update labels */
-  const rect = container.getBoundingClientRect();
+        const ring = new THREE.Mesh(geo, mat);
+        ring.rotation.x = Math.PI / 2;
 
-  labels.forEach(label => {
-    const pos = label.position.clone();
-    globeGroup.localToWorld(pos);
-    pos.project(camera);
+        scene.add(ring);
+        return ring;
+      }
 
-    const x = (pos.x * 0.5 + 0.5) * rect.width;
-    const y = (-pos.y * 0.5 + 0.5) * rect.height;
+      const ring1 = createRing(1.8);
+      const ring2 = createRing(2.1);
 
-    if (pos.z < 1) {
-      label.element.style.display = "block";
-      label.element.style.left = `${x}px`;
-      label.element.style.top = `${y}px`;
-    } else {
-      label.element.style.display = "none";
-    }
-  });
+      /* ---------------------------
+         MOUSE ROTATION
+      --------------------------- */
+      let mouseY = 0;
+      let targetRotationX = 0;
 
-  renderer.render(scene, camera);
-}
+      document.addEventListener("mousemove", (e) => {
+        mouseY = (e.clientY / window.innerHeight) - 0.5;
+        targetRotationX = mouseY * 0.4;
+      });
 
-animate();
+      document.addEventListener("mouseleave", () => {
+        targetRotationX = 0;
+      });
 
-/* ---------------------------
-   RESIZE
---------------------------- */
+      /* ---------------------------
+         ANIMATION
+      --------------------------- */
+      function animate() {
+        requestAnimationFrame(animate);
 
-window.addEventListener("resize", () => {
-  const width = container.clientWidth;
-  const height = container.clientHeight;
+        /* constant rotation */
+        globeGroup.rotation.y += 0.0008;
 
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
+        /* smooth mouse follow */
+        globeGroup.rotation.x += (targetRotationX - globeGroup.rotation.x) * 0.02;
 
-  renderer.setSize(width, height);
-});
+        /* rotate rings */
+        ring1.rotation.z += 0.001;
+        ring2.rotation.z -= 0.0015;
 
-})();
+        /* animate glowing pulses */
+        pulses.forEach(p => {
+          p.userData.progress += 0.005;
+          if (p.userData.progress > 1) p.userData.progress = 0;
 
+          const pos = p.userData.curve.getPointAt(p.userData.progress);
+          p.position.copy(pos);
+
+          /* fade in/out glow */
+          p.material.opacity = Math.sin(p.userData.progress * Math.PI) * 0.8;
+          p.scale.setScalar(1.2 + Math.sin(p.userData.progress * Math.PI) * 0.8);
+        });
+
+        /* update labels */
+        const rect = container.getBoundingClientRect();
+
+        labels.forEach(label => {
+          const pos = label.position.clone();
+          globeGroup.localToWorld(pos);
+          pos.project(camera);
+
+          const x = (pos.x * 0.5 + 0.5) * rect.width;
+          const y = (-pos.y * 0.5 + 0.5) * rect.height;
+
+          if (pos.z < 1) {
+            label.element.style.display = "block";
+            label.element.style.left = `${x}px`;
+            label.element.style.top = `${y}px`;
+            label.element.style.opacity = 1 - (pos.z * 0.5);
+          } else {
+            label.element.style.display = "none";
+          }
+        });
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      /* ---------------------------
+         RESIZE
+      --------------------------- */
+      window.addEventListener("resize", () => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(width, height);
+      });
+    })();
   </script>
 </body>
 </html>
