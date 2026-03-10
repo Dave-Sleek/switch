@@ -76,6 +76,11 @@
       letter-spacing: -0.02em;
     }
 
+    /* Product headings should not be bold */
+    .product-heading {
+      font-weight: 400 !important;
+    }
+
     p {
       font-family: 'Maison Neue', sans-serif;
     }
@@ -397,91 +402,18 @@
       width: auto;
     }
 
-    /* Image styling */
-    .aspect-container {
+    /* Image styling - consistent sizing */
+    .product-image-container {
       position: relative;
       width: 100%;
-      padding-bottom: 75%;
-      overflow: hidden;
-      background: #111111;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    .aspect-container img {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .product-image-container img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.9;
-      transition: opacity 0.3s ease;
-    }
-
-    .aspect-container img:hover {
-      opacity: 1;
-    }
-
-    /* Section dividers */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      margin: 4rem 0;
-    }
-
-    /* Contact section icons */
-    .contact-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #111111;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .contact-icon:hover {
-      border-color: #8A2BE2;
-      background: rgba(138, 43, 226, 0.1);
-    }
-
-    .contact-icon i {
-      font-size: 20px;
-      color: white;
-    }
-
-    .contact-icon:hover i {
-      color: #8A2BE2;
-    }
-
-    /* Stats */
-    .stat-number {
-      font-size: 3.5rem;
-      font-weight: 600;
-      font-family: 'Ivar Soft', serif;
-      color: white;
-    }
-
-    .stat-label {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.875rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-family: 'Maison Neue Mono', monospace;
-    }
-
-    /* Footer links */
-    .footer-link {
-      color: rgba(255, 255, 255, 0.5);
-      transition: color 0.3s ease;
-      font-size: 0.875rem;
-      font-family: 'Maison Neue', sans-serif;
-    }
-
-    .footer-link:hover {
-      color: #8A2BE2;
+      height: auto;
+      object-fit: contain;
     }
 
     /* Three.js canvas positioning */
@@ -576,6 +508,47 @@
     .rounded-square {
       border-radius: 4px;
     }
+
+    /* Feature boxes - horizontal alignment */
+    .feature-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .feature-box {
+      padding: 0.5rem 1rem;
+      background: #0a0a0a;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.875rem;
+      font-family: 'Maison Neue Mono', monospace;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* Reduced section gaps */
+    .section-spacing {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .section-spacing-sm {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .section-divider-sm {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      margin: 2rem 0;
+    }
+
+    /* Product spacing */
+    .product-spacing {
+      margin-bottom: 4rem;
+    }
   </style>
 </head>
 <body class="bg-dark-100">
@@ -651,9 +624,9 @@
   </section>
 
   <!-- Trusted By Section -->
-  <section class="py-20 bg-dark-100">
+  <section class="section-spacing-sm bg-dark-100">
     <div class="max-w-7xl mx-auto px-8">
-      <p class="text-center text-white/40 text-sm font-mono-nav mb-12 reveal">TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE</p>
+      <p class="text-center text-white/40 text-sm font-mono-nav mb-8 reveal">TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE</p>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
         <div class="reveal-scale opacity-30 hover:opacity-60 transition-opacity duration-300">
           <i class="fab fa-microsoft text-3xl text-white"></i>
@@ -677,67 +650,67 @@
     </div>
   </section>
 
-  <div class="section-divider"></div>
+  <div class="section-divider-sm"></div>
 
   <!-- Features Section -->
-  <section class="py-32 bg-[#141414]">
+  <section class="section-spacing bg-[#141414]">
     <div class="max-w-7xl mx-auto px-8">
       <!-- Centered heading + paragraph -->
-      <div class="max-w-3xl mb-20 mx-auto text-center">
-        <h2 class="text-5xl lg:text-4xl font-bold mb-6 reveal">
+      <div class="max-w-3xl mb-12 mx-auto text-center">
+        <h2 class="text-4xl lg:text-3xl font-bold mb-4 reveal">
           A better way to move money globally
         </h2>
-        <p class="text-white/60 text-lg leading-relaxed reveal">
+        <p class="text-white/60 text-base leading-relaxed reveal">
           Switch provides access to global accounts, liquidity, and cross-border payments. We orchestrate money movement across
           international accounts and volatile currencies with liquidity, compliance, and reliability.
         </p>
       </div>
 
       <!-- Centered feature cards -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="feature-card p-8 reveal-scale group">
-          <div class="w-12 h-12 mb-6 mx-0">
-            <img src="images/global-day-one.svg" alt="Global Day One">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="feature-card p-6 reveal-scale group">
+          <div class="w-10 h-10 mb-4">
+            <img src="images/global-day-one.svg" alt="Global Day One" class="w-full h-full object-contain">
           </div>
-          <h3 class="text-lg font-mono-nav text-white mb-3">GLOBAL FROM DAY ONE</h3>
-          <p class="text-white/40 text-sm leading-relaxed">Reach 180+ countries with multi-currency support and local payment rails built for global scale.</p>
+          <h3 class="text-base font-mono-nav text-white mb-2">GLOBAL FROM DAY ONE</h3>
+          <p class="text-white/40 text-xs leading-relaxed">Reach 180+ countries with multi-currency support and local payment rails built for global scale.</p>
         </div>
 
-        <div class="feature-card p-8 reveal-scale group" style="transition-delay:0.15s">
-          <div class="w-12 h-12 mb-6 mx-0">
-            <img src="images/fast-by-design.svg" alt="Fast by Design">
+        <div class="feature-card p-6 reveal-scale group" style="transition-delay:0.15s">
+          <div class="w-10 h-10 mb-4">
+            <img src="images/fast-by-design.svg" alt="Fast by Design" class="w-full h-full object-contain">
           </div>
-          <h3 class="text-lg font-mono-nav text-white mb-3">FAST BY DESIGN</h3>
-          <p class="text-white/40 text-sm leading-relaxed">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
+          <h3 class="text-base font-mono-nav text-white mb-2">FAST BY DESIGN</h3>
+          <p class="text-white/40 text-xs leading-relaxed">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
         </div>
 
-        <div class="feature-card p-8 reveal-scale group" style="transition-delay:0.3s">
-          <div class="w-12 h-12 mb-6 mx-0">
-            <img src="images/intelligent-at-the-core.svg" alt="Intelligent at the Core">
+        <div class="feature-card p-6 reveal-scale group" style="transition-delay:0.3s">
+          <div class="w-10 h-10 mb-4">
+            <img src="images/intelligent-at-the-core.svg" alt="Intelligent at the Core" class="w-full h-full object-contain">
           </div>
-          <h3 class="text-lg font-mono-nav text-white mb-3">INTELLIGENT AT THE CORE</h3>
-          <p class="text-white/40 text-sm leading-relaxed">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
+          <h3 class="text-base font-mono-nav text-white mb-2">INTELLIGENT AT THE CORE</h3>
+          <p class="text-white/40 text-xs leading-relaxed">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
+  <div class="section-divider-sm"></div>
 
   <!-- Video Showcase Section -->
-  <section class="py-32 bg-dark-100">
-    <div class="max-w-5xl mx-auto px-8">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-6 reveal">
+  <section class="section-spacing bg-dark-100">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-3 reveal">
           Watch Demo
         </h2>
-        <p class="text-white/60 text-lg leading-relaxed reveal">
+        <p class="text-white/60 text-base leading-relaxed reveal">
           See how to access global accounts, liquidity,
           and move money across borders with Switch
         </p>
       </div>
 
-      <div class="reveal-scale max-w-4xl mx-auto">
+      <div class="reveal-scale max-w-3xl mx-auto">
         <div class="relative group">
           <div class="relative video-container cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/tl_1unb5Asc?autoplay=1')">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
@@ -765,195 +738,183 @@
     </div>
   </div>
 
-  <div class="section-divider"></div>
+  <div class="section-divider-sm"></div>
 
   <!-- Product Showcase -->
-  <section class="py-48 bg-dark-100">
-    <div class="max-w-[1800px] mx-auto px-12 lg:px-32">
+  <section class="section-spacing bg-dark-100">
+    <div class="max-w-6xl mx-auto px-8">
 
       <!-- Product 1 -->
-      <div class="grid lg:grid-cols-[1.5fr_1fr] gap-32 items-center mb-56">
+      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
         <div class="reveal-left">
-          <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
+          <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
             GLOBAL PAYMENTS
           </span>
 
-          <h2 class="text-4xl lg:text-5xl font-bold leading-tight mb-10 mt-4">
+          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
             Move money globally
           </h2>
 
-          <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
+          <p class="text-white/60 text-base leading-relaxed mb-6 max-w-xl">
             Simplify and coordinate money movement across currencies with intelligent routing, liquidity access, and reliable infrastructure for seamless global payments.
           </p>
 
-          <div class="flex flex-wrap gap-3 mb-10">
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Global Virtual Accounts</span>
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Multi-Currency Liquidity</span>
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Same-Day Settlement</span>
+          <div class="feature-boxes">
+            <span class="feature-box">Global Virtual Accounts</span>
+            <span class="feature-box">Multi-Currency Liquidity</span>
+            <span class="feature-box">Same-Day Settlement</span>
           </div>
         </div>
 
-        <div class="flex items-center justify-center">
-          <div class="aspect-[4/3] w-full max-w-4xl scale-150">
-            <div class="aspect-container">
-              <img src="images/global-payment.svg" alt="Global Payments">
-            </div>
+        <div class="reveal-right flex justify-center">
+          <div class="product-image-container">
+            <img src="images/global-payment.svg" alt="Global Payments" class="w-full">
           </div>
         </div>
       </div>
 
       <!-- Product 2 -->
-      <div class="grid lg:grid-cols-[1fr_1fr] gap-32 items-center mb-56">
-        <div class="reveal-left order-2 lg:order-1">
-          <div class="flex items-center justify-center">
-            <div class="aspect-[4/3] w-full max-w-4xl scale-145">
-              <div class="aspect-container">
-                <img src="images/global-account.svg" alt="Global accounts">
-              </div>
-            </div>
+      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
+        <div class="reveal-left order-2 lg:order-1 flex justify-center">
+          <div class="product-image-container">
+            <img src="images/global-account.svg" alt="Global accounts" class="w-full">
           </div>
         </div>
 
         <div class="reveal-right order-1 lg:order-2">
-          <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
+          <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
             GLOBAL ACCOUNTS
           </span>
 
-          <h2 class="text-4xl lg:text-4xl font-bold leading-tight mb-10 mt-4">
+          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
             Access international accounts and payment rails
           </h2>
 
-          <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
+          <p class="text-white/60 text-base leading-relaxed mb-6 max-w-xl">
             Secure USD and multi-currency accounts connected to global banking networks and digital payment rails beyond SWIFT, ACH, IBAN, and other legacy systems.
           </p>
 
-          <div class="flex flex-wrap gap-3 mb-10">
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Global USD Accounts</span>
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Multi-Currency Digital Access</span>
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Bank-Grade Security</span>
+          <div class="feature-boxes">
+            <span class="feature-box">Global USD Accounts</span>
+            <span class="feature-box">Multi-Currency Digital Access</span>
+            <span class="feature-box">Bank-Grade Security</span>
           </div>
         </div>
       </div>
 
       <!-- Product 3 -->
-      <div class="grid lg:grid-cols-[1.5fr_1fr] gap-32 items-center mb-56">
+      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
         <div class="reveal-left">
-          <span class="text-white/50 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
+          <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
             GLOBAL PAYMENT RAILS
           </span>
 
-          <h2 class="text-4xl lg:text-5xl font-bold leading-tight mb-10 mt-4">
+          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
             Reach new markets instantly
           </h2>
 
-          <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
+          <p class="text-white/60 text-base leading-relaxed mb-6 max-w-xl">
             Enable compliant, near-instant digital payments worldwide without a local bank account, using settlement rails beyond SWIFT, ACH, and IBAN with intelligent routing and 99.99% uptime.
           </p>
 
-          <div class="flex flex-wrap gap-3 mb-10">
-            <span class="px-5 py-3 bg-dark border border-white/50 p-4 text-white/60 text-sm font-mono-nav rounded-square">Global reach</span>
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Near-instant settlement</span>
-            <span class="px-5 py-3 bg-dark border border-white/50 text-white/60 text-sm font-mono-nav rounded-square">Compliance built-in</span>
+          <div class="feature-boxes">
+            <span class="feature-box">Global reach</span>
+            <span class="feature-box">Near-instant settlement</span>
+            <span class="feature-box">Compliance built-in</span>
           </div>
         </div>
 
-        <div class="reveal-right">
-          <div class="flex items-center justify-center">
-            <div class="aspect-[4/3] w-full max-w-4xl scale-150">
-              <div class="aspect-container">
-                <img src="images/global-payment-rails.svg" alt="Global payment rails">
-              </div>
-            </div>
+        <div class="reveal-right flex justify-center">
+          <div class="product-image-container">
+            <img src="images/global-payment-rails.svg" alt="Global payment rails" class="w-full">
           </div>
         </div>
       </div>
 
       <!-- Product 4 -->
-      <div class="grid lg:grid-cols-[1fr_1fr] gap-32 items-center mb-56">
-        <div class="reveal-left order-2 lg:order-1">
-          <div class="flex items-center justify-center">
-            <div class="aspect-[4/3] w-full max-w-3xl scale-145">
-              <div class="aspect-container">
-                <img src="images/global-liquidity.svg" alt="Global liquidity">
-              </div>
-            </div>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal-left order-2 lg:order-1 flex justify-center">
+          <div class="product-image-container">
+            <img src="images/global-liquidity.svg" alt="Global liquidity" class="w-full">
           </div>
         </div>
 
         <div class="reveal-right order-1 lg:order-2">
-          <span class="text-white/40 text-sm border rounded border-white/50 px-3 py-1 font-mono-nav mb-4 tracking-widest">
+          <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
             GLOBAL LIQUIDITY
           </span>
 
-          <h2 class="text-4xl lg:text-4xl font-bold leading-tight mb-10 mt-4">
+          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
             Navigate volatile currencies
           </h2>
 
-          <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-3xl">
+          <p class="text-white/60 text-base leading-relaxed mb-6 max-w-xl">
             Access deep global liquidity to convert volatile local currencies and move funds across borders reliably, with transparency, compliance, and trusted liquidity partners.
           </p>
 
-          <div class="flex flex-wrap gap-3 mb-10">
-            <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm font-mono-nav rounded-square">Volatile currency markets</span>
-            <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm font-mono-nav rounded-square">Alternative payment rails</span>
-            <span class="px-5 py-3 bg-dark-300 text-white/60 text-sm border border-white/50 p-4 text-white/60 text-sm font-mono-nav rounded-square">Compliant settlement</span>
+          <div class="feature-boxes">
+            <span class="feature-box">Volatile currency markets</span>
+            <span class="feature-box">Alternative payment rails</span>
+            <span class="feature-box">Compliant settlement</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <div class="section-divider-sm"></div>
+
   <!-- Security Section -->
-  <section class="flex items-center justify-center min-h-screen bg-dark-100">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="max-w-3xl mx-auto mb-20 text-center">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-6 reveal">
+  <section class="section-spacing bg-dark-100">
+    <div class="max-w-5xl mx-auto px-8">
+      <div class="max-w-2xl mx-auto mb-12 text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-3 reveal">
           Secure, regulated, and scalable
         </h2>
-        <p class="text-white/60 text-lg leading-relaxed reveal">
+        <p class="text-white/60 text-base leading-relaxed reveal">
           Switch powers global payments with bank-grade security, regulatory compliance, and enterprise reliability so you can launch and scale with confidence.
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8 justify-center">
-        <div class="feature-card p-8 reveal-scale text-left">
-          <img src="security/banks.svg" alt="Bank Grade Security" class="w-8 h-8 mb-5">
-          <h3 class="text-lg font-mono-nav text-white mb-3">BANK GRADE SECURITY</h3>
-          <p class="text-white/40 text-sm leading-relaxed">Designed with multi-layer encryption</p>
+      <div class="grid md:grid-cols-4 gap-4 justify-center">
+        <div class="feature-card p-6 reveal-scale text-left">
+          <img src="security/banks.svg" alt="Bank Grade Security" class="w-6 h-6 mb-3">
+          <h3 class="text-sm font-mono-nav text-white mb-2">BANK GRADE SECURITY</h3>
+          <p class="text-white/40 text-xs leading-relaxed">Multi-layer encryption</p>
         </div>
         
-        <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.1s">
-          <img src="security/regulatory.svg" alt="Regulatory Compliance" class="w-8 h-8 mb-5">
-          <h3 class="text-lg font-mono-nav text-white mb-3">REGULATORY COMPLIANCE</h3>
-          <p class="text-white/40 text-sm leading-relaxed">Fully licensed and compliant across major jurisdictions</p>
+        <div class="feature-card p-6 reveal-scale text-left" style="transition-delay:0.1s">
+          <img src="security/regulatory.svg" alt="Regulatory Compliance" class="w-6 h-6 mb-3">
+          <h3 class="text-sm font-mono-nav text-white mb-2">REGULATORY COMPLIANCE</h3>
+          <p class="text-white/40 text-xs leading-relaxed">Licensed across jurisdictions</p>
         </div>
         
-        <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.2s">
-          <img src="security/enterprise.svg" alt="Enterprise Reliability" class="w-8 h-8 mb-5">
-          <h3 class="text-lg font-mono-nav text-white mb-3">ENTERPRISE RELIABILITY</h3>
-          <p class="text-white/40 text-sm leading-relaxed">99.99% uptime with redundant systems</p>
+        <div class="feature-card p-6 reveal-scale text-left" style="transition-delay:0.2s">
+          <img src="security/enterprise.svg" alt="Enterprise Reliability" class="w-6 h-6 mb-3">
+          <h3 class="text-sm font-mono-nav text-white mb-2">ENTERPRISE RELIABILITY</h3>
+          <p class="text-white/40 text-xs leading-relaxed">99.99% uptime</p>
         </div>
 
-        <div class="feature-card p-8 reveal-scale text-left" style="transition-delay:0.3s">
-          <img src="security/global-scale.svg" alt="Global Scale" class="w-8 h-8 mb-5">
-          <h3 class="text-lg font-mono-nav text-white mb-3">GLOBAL SCALE</h3>
-          <p class="text-white/40 text-sm leading-relaxed">Built to handle millions of transactions per day</p>
+        <div class="feature-card p-6 reveal-scale text-left" style="transition-delay:0.3s">
+          <img src="security/global-scale.svg" alt="Global Scale" class="w-6 h-6 mb-3">
+          <h3 class="text-sm font-mono-nav text-white mb-2">GLOBAL SCALE</h3>
+          <p class="text-white/40 text-xs leading-relaxed">Millions of transactions</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
+  <div class="section-divider-sm"></div>
 
   <!-- Contact Section -->
-  <section class="py-20 bg-[#141414]">
+  <section class="section-spacing-sm bg-[#141414]">
     <div class="max-w-7xl mx-auto px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4">Get in touch</h2>
-        <p class="text-white/60">Reach out to our team on your preferred platform</p>
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold mb-2">Get in touch</h2>
+        <p class="text-white/60 text-sm">Reach out to our team on your preferred platform</p>
       </div>
       
-      <div class="flex justify-center gap-6">
+      <div class="flex justify-center gap-4">
         <a href="#" class="contact-icon">
           <i class="fab fa-whatsapp"></i>
         </a>
@@ -968,18 +929,18 @@
   </section>
 
   <!-- Simplified Footer -->
-  <footer class="bg-dark-300 py-12">
+  <footer class="bg-dark-300 py-8">
     <div class="max-w-7xl mx-auto px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="flex items-center gap-8">
-          <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img w-32 h-auto">
-          <span class="text-white/30 text-sm font-mono">© 2026 Switch</span>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-6">
+          <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img w-24 h-auto">
+          <span class="text-white/30 text-xs font-mono">© 2026 Switch</span>
         </div>
         
-        <div class="flex gap-8">
-          <a href="#" class="footer-link">Privacy</a>
-          <a href="#" class="footer-link">Terms</a>
-          <a href="#" class="footer-link">Legal</a>
+        <div class="flex gap-6">
+          <a href="#" class="footer-link text-xs">Privacy</a>
+          <a href="#" class="footer-link text-xs">Terms</a>
+          <a href="#" class="footer-link text-xs">Legal</a>
         </div>
       </div>
     </div>
