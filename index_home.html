@@ -402,18 +402,31 @@
       width: auto;
     }
 
-    /* Image styling - consistent sizing */
-    .product-image-container {
-      position: relative;
+    /* Product image styling - reduced size and consistent */
+    .product-image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      max-width: 500px;
+      max-width: 320px; /* Reduced from 500px */
       margin: 0 auto;
     }
 
-    .product-image-container img {
+    .product-image {
       width: 100%;
       height: auto;
+      max-height: 200px; /* Constrain height */
       object-fit: contain;
+    }
+
+    /* For image on right side */
+    .product-image-right {
+      margin-left: auto;
+    }
+
+    /* For image on left side */
+    .product-image-left {
+      margin-right: auto;
     }
 
     /* Three.js canvas positioning */
@@ -548,6 +561,11 @@
     /* Product spacing */
     .product-spacing {
       margin-bottom: 4rem;
+    }
+
+    /* Grid gap reduction for product sections */
+    .product-grid {
+      gap: 2rem; /* Reduced from 12rem/32 */
     }
   </style>
 </head>
@@ -744,14 +762,14 @@
   <section class="section-spacing bg-dark-100">
     <div class="max-w-6xl mx-auto px-8">
 
-      <!-- Product 1 -->
-      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
+      <!-- Product 1 - Image on Right -->
+      <div class="grid lg:grid-cols-2 gap-8 items-center product-spacing">
         <div class="reveal-left">
           <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
             GLOBAL PAYMENTS
           </span>
 
-          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
+          <h2 class="text-3xl lg:text-3xl product-heading leading-tight mb-4">
             Move money globally
           </h2>
 
@@ -767,17 +785,17 @@
         </div>
 
         <div class="reveal-right flex justify-center">
-          <div class="product-image-container">
-            <img src="images/global-payment.svg" alt="Global Payments" class="w-full">
+          <div class="product-image-wrapper">
+            <img src="images/global-payment.svg" alt="Global Payments" class="product-image">
           </div>
         </div>
       </div>
 
-      <!-- Product 2 -->
-      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
+      <!-- Product 2 - Image on Left -->
+      <div class="grid lg:grid-cols-2 gap-8 items-center product-spacing">
         <div class="reveal-left order-2 lg:order-1 flex justify-center">
-          <div class="product-image-container">
-            <img src="images/global-account.svg" alt="Global accounts" class="w-full">
+          <div class="product-image-wrapper">
+            <img src="images/global-account.svg" alt="Global accounts" class="product-image">
           </div>
         </div>
 
@@ -786,7 +804,7 @@
             GLOBAL ACCOUNTS
           </span>
 
-          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
+          <h2 class="text-3xl lg:text-3xl product-heading leading-tight mb-4">
             Access international accounts and payment rails
           </h2>
 
@@ -802,14 +820,14 @@
         </div>
       </div>
 
-      <!-- Product 3 -->
-      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
+      <!-- Product 3 - Image on Right -->
+      <div class="grid lg:grid-cols-2 gap-8 items-center product-spacing">
         <div class="reveal-left">
           <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
             GLOBAL PAYMENT RAILS
           </span>
 
-          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
+          <h2 class="text-3xl lg:text-3xl product-heading leading-tight mb-4">
             Reach new markets instantly
           </h2>
 
@@ -825,17 +843,17 @@
         </div>
 
         <div class="reveal-right flex justify-center">
-          <div class="product-image-container">
-            <img src="images/global-payment-rails.svg" alt="Global payment rails" class="w-full">
+          <div class="product-image-wrapper">
+            <img src="images/global-payment-rails.svg" alt="Global payment rails" class="product-image">
           </div>
         </div>
       </div>
 
-      <!-- Product 4 -->
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Product 4 - Image on Left -->
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
         <div class="reveal-left order-2 lg:order-1 flex justify-center">
-          <div class="product-image-container">
-            <img src="images/global-liquidity.svg" alt="Global liquidity" class="w-full">
+          <div class="product-image-wrapper">
+            <img src="images/global-liquidity.svg" alt="Global liquidity" class="product-image">
           </div>
         </div>
 
@@ -844,7 +862,7 @@
             GLOBAL LIQUIDITY
           </span>
 
-          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
+          <h2 class="text-3xl lg:text-3xl product-heading leading-tight mb-4">
             Navigate volatile currencies
           </h2>
 
