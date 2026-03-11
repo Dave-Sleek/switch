@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Switch — The Standard for Stablecoin Infrastructure</title>
   <meta name="description" content="Enterprise-grade stablecoin infrastructure powering the future of global payments. Issue, move, and manage digital assets at scale." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="preload" href="/fonts/Ivar-soft.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/MaisonNeue.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/MaisonNeueBold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Maison-neue-mono.woff2" as="font" type="font/woff2" crossorigin>
-
   
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Font Preloads -->
+  <link rel="preload" href="/fonts/Ivar-soft.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/MaisonNeue.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/MaisonNeueBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Maison-neue-mono.woff2" as="font" type="font/woff2" crossorigin>
+
   <style>
     * { 
       box-sizing: border-box; 
@@ -76,23 +82,18 @@
       letter-spacing: -0.02em;
     }
 
-    /* Product headings should not be bold */
-    .product-heading {
-      font-weight: 400 !important;
-    }
-
-    p {
+    p, li, a:not(.btn-custom-primary):not(.btn-custom-secondary) {
       font-family: 'Maison Neue', sans-serif;
     }
 
-    strong {
+    strong, b {
       font-family: 'Maison Neue Bold', sans-serif;
     }
 
     code, pre, .font-mono {
       font-family: 'Maison Neue Mono', monospace;
     }
-    
+
     .font-mono-nav { 
       font-family: 'Maison Neue Mono', monospace; 
       font-size: 0.75rem; 
@@ -122,8 +123,8 @@
       background-color: #007BFF;
     }
     
-    /* Button styles - minimal brand usage */
-    .btn-primary {
+    /* Custom Button styles */
+    .btn-custom-primary {
       background: transparent;
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: white;
@@ -134,14 +135,17 @@
       text-transform: uppercase;
       transition: all 0.3s ease;
       border-radius: 0;
+      display: inline-block;
+      text-decoration: none;
     }
     
-    .btn-primary:hover {
+    .btn-custom-primary:hover {
       border-color: #8A2BE2;
       background: rgba(138, 43, 226, 0.1);
+      color: white;
     }
     
-    .btn-secondary {
+    .btn-custom-secondary {
       background: #8A2BE2;
       color: white;
       padding: 0.75rem 2rem;
@@ -151,10 +155,13 @@
       text-transform: uppercase;
       transition: all 0.3s ease;
       border-radius: 0;
+      display: inline-block;
+      text-decoration: none;
     }
     
-    .btn-secondary:hover {
+    .btn-custom-secondary:hover {
       background: #7b1fa2;
+      color: white;
     }
     
     /* Dark backgrounds for depth */
@@ -178,7 +185,7 @@
       border-color: rgba(255, 255, 255, 0.1);
     }
     
-    .text-muted {
+    .text-muted-custom {
       color: rgba(255, 255, 255, 0.6);
     }
     
@@ -195,10 +202,12 @@
       background: #0a0a0a;
       border: 1px solid rgba(255, 255, 255, 0.05);
       transition: all 0.3s ease;
+      padding: 2rem;
+      height: 100%;
     }
     
     .feature-card:hover {
-      border-color: rgba(138, 43, 226, 0.3);
+      /* border-color: rgba(138, 43, 226, 0.3); */
       transform: translateY(-4px);
     }
     
@@ -210,6 +219,7 @@
       border-radius: 50%;
       border-top-color: #8A2BE2;
       animation: spin 1s ease-in-out infinite;
+      margin: 0 auto 2rem;
     }
     
     @keyframes spin {
@@ -265,6 +275,7 @@
     .counter {
       font-feature-settings: "tnum";
       font-variant-numeric: tabular-nums;
+      font-family: 'Ivar Soft', serif;
     }
     
     /* Animation delays */
@@ -280,16 +291,6 @@
     #loading-screen {
       transition: opacity 1s ease-in-out;
     }
-    
-    /* Navbar scroll effect */
-    #navbar {
-      transition: all 0.3s ease;
-    }
-    
-    /* Hidden class for mobile menu */
-    .hidden {
-      display: none !important;
-    }
 
     /* Video Section Styles - minimal */
     .video-container {
@@ -299,6 +300,7 @@
       height: 0;
       overflow: hidden;
       background: #111111;
+      cursor: pointer;
     }
     
     .video-play-button {
@@ -329,20 +331,8 @@
       margin-left: 4px;
     }
     
-    .video-duration {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 0.25rem 0.5rem;
-      font-size: 0.75rem;
-      font-family: 'Maison Neue Mono', monospace;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
     /* Modal */
-    .modal {
+    .modal-custom {
       display: none;
       position: fixed;
       top: 0;
@@ -353,13 +343,13 @@
       z-index: 1000;
     }
     
-    .modal.active {
+    .modal-custom.active {
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
-    .modal-content {
+    .modal-content-custom {
       position: relative;
       width: 90%;
       max-width: 1200px;
@@ -402,49 +392,122 @@
       width: auto;
     }
 
-    /* Image styling - consistent sizing */
-    .product-image-container {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
+    /* Aspect container for product images */
+    .aspect-container {
+      width: 383px;
+      height: 253px;
       margin: 0 auto;
+      overflow: hidden;
+      background: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .product-image-container img {
+    .aspect-container img {
       width: 100%;
-      height: auto;
-      object-fit: contain;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .aspect-container img:hover {
+      opacity: 1;
+    }
+
+    /* Desktop */
+    @media (min-width: 1024px) {
+      .aspect-container {
+        width: 700px;
+        height: 580px;
+      }
+    }
+
+    /* Section dividers */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      margin: 4rem 0;
+    }
+
+    /* Contact section icons */
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      text-decoration: none;
+    }
+
+    .contact-icon:hover {
+      border-color: #8A2BE2;
+      background: rgba(138, 43, 226, 0.1);
+      color: #8A2BE2;
+    }
+
+    .contact-icon i {
+      font-size: 20px;
+    }
+
+    /* Stats */
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 600;
+      font-family: 'Ivar Soft', serif;
+      color: white;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: 'Maison Neue Mono', monospace;
+    }
+
+    /* Footer links */
+    .footer-link {
+      color: rgba(255, 255, 255, 0.5);
+      transition: color 0.3s ease;
+      font-size: 0.875rem;
+      font-family: 'Maison Neue', sans-serif;
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      color: #8A2BE2;
     }
 
     /* Three.js canvas positioning */
     #globe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        background: transparent !important;
-        pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: transparent !important;
+      pointer-events: none;
     }
 
     /* Hero content positioning */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      background-color: #0a0a0a;
+    }
+
     .hero-content {
       position: relative;
       z-index: 20;
       min-height: 100vh;
       display: flex;
       align-items: center;
-    }
-
-    .relative {
-      position: relative;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      pointer-events: auto;
     }
 
     .globe-container {
@@ -468,26 +531,38 @@
       pointer-events: none;
     }
 
-    /* Globe label styling - gray background, white text, border radius */
+    /* Keep globe labels exactly as they were */
     .globe-label {
       position: absolute;
       color: white;
-      font-family: 'Ivar Soft', serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      background: rgba(60, 60, 60, 0.95);
-      padding: 6px 16px;
-      /*border-radius: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.2);*/
+      font-size: 13px;
+      background: #141414;
+      padding: 5px 10px;
       pointer-events: none;
       transform: translate(-50%, -50%);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-      white-space: nowrap;
-      z-index: 100;
-      transition: opacity 0.3s ease;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      font-family: Arial;
+    }
+
+    /* Loading screen text */
+    .loading-text {
+      font-family: 'Ivar Soft', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Navbar links */
+    .nav-link-custom {
+      font-family: 'Maison Neue', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+      text-decoration: none;
+      margin: 0 1rem;
+    }
+
+    .nav-link-custom:hover {
+      color: white;
     }
 
     /* Feature card headings */
@@ -495,128 +570,267 @@
       font-family: 'Ivar Soft', serif;
       font-weight: 600;
       letter-spacing: 0.02em;
+      margin-bottom: 0.75rem;
     }
 
-    /* Product section headings */
-    .product-section h2 {
-      font-family: 'Ivar Soft', serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
+    /* Product section tags */
+    .product-tags {
+        margin-top: 1.5rem; /* space above tags */
+      }
+      .product-tag {
+        display: inline-block;
+        background: rgba(255,255,255,0.05);
+        color: #fff;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.853rem;
+        margin-right: 0.5rem;  /* horizontal spacing */
+        margin-bottom: 0.5rem; /* vertical spacing when wrapping */
+        font-family: 'Ivar Soft', serif;
+      }
 
-    /* Rounded square class for tags */
-    .rounded-square {
-      border-radius: 4px;
-    }
+      .product-section {
+  margin-bottom: 4rem; /* adjust spacing */
+}
 
-    /* Feature boxes - horizontal alignment */
-    .feature-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
 
-    .feature-box {
-      padding: 0.5rem 1rem;
-      background: #0a0a0a;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.875rem;
+
+    /* h2.display-4 {
+  margin-bottom: 1.5rem; 
+} */
+
+h2.display-4 {
+  white-space: nowrap;   /* keep on one line */
+  font-size: 2.5rem;     /* smaller size than default */
+  line-height: 1.2;      /* balanced spacing */
+  margin-bottom: 1.5rem;
+}
+
+
+p.text-white-70 {
+  margin-bottom: 1.5rem; /* space below description */
+  font-size: 1.1rem;  /* slightly smaller than fs-5 */
+  line-height: 1.4;
+  /* font-family: 'Maison Neue Mono', monospace; */
+  /* font-size: 1.2rem; */
+}
+
+
+
+    /* Section labels */
+    .section-label {
       font-family: 'Maison Neue Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgb(255, 255, 255);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.25rem 0.75rem;
       border-radius: 4px;
-      white-space: nowrap;
+      display: inline-block;
     }
 
-    /* Reduced section gaps */
-    .section-spacing {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
+    /* Bootstrap overrides */
+    .container-fluid {
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
 
-    .section-spacing-sm {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+    .row {
+      margin-left: 0;
+      margin-right: 0;
     }
 
-    .section-divider-sm {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      margin: 2rem 0;
+    /* Remove Bootstrap default link styles */
+    a {
+      text-decoration: none;
     }
 
-    /* Product spacing */
-    .product-spacing {
-      margin-bottom: 4rem;
+    /* Navbar customization */
+    .navbar-glass {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
+    /* Mobile menu */
+    .mobile-menu {
+      background: #111111;
+      padding: 1.5rem;
+    }
+
+    .mobile-menu a {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 0.5rem 0;
+      text-decoration: none;
+    }
+
+    .mobile-menu a:hover {
+      color: white;
+    }
+
+
+    .feature-card {
+  padding: 2rem; /* more breathing room inside the box */
+  text-align: left;
+}
+
+.feature-card h3 {
+  font-family: 'Ivar Soft', sans-serif; /* apply Ivar Soft */
+  font-size: 1.5rem;  /* bigger than default */
+  /* font-weight: 600; */
+}
+
+.feature-card p {
+  font-family: 'Ivar Soft', sans-serif; /* apply Ivar Soft */
+  font-size: 1.1rem;  /* slightly larger body text */
+  line-height: 1.6;
+}
+
+
+.feature-card h3 {
+  font-size: 1rem;        /* smaller heading size */
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.feature-card p {
+  font-size: 0.9rem;      /* smaller body text */
+  line-height: 1.4;
+}
+
+.feature-card h3,
+.feature-card p {
+  font-family: 'Ivar Soft', sans-serif;
+}
+
+
+
+/* Navbar background and spacing */
+#navbar {
+  background: rgba(20, 20, 20, 0.85); /* subtle glass effect */
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Logo size */
+.logo-img {
+  height: 50px;   /* consistent height */
+  width: auto;    /* keeps aspect ratio */
+}
+
+/* Nav links */
+.nav-link-custom {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  color: #00c4ff; /* highlight color on hover */
+}
+
+/* Mobile menu */
+.mobile-menu {
+  background-color: #141414;
+  padding: 1rem;
+}
+
+.mobile-menu a {
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.mobile-menu a:hover {
+  color: #00c4ff;
+}
+
+
+    
+    /* @media (min-width: 100px) {
+  h2.display-4 {
+    white-space: nowrap;
+    font-size: 2.5rem;
+  }
+} */
+
   </style>
 </head>
 <body class="bg-dark-100">
 
   <!-- Premium Loading Screen -->
-  <div id="loading-screen" class="fixed inset-0 bg-dark-100 z-[100] flex items-center justify-center transition-opacity duration-1000">
+  <div id="loading-screen" class="modal-custom active" style="display: flex; background: #000; z-index: 10000;">
     <div class="text-center">
-      <div class="loader mx-auto mb-8"></div>
-      <div class="font-mono-nav text-white/50 tracking-[0.3em]">SWITCH</div>
+      <div class="loader"></div>
+      <div class="loading-text">SWITCH</div>
     </div>
   </div>
 
   <!-- Navbar -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 glass-subtle transition-all duration-500">
-    <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-12">
-        <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img w-40 h-auto">
-        <div class="hidden lg:flex items-center gap-8">
-          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors font-mono-nav">Products</a>
-          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors font-mono-nav">Developers</a>
-          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors font-mono-nav">Resources</a>
-          <a href="#" class="text-sm text-white/70 hover:text-white transition-colors font-mono-nav">Blog</a>
+<nav id="navbar" class="fixed-top navbar-glass py-3" style="z-index: 40;">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <!-- Logo + Links -->
+      <div class="d-flex align-items-center gap-5">
+        <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img">
+        <div class="d-none d-lg-flex gap-4">
+          <a href="#" class="nav-link-custom">Products</a>
+          <a href="#" class="nav-link-custom">Developers</a>
+          <a href="#" class="nav-link-custom">Resources</a>
+          <a href="#" class="nav-link-custom">Blog</a>
         </div>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="#" class="btn-primary">Get Started</a>
+
+      <!-- CTA Button -->
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" class="btn-custom-primary">Get Started</a>
       </div>
-      <button id="mobile-toggle" class="lg:hidden text-white">
-        <i class="fas fa-bars text-2xl"></i>
+
+      <!-- Mobile Toggle -->
+      <button id="mobile-toggle" class="d-lg-none btn text-white p-0 border-0 bg-transparent">
+        <i class="fas fa-bars fs-2"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-dark-200 px-8 py-6 space-y-4">
-      <a href="#" class="block text-white/70 hover:text-white transition-colors font-mono-nav">Products</a>
-      <a href="#" class="block text-white/70 hover:text-white transition-colors font-mono-nav">Developers</a>
-      <a href="#" class="block text-white/70 hover:text-white transition-colors font-mono-nav">Resources</a>
-      <a href="#" class="block text-white/70 hover:text-white transition-colors font-mono-nav">Blog</a>
-    </div>
-  </nav>
+  </div>
 
-  <!-- Hero Section with Three.js Globe -->
-  <section class="relative min-h-screen overflow-hidden bg-dark-200">
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu d-lg-none" style="display: none;">
+    <a href="#" class="d-block py-2">Products</a>
+    <a href="#" class="d-block py-2">Developers</a>
+    <a href="#" class="d-block py-2">Resources</a>
+    <a href="#" class="d-block py-2">Blog</a>
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero-section">
     <!-- Three.js Canvas -->
     <div id="globe" class="globe-container"></div>
     
     <div class="hero-content">
-      <div class="relative z-20 max-w-7xl mx-auto px-8 w-full">
-        <div class="max-w-3xl">
-          <div class="flex items-center gap-3 mb-8 reveal">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
-            </span>
-            <span class="text-xs text-white/50 font-mono-nav tracking-wider">LIVE MAINNET • 99.99% UPTIME</span>
-          </div>
-          
-          <h1 class="reveal text-6xl lg:text-5xl leading-[1.1] mb-8">
-            <span class="block">Switch is a global platform for</span>
-            <span class="text-white">accessing and moving money</span>
-          </h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-xl-6">
+            <div class="max-w-3xl">
+              <h1 class="reveal display-1 mb-4" style="font-size: clamp(3rem, 5vw, 4rem); line-height: 1.1;">
+                <span class="d-block">Switch is a global platform for</span>
+                <span class="text-white">accessing and moving money</span>
+              </h1>
 
-          <p class="reveal text-xl text-white leading-relaxed max-w-xl mb-12" style="transition-delay: 0.1s">
-            Trusted financial access for institutional clients and global businesses navigating cross-border payments,
-            liquidity, and international accounts across Latin America.
-          </p>
-          
-          <div class="reveal flex flex-wrap gap-4" style="transition-delay: 0.2s">
-            <a href="#" class="btn-secondary">Start a Conversation →</a>
-            <a href="#" class="btn-primary">Watch Demo</a>
+              <p class="reveal text-white fs-4 mb-5" style="transition-delay: 0.1s; max-width: 600px;">
+                Trusted financial access for institutional clients and global businesses navigating cross-border payments,
+                liquidity, and international accounts across Latin America.
+              </p>
+              
+              <div class="reveal d-flex flex-wrap gap-3" style="transition-delay: 0.2s">
+                <a href="#" class="btn-custom-secondary">Start a Conversation →</a>
+                <a href="#" class="btn-custom-primary">Watch Demo</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -624,101 +838,128 @@
   </section>
 
   <!-- Trusted By Section -->
-  <section class="section-spacing-sm bg-dark-100">
-    <div class="max-w-7xl mx-auto px-8">
-      <p class="text-center text-white/40 text-sm font-mono-nav mb-8 reveal">TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
-        <div class="reveal-scale opacity-30 hover:opacity-60 transition-opacity duration-300">
-          <i class="fab fa-microsoft text-3xl text-white"></i>
+  <section class="py-5 bg-dark-100">
+    <div class="container">
+      <p class="text-center text-white-50 text-sm font-mono-nav mb-5 reveal">TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE</p>
+      <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4 align-items-center justify-content-center">
+        <div class="col">
+          <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center">
+            <i class="fab fa-microsoft fs-1 text-white"></i>
+          </div>
         </div>
-        <div class="reveal-scale opacity-30 hover:opacity-60 transition-opacity duration-300" style="transition-delay: 0.05s">
-          <i class="fab fa-google text-3xl text-white"></i>
+        <div class="col">
+          <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay: 0.05s">
+            <i class="fab fa-google fs-1 text-white"></i>
+          </div>
         </div>
-        <div class="reveal-scale opacity-30 hover:opacity-60 transition-opacity duration-300" style="transition-delay: 0.1s">
-          <i class="fab fa-amazon text-3xl text-white"></i>
+        <div class="col">
+          <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay: 0.1s">
+            <i class="fab fa-amazon fs-1 text-white"></i>
+          </div>
         </div>
-        <div class="reveal-scale opacity-30 hover:opacity-60 transition-opacity duration-300" style="transition-delay: 0.15s">
-          <i class="fab fa-stripe text-3xl text-white"></i>
+        <div class="col">
+          <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay: 0.15s">
+            <i class="fab fa-stripe fs-1 text-white"></i>
+          </div>
         </div>
-        <div class="reveal-scale opacity-30 hover:opacity-60 transition-opacity duration-300" style="transition-delay: 0.2s">
-          <i class="fab fa-paypal text-3xl text-white"></i>
+        <div class="col">
+          <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay: 0.2s">
+            <i class="fab fa-paypal fs-1 text-white"></i>
+          </div>
         </div>
-        <div class="reveal-scale opacity-30 hover:opacity-60 transition-opacity duration-300" style="transition-delay: 0.25s">
-          <i class="fab fa-meta text-3xl text-white"></i>
+        <div class="col">
+          <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay: 0.25s">
+            <i class="fab fa-meta fs-1 text-white"></i>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider-sm"></div>
+  <div class="section-divider"></div>
 
   <!-- Features Section -->
-  <section class="section-spacing bg-[#141414]">
-    <div class="max-w-7xl mx-auto px-8">
-      <!-- Centered heading + paragraph -->
-      <div class="max-w-3xl mb-12 mx-auto text-center">
-        <h2 class="text-4xl lg:text-3xl font-bold mb-4 reveal">
-          A better way to move money globally
-        </h2>
-        <p class="text-white/60 text-base leading-relaxed reveal">
-          Switch provides access to global accounts, liquidity, and cross-border payments. We orchestrate money movement across
-          international accounts and volatile currencies with liquidity, compliance, and reliability.
-        </p>
+  <section class="py-5" style="background-color: #141414;">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 text-center">
+          <h2 class="display-4 fw-bold mb-4 reveal">
+            A better way to move money globally
+          </h2>
+          <p class="text-white-50 fs-5 reveal">
+            Switch provides access to global accounts, liquidity, and cross-border payments. We orchestrate money movement across
+            international accounts and volatile currencies with liquidity, compliance, and reliability.
+          </p>
+        </div>
       </div>
 
-      <!-- Centered feature cards -->
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="feature-card p-6 reveal-scale group">
-          <div class="w-10 h-10 mb-4">
-            <img src="images/global-day-one.svg" alt="Global Day One" class="w-full h-full object-contain">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card reveal-scale h-100">
+            <div class="mb-4">
+              <img src="images/global-day-one.svg" alt="Global Day One" style="width: 64px; height: 64px;">
+            </div>
+            <h3 class="text-white mb-3">GLOBAL FROM DAY ONE</h3>
+            <p class="text-white-50">
+              Reach 180+ countries with multi-currency support and local payment rails built for global scale.
+            </p>
           </div>
-          <h3 class="text-base font-mono-nav text-white mb-2">GLOBAL FROM DAY ONE</h3>
-          <p class="text-white/40 text-xs leading-relaxed">Reach 180+ countries with multi-currency support and local payment rails built for global scale.</p>
         </div>
 
-        <div class="feature-card p-6 reveal-scale group" style="transition-delay:0.15s">
-          <div class="w-10 h-10 mb-4">
-            <img src="images/fast-by-design.svg" alt="Fast by Design" class="w-full h-full object-contain">
+
+        <div class="col-md-4">
+          <div class="feature-card reveal-scale h-100">
+            <div class="mb-4">
+              <img src="images/fast-by-design.svg" alt="Fast by Design" style="width: 64px; height: 64px;">
+            </div>
+            <h3 class="font-mono-nav text-white mb-3">FAST BY DESIGN</h3>
+            <p class="text-white-50">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
           </div>
-          <h3 class="text-base font-mono-nav text-white mb-2">FAST BY DESIGN</h3>
-          <p class="text-white/40 text-xs leading-relaxed">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
         </div>
 
-        <div class="feature-card p-6 reveal-scale group" style="transition-delay:0.3s">
-          <div class="w-10 h-10 mb-4">
-            <img src="images/intelligent-at-the-core.svg" alt="Intelligent at the Core" class="w-full h-full object-contain">
+        <div class="col-md-4">
+          <div class="feature-card reveal-scale h-100">
+            <div class="mb-4">
+              <img src="images/intelligent-at-the-core.svg" alt="Intelligent at the Core" style="width: 64px; height: 64px;">
+            </div>
+            <h3 class="font-mono-nav text-white mb-3">INTELLIGENT AT THE CORE</h3>
+            <p class="text-white-50">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
           </div>
-          <h3 class="text-base font-mono-nav text-white mb-2">INTELLIGENT AT THE CORE</h3>
-          <p class="text-white/40 text-xs leading-relaxed">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider-sm"></div>
+  <div class="section-divider"></div>
 
   <!-- Video Showcase Section -->
-  <section class="section-spacing bg-dark-100">
-    <div class="max-w-4xl mx-auto px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl lg:text-4xl font-bold mb-3 reveal">
-          Watch Demo
-        </h2>
-        <p class="text-white/60 text-base leading-relaxed reveal">
-          See how to access global accounts, liquidity,
-          and move money across borders with Switch
-        </p>
+  <section class="py-5 bg-dark-100">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-6 text-center">
+          <h2 class="display-4 fw-bold mb-4 reveal">
+            Watch Demo
+          </h2>
+          <p class="text-white-50 fs-5 reveal">
+            See how to access global accounts, liquidity,
+            and move money across borders with Switch
+          </p>
+        </div>
       </div>
 
-      <div class="reveal-scale max-w-3xl mx-auto">
-        <div class="relative group">
-          <div class="relative video-container cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/tl_1unb5Asc?autoplay=1')">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-                 alt="Platform Overview" 
-                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-            
-            <div class="video-play-button">
-              <i class="fas fa-play"></i>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="reveal-scale">
+            <div class="position-relative group">
+              <div class="video-container" onclick="openVideoModal('https://www.youtube.com/embed/tl_1unb5Asc?autoplay=1')">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Platform Overview" 
+                     class="w-100 h-100 object-fit-cover opacity-75 group-hover-opacity-100 transition-opacity">
+                
+                <div class="video-play-button">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -727,8 +968,8 @@
   </section>
 
   <!-- Video Modal -->
-  <div id="videoModal" class="modal">
-    <div class="modal-content">
+  <div id="videoModal" class="modal-custom">
+    <div class="modal-content-custom">
       <button class="modal-close" onclick="closeVideoModal()">
         <i class="fas fa-times"></i>
       </button>
@@ -738,183 +979,196 @@
     </div>
   </div>
 
-  <div class="section-divider-sm"></div>
+  <div class="section-divider"></div>
 
   <!-- Product Showcase -->
-  <section class="section-spacing bg-dark-100">
-    <div class="max-w-6xl mx-auto px-8">
+<!-- Product Showcase -->
+<section class="py-5 bg-dark-100">
+  <div class="container-fluid" style="max-width: 1800px;">
 
-      <!-- Product 1 -->
-      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
-        <div class="reveal-left">
-          <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
-            GLOBAL PAYMENTS
-          </span>
+    <!-- Product 1 -->
+    <div class="row align-items-center g-5 py-4 mb-5">
+  <div class="col-lg-5 me-lg-3 d-flex flex-column h-100 justify-content-between">
+    <div>
+      <span class="section-label mb-3 d-inline-block">GLOBAL PAYMENTS</span>
+      <h2 class="display-4 fw-medium mt-3 mb-3">Move money globally</h2>
+      <p class="text-white-70 fs-5 mb-3" style="max-width: 600px;">
+        Simplify and coordinate money movement across currencies with intelligent routing,
+        liquidity access, and reliable infrastructure for seamless global payments.
+      </p>
+    </div>
 
-          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
-            Move money globally
-          </h2>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <div class="d-flex flex-wrap gap-2 product-tags mt-2">
+      <span class="product-tag">Global Virtual Accounts</span>
+      <span class="product-tag">Multi-Currency Liquidity</span>
+      <span class="product-tag">Same-Day Settlement</span>
+    </div>
+  </div>
 
-          <p class="text-white/60 text-base leading-relaxed mb-6 max-w-xl">
-            Simplify and coordinate money movement across currencies with intelligent routing, liquidity access, and reliable infrastructure for seamless global payments.
-          </p>
+  <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end">
+    <div class="aspect-container">
+      <img src="images/global-payment.svg" alt="Global Payments">
+    </div>
+  </div>
+</div>
 
-          <div class="feature-boxes">
-            <span class="feature-box">Global Virtual Accounts</span>
-            <span class="feature-box">Multi-Currency Liquidity</span>
-            <span class="feature-box">Same-Day Settlement</span>
-          </div>
-        </div>
 
-        <div class="reveal-right flex justify-center">
-          <div class="product-image-container">
-            <img src="images/global-payment.svg" alt="Global Payments" class="w-full">
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
-        <div class="reveal-left order-2 lg:order-1 flex justify-center">
-          <div class="product-image-container">
-            <img src="images/global-account.svg" alt="Global accounts" class="w-full">
-          </div>
-        </div>
-
-        <div class="reveal-right order-1 lg:order-2">
-          <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
-            GLOBAL ACCOUNTS
-          </span>
-
-          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
-            Access international accounts and payment rails
-          </h2>
-
-          <p class="text-white/60 text-base leading-relaxed mb-6 max-w-xl">
-            Secure USD and multi-currency accounts connected to global banking networks and digital payment rails beyond SWIFT, ACH, IBAN, and other legacy systems.
-          </p>
-
-          <div class="feature-boxes">
-            <span class="feature-box">Global USD Accounts</span>
-            <span class="feature-box">Multi-Currency Digital Access</span>
-            <span class="feature-box">Bank-Grade Security</span>
+    <div class="section-divider"></div>
+    <!-- Product 2 -->
+    <div class="row align-items-center g-5 py-4 mb-5">
+      <div class="col-lg-6 order-2 order-lg-1">
+        <div class="d-flex justify-content-center">
+          <div class="aspect-container">
+            <img src="images/global-account.svg" alt="Global accounts">
           </div>
         </div>
       </div>
-
-      <!-- Product 3 -->
-      <div class="grid lg:grid-cols-2 gap-12 items-center product-spacing">
-        <div class="reveal-left">
-          <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
-            GLOBAL PAYMENT RAILS
-          </span>
-
-          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
-            Reach new markets instantly
-          </h2>
-
-          <p class="text-white/60 text-base leading-relaxed mb-6 max-w-xl">
-            Enable compliant, near-instant digital payments worldwide without a local bank account, using settlement rails beyond SWIFT, ACH, and IBAN with intelligent routing and 99.99% uptime.
+      <div class="col-lg-5 me-lg-3 order-1 order-lg-2">
+        <div class="reveal-right">
+          <span class="section-label mb-3 d-inline-block">GLOBAL ACCOUNTS</span>
+          <h2 class="display-4 fw-medium mt-3 mb-3">Access international accounts <br>and payment rails</h2>
+          <p class="text-white-70 fs-5 mb-3" style="max-width: 600px;">
+            Secure USD and multi-currency accounts connected to global banking networks and
+            digital payment rails beyond SWIFT, ACH, IBAN, and other legacy systems.
           </p>
 
-          <div class="feature-boxes">
-            <span class="feature-box">Global reach</span>
-            <span class="feature-box">Near-instant settlement</span>
-            <span class="feature-box">Compliance built-in</span>
-          </div>
-        </div>
-
-        <div class="reveal-right flex justify-center">
-          <div class="product-image-container">
-            <img src="images/global-payment-rails.svg" alt="Global payment rails" class="w-full">
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal-left order-2 lg:order-1 flex justify-center">
-          <div class="product-image-container">
-            <img src="images/global-liquidity.svg" alt="Global liquidity" class="w-full">
-          </div>
-        </div>
-
-        <div class="reveal-right order-1 lg:order-2">
-          <span class="text-white/40 text-xs border rounded border-white/50 px-3 py-1 font-mono-nav mb-3 inline-block tracking-widest">
-            GLOBAL LIQUIDITY
-          </span>
-
-          <h2 class="text-3xl lg:text-4xl product-heading leading-tight mb-4">
-            Navigate volatile currencies
-          </h2>
-
-          <p class="text-white/60 text-base leading-relaxed mb-6 max-w-xl">
-            Access deep global liquidity to convert volatile local currencies and move funds across borders reliably, with transparency, compliance, and trusted liquidity partners.
-          </p>
-
-          <div class="feature-boxes">
-            <span class="feature-box">Volatile currency markets</span>
-            <span class="feature-box">Alternative payment rails</span>
-            <span class="feature-box">Compliant settlement</span>
+          <br/><br/><br/><br/><br/><br/><br/><br/>
+          <div class="d-flex flex-wrap gap-2 product-tags mt-2">
+            <span class="product-tag">Global USD Accounts</span>
+            <span class="product-tag">Multi-Currency Digital Access</span>
+            <span class="product-tag">Bank-Grade Security</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <div class="section-divider-sm"></div>
+    <div class="section-divider"></div>
+    <!-- Product 3 -->
+    <div class="row align-items-center g-5 py-4 mb-5">
+      <div class="col-lg-5 me-lg-3">
+        <div class="reveal-left">
+          <span class="section-label mb-3 d-inline-block">GLOBAL PAYMENT RAILS</span>
+          <h2 class="display-4 fw-medium mt-3 mb-3">Reach new markets instantly</h2>
+          <p class="text-white-70 fs-5 mb-3" style="max-width: 600px;">
+            Enable compliant, near-instant digital payments worldwide without a local bank
+            account, using settlement rails beyond SWIFT, ACH, and IBAN with intelligent routing
+            and 99.99% uptime.
+          </p>
+
+          <br/><br/><br/><br/><br/><br/><br/><br/>
+          <div class="d-flex flex-wrap gap-2 product-tags mt-2">
+            <span class="product-tag">Global reach</span>
+            <span class="product-tag">Near-instant settlement</span>
+            <span class="product-tag">Compliance built-in</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="d-flex justify-content-center justify-content-lg-end">
+          <div class="aspect-container">
+            <img src="images/global-payment-rails.svg" alt="Global payment rails">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+     <div class="section-divider"></div>
+
+    <div class="row align-items-center g-5 py-4 mb-5">
+      <div class="col-lg-6 order-2 order-lg-1">
+        <div class="d-flex justify-content-center">
+          <div class="aspect-container">
+            <img src="images/global-liquidity.svg" alt="Global liquidity">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 me-lg-3 order-1 order-lg-2">
+        <div class="reveal-right">
+          <span class="section-label mb-3 d-inline-block">GLOBAL LIQUIDITY</span>
+          <h2 class="display-4 fw-medium mt-3 mb-3" style="max-width: 600px;">Navigate volatile currencies</h2>
+          <p class="text-white-70 mb-3">
+            Access deep global liquidity to convert volatile local currencies and move funds
+            across borders reliably, with transparency, compliance, and trusted liquidity partners.
+          </p>
+
+          <br/><br/><br/><br/><br/><br/><br/><br/>
+          <div class="d-flex flex-wrap gap-2 product-tags mt-2">
+            <span class="product-tag">Volatile currency markets</span>
+            <span class="product-tag">Alternative payment rails</span>
+            <span class="product-tag">Compliant settlement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- <div class="section-divider"></div> -->
 
   <!-- Security Section -->
-  <section class="section-spacing bg-dark-100">
-    <div class="max-w-5xl mx-auto px-8">
-      <div class="max-w-2xl mx-auto mb-12 text-center">
-        <h2 class="text-3xl lg:text-4xl font-bold mb-3 reveal">
-          Secure, regulated, and scalable
-        </h2>
-        <p class="text-white/60 text-base leading-relaxed reveal">
-          Switch powers global payments with bank-grade security, regulatory compliance, and enterprise reliability so you can launch and scale with confidence.
-        </p>
+  <section class="d-flex align-items-center justify-content-center min-vh-100 bg-dark-100 py-5">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 text-center">
+          <h2 class="display-4 fw-bold mb-4 reveal">
+            Secure, regulated, and scalable
+          </h2>
+          <p class="text-white-50 fs-5 reveal">
+            Switch powers global payments with bank-grade security, regulatory compliance, and enterprise reliability so you can launch and scale with confidence.
+          </p>
+        </div>
       </div>
       
-      <div class="grid md:grid-cols-4 gap-4 justify-center">
-        <div class="feature-card p-6 reveal-scale text-left">
-          <img src="security/banks.svg" alt="Bank Grade Security" class="w-6 h-6 mb-3">
-          <h3 class="text-sm font-mono-nav text-white mb-2">BANK GRADE SECURITY</h3>
-          <p class="text-white/40 text-xs leading-relaxed">Multi-layer encryption</p>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card reveal-scale text-start h-100">
+            <img src="security/security.svg" alt="Bank Grade Security" class="mb-4" style="width: 64px; height: 64px;">
+            <h3 class="font-mono-nav text-white mb-3">BANK GRADE SECURITY</h3>
+            <p class="text-white-50">Designed with multi-layer encryption</p>
+          </div>
         </div>
         
-        <div class="feature-card p-6 reveal-scale text-left" style="transition-delay:0.1s">
-          <img src="security/regulatory.svg" alt="Regulatory Compliance" class="w-6 h-6 mb-3">
-          <h3 class="text-sm font-mono-nav text-white mb-2">REGULATORY COMPLIANCE</h3>
-          <p class="text-white/40 text-xs leading-relaxed">Licensed across jurisdictions</p>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card reveal-scale text-start h-100">
+            <img src="security/regulatory.svg" alt="Regulatory Compliance" class="mb-4" style="width: 64px; height: 64px;">
+            <h3 class="font-mono-nav text-white mb-3">REGULATORY COMPLIANCE</h3>
+            <p class="text-white-50">Fully licensed and compliant across major jurisdictions</p>
+          </div>
         </div>
         
-        <div class="feature-card p-6 reveal-scale text-left" style="transition-delay:0.2s">
-          <img src="security/enterprise.svg" alt="Enterprise Reliability" class="w-6 h-6 mb-3">
-          <h3 class="text-sm font-mono-nav text-white mb-2">ENTERPRISE RELIABILITY</h3>
-          <p class="text-white/40 text-xs leading-relaxed">99.99% uptime</p>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card reveal-scale text-start h-100">
+            <img src="security/uptime.svg" alt="Enterprise Reliability" class="mb-4" style="width: 64px; height: 64px;">
+            <h3 class="font-mono-nav text-white mb-3">ENTERPRISE RELIABILITY</h3>
+            <p class="text-white-50">99.99% uptime with redundant systems</p>
+          </div>
         </div>
 
-        <div class="feature-card p-6 reveal-scale text-left" style="transition-delay:0.3s">
-          <img src="security/global-scale.svg" alt="Global Scale" class="w-6 h-6 mb-3">
-          <h3 class="text-sm font-mono-nav text-white mb-2">GLOBAL SCALE</h3>
-          <p class="text-white/40 text-xs leading-relaxed">Millions of transactions</p>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card reveal-scale text-start h-100">
+            <img src="security/global-scale.svg" alt="Global Scale" class="mb-4" style="width: 64px; height: 64px;">
+            <h3 class="font-mono-nav text-white mb-3">GLOBAL SCALE</h3>
+            <p class="text-white-50">Built to handle millions of transactions per day</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider-sm"></div>
+  <div class="section-divider"></div>
 
   <!-- Contact Section -->
-  <section class="section-spacing-sm bg-[#141414]">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold mb-2">Get in touch</h2>
-        <p class="text-white/60 text-sm">Reach out to our team on your preferred platform</p>
+  <section class="py-5" style="background-color: #141414;">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-6 fw-bold mb-3">Get in touch</h2>
+        <p class="text-white-50">Reach out to our team on your preferred platform</p>
       </div>
       
-      <div class="flex justify-center gap-4">
+      <div class="d-flex justify-content-center gap-4">
         <a href="#" class="contact-icon">
           <i class="fab fa-whatsapp"></i>
         </a>
@@ -929,18 +1183,18 @@
   </section>
 
   <!-- Simplified Footer -->
-  <footer class="bg-dark-300 py-8">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <div class="flex items-center gap-6">
-          <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img w-24 h-auto">
-          <span class="text-white/30 text-xs font-mono">© 2026 Switch</span>
+  <footer class="bg-dark-300 py-4">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
+        <div class="d-flex align-items-center gap-4">
+          <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img" style="width: 128px;">
+          <span class="text-white-50 small">© 2026 Switch</span>
         </div>
         
-        <div class="flex gap-6">
-          <a href="#" class="footer-link text-xs">Privacy</a>
-          <a href="#" class="footer-link text-xs">Terms</a>
-          <a href="#" class="footer-link text-xs">Legal</a>
+        <div class="d-flex gap-4">
+          <a href="#" class="footer-link">Privacy</a>
+          <a href="#" class="footer-link">Terms</a>
+          <a href="#" class="footer-link">Legal</a>
         </div>
       </div>
     </div>
@@ -986,7 +1240,11 @@
     const toggle = document.getElementById('mobile-toggle');
     const menu = document.getElementById('mobile-menu');
     toggle.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+      if (menu.style.display === 'none' || menu.style.display === '') {
+        menu.style.display = 'block';
+      } else {
+        menu.style.display = 'none';
+      }
     });
 
     // Intersection Observer for reveal animations
@@ -1029,15 +1287,13 @@
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
       if (window.scrollY > 50) {
-        navbar.classList.add('bg-dark-100/90');
-        navbar.classList.add('backdrop-blur-md');
+        navbar.classList.add('bg-dark-100', 'bg-opacity-90');
       } else {
-        navbar.classList.remove('bg-dark-100/90');
-        navbar.classList.remove('backdrop-blur-md');
+        navbar.classList.remove('bg-dark-100', 'bg-opacity-90');
       }
     });
 
-    // Three.js Globe Implementation - All purple removed, now pure white/grayscale
+    // Three.js Globe Implementation
     (function() {
       const container = document.getElementById('globe');
       
@@ -1068,7 +1324,7 @@
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setClearColor(0x000000, 0);
+      renderer.setClearColor(0x000000, 1);
 
       container.appendChild(renderer.domElement);
 
@@ -1125,6 +1381,22 @@
       const labels = [];
       const nodes = [];
 
+      // Keep globe label styles exactly as they were
+      const style = document.createElement('style');
+      style.innerHTML = `
+        .globe-label {
+          position: absolute;
+          color: white;
+          font-size: 13px;
+          background: #141414;
+          padding: 5px 10px;
+          pointer-events: none;
+          transform: translate(-50%, -50%);
+          font-family: Arial;
+        }
+      `;
+      document.head.appendChild(style);
+
       /* create labels + nodes */
       labelData.forEach(data => {
         const div = document.createElement("div");
@@ -1139,9 +1411,7 @@
         });
 
         const nodeGeo = new THREE.SphereGeometry(0.03, 16, 16);
-        const nodeMat = new THREE.MeshBasicMaterial({ 
-          color: 0xffffff  // Changed from purple to white
-        });
+        const nodeMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
         const node = new THREE.Mesh(nodeGeo, nodeMat);
         node.position.copy(data.position);
@@ -1172,9 +1442,9 @@
           const line = new THREE.Line(
             geo,
             new THREE.LineBasicMaterial({
-              color: 0xffffff,  // Changed from purple to white
+              color: 0xffffff,
               transparent: true,
-              opacity: 0.25
+              opacity: 0.35
             })
           );
 
@@ -1208,9 +1478,9 @@
         const geo = new THREE.RingGeometry(size, size + 0.003, 64);
 
         const mat = new THREE.MeshBasicMaterial({
-          color: 0xffffff,  // Changed from purple to white
+          color: 0xffffff,
           transparent: true,
-          opacity: 0.1,
+          opacity: 0.15,
           side: THREE.DoubleSide
         });
 
@@ -1228,15 +1498,9 @@
          MOUSE ROTATION
       --------------------------- */
       let mouseY = 0;
-      let targetRotationX = 0;
 
       document.addEventListener("mousemove", (e) => {
         mouseY = (e.clientY / window.innerHeight) - 0.5;
-        targetRotationX = mouseY * 0.4;
-      });
-
-      document.addEventListener("mouseleave", () => {
-        targetRotationX = 0;
       });
 
       /* ---------------------------
@@ -1245,27 +1509,24 @@
       function animate() {
         requestAnimationFrame(animate);
 
-        /* constant rotation */
-        globeGroup.rotation.y += 0.0008;
+        /* slower rotation */
+        globeGroup.rotation.y += 0.0003;
 
-        /* smooth mouse follow */
-        globeGroup.rotation.x += (targetRotationX - globeGroup.rotation.x) * 0.02;
+        globeGroup.rotation.x += ((mouseY * 0.4) - globeGroup.rotation.x) * 0.02;
 
-        /* rotate rings */
         ring1.rotation.z += 0.001;
         ring2.rotation.z -= 0.0015;
 
         /* animate glowing pulses */
         pulses.forEach(p => {
-          p.userData.progress += 0.005;
+          p.userData.progress += 0.006;
           if (p.userData.progress > 1) p.userData.progress = 0;
 
           const pos = p.userData.curve.getPointAt(p.userData.progress);
           p.position.copy(pos);
 
           /* fade in/out glow */
-          p.material.opacity = Math.sin(p.userData.progress * Math.PI) * 0.8;
-          p.scale.setScalar(1.2 + Math.sin(p.userData.progress * Math.PI) * 0.8);
+          p.material.opacity = Math.sin(p.userData.progress * Math.PI);
         });
 
         /* update labels */
@@ -1283,7 +1544,6 @@
             label.element.style.display = "block";
             label.element.style.left = `${x}px`;
             label.element.style.top = `${y}px`;
-            label.element.style.opacity = 1 - (pos.z * 0.5);
           } else {
             label.element.style.display = "none";
           }
@@ -1308,5 +1568,8 @@
       });
     })();
   </script>
+  
+  <!-- Bootstrap JS (optional, for certain components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
