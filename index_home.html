@@ -393,34 +393,36 @@
     }
 
     /* Aspect container for product images */
-    .aspect-container {
-      width: 383px;
-      height: 253px;
-      margin: 0 auto;
-      overflow: hidden;
-      background: #111111;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
+    .aspect-container{
+  width:100%;
+  max-width:618px;
+  height:auto;
+  aspect-ratio:618/501;
+  margin:auto;
+  overflow:hidden;
+  background:#111;
+  border:1px solid rgba(255,255,255,0.08);
+}
 
-    .aspect-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.aspect-container img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
     .aspect-container img:hover {
       opacity: 1;
     }
 
     /* Desktop */
-    @media (min-width: 1024px) {
-      .aspect-container {
-        width: 700px;
-        height: 580px;
-      }
-    }
+    @media (max-width:768px){
 
+  .aspect-container{
+    max-width:383px;
+    aspect-ratio:383/253;
+  }
+
+}
     /* Section dividers */
     .section-divider {
       height: 1px;
@@ -594,16 +596,11 @@
 }
 
 
-
-    /* h2.display-4 {
-  margin-bottom: 1.5rem; 
-} */
-
-h2.display-4 {
-  white-space: nowrap;   /* keep on one line */
-  font-size: 2.5rem;     /* smaller size than default */
-  line-height: 1.2;      /* balanced spacing */
+h2.display-4{
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.2;
   margin-bottom: 1.5rem;
+  white-space: normal;
 }
 
 
@@ -749,6 +746,20 @@ p.text-white-70 {
 }
 
 
+@media (max-width:768px){
+
+  section{
+    padding-top:80px;
+    padding-bottom:80px;
+  }
+
+  .hero-content{
+    padding-top:120px;
+  }
+
+}
+
+
     
     /* @media (min-width: 100px) {
   h2.display-4 {
@@ -816,7 +827,7 @@ p.text-white-70 {
         <div class="row">
           <div class="col-lg-8 col-xl-6">
             <div class="max-w-3xl">
-              <h1 class="reveal display-1 mb-4" style="font-size: clamp(3rem, 5vw, 4rem); line-height: 1.1;">
+              <h1 class="reveal mb-4" style="font-size:clamp(2.5rem,5vw,4rem);line-height:1.1;">
                 <span class="d-block">Switch is a global platform for</span>
                 <span class="text-white">accessing and moving money</span>
               </h1>
@@ -882,15 +893,17 @@ p.text-white-70 {
   <section class="py-5" style="background-color: #141414;">
     <div class="container">
       <div class="row justify-content-center mb-5">
-        <div class="col-lg-8 text-center">
-          <h2 class="display-4 fw-bold mb-4 reveal">
-            A better way to move money globally
-          </h2>
-          <p class="text-white-50 fs-5 reveal">
-            Switch provides access to global accounts, liquidity, and cross-border payments. We orchestrate money movement across
-            international accounts and volatile currencies with liquidity, compliance, and reliability.
-          </p>
-        </div>
+        <div class="col-lg-8 text-center mx-auto">
+  <h2 class="display-4 mb-4 reveal">
+    A better way to move money globally
+  </h2>
+
+  <p class="text-white-50 fs-5 reveal mx-auto" style="max-width:680px;">
+    Switch provides access to global accounts, liquidity, and cross-border payments.
+    We orchestrate money movement across international accounts and volatile currencies
+    with liquidity, compliance, and reliability.
+  </p>
+</div>
       </div>
 
       <div class="row g-4">
@@ -984,25 +997,34 @@ p.text-white-70 {
   <!-- Product Showcase -->
 <!-- Product Showcase -->
 <section class="py-5 bg-dark-100">
-  <div class="container-fluid" style="max-width: 1800px;">
+  <div class="container-fluid px-4 px-lg-5">
 
     <!-- Product 1 -->
     <div class="row align-items-center g-5 py-4 mb-5">
-  <div class="col-lg-5 me-lg-3 d-flex flex-column h-100 justify-content-between">
-    <div>
-      <span class="section-label mb-3 d-inline-block">GLOBAL PAYMENTS</span>
-      <h2 class="display-4 fw-medium mt-3 mb-3">Move money globally</h2>
-      <p class="text-white-70 fs-5 mb-3" style="max-width: 600px;">
-        Simplify and coordinate money movement across currencies with intelligent routing,
-        liquidity access, and reliable infrastructure for seamless global payments.
-      </p>
-    </div>
-    <div class="d-flex flex-wrap gap-2 product-tags mt-2">
-      <span class="product-tag">Global Virtual Accounts</span>
-      <span class="product-tag">Multi-Currency Liquidity</span>
-      <span class="product-tag">Same-Day Settlement</span>
-    </div>
+  <div class="col-lg-5 d-flex flex-column justify-content-between">
+
+  <div>
+    <span class="section-label mb-3 d-inline-block">
+      GLOBAL PAYMENTS
+    </span>
+
+    <h2 class="display-4 fw-medium mt-3 mb-3">
+      Move money globally
+    </h2>
+
+    <p class="text-white-70 fs-5 mb-4">
+      Simplify and coordinate money movement across currencies with intelligent routing,
+      liquidity access, and reliable infrastructure for seamless global payments.
+    </p>
   </div>
+
+  <div class="product-tags mt-3">
+    <span class="product-tag">Global Virtual Accounts</span>
+    <span class="product-tag">Multi-Currency Liquidity</span>
+    <span class="product-tag">Same-Day Settlement</span>
+  </div>
+
+</div>
 
   <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end">
     <div class="aspect-container">
@@ -1314,7 +1336,8 @@ p.text-white-70 {
       camera.position.z = 3.1;
 
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      // renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(container.clientWidth, container.clientHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setClearColor(0x000000, 1);
 
@@ -1550,14 +1573,16 @@ p.text-white-70 {
          RESIZE
       --------------------------- */
       window.addEventListener("resize", () => {
-        const width = container.clientWidth;
-        const height = container.clientHeight;
 
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
+  const width = container.clientWidth;
+  const height = container.clientHeight;
 
-        renderer.setSize(width, height);
-      });
+  renderer.setSize(width, height);
+
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+
+});
     })();
   </script>
   
