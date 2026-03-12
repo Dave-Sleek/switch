@@ -798,33 +798,55 @@ p.text-white-70 {
 
   <!-- Navbar -->
 <!-- Navbar -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <span class="font-mono-nav text-sm tracking-[0.2em] font-medium text-fg"><img src="logo/switch_logo.png" alt="Switch" style="width: 130px;"></span>
-      <div class="hidden md:flex items-center gap-1">
-        <a href="#global_payments" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Global Payments</a>
-        <a href="#global_accounts" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Global Accounts</a>
-        <a href="#global_payment_rails" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Global Payment Rails</a>
-        <a href="#global_liquidity" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Global Liquidity</a>
-        <!-- <a href="#" class="font-mono-nav px-4 py-2 ml-2 border border-border rounded-sm text-fg hover:bg-secondary transition-colors">Get Started</a> -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    
+    <!-- Logo on the left -->
+    <span class="font-mono-nav text-sm tracking-[0.2em] font-medium text-fg">
+      <img src="logo/switch_logo.png" alt="Switch" style="width: 130px;">
+    </span>
+    
+    <!-- Menu + Get Started aligned right -->
+    <div class="flex items-center gap-4 ml-auto">
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#global_payments" class="font-mono-nav px-2 py-2 text-muted-fg hover:text-fg border border-white/20 transition-colors">Global Payments</a>
+        <a href="#global_accounts" class="font-mono-nav px-2 py-2 text-muted-fg hover:text-fg border border-white/20 transition-colors">Global Accounts</a>
+        <a href="#global_payment_rails" class="font-mono-nav px-2 py-2 text-muted-fg hover:text-fg border border-white/20 transition-colors">Global Payment Rails</a>
+        <a href="#global_liquidity" class="font-mono-nav px-2 py-2 text-muted-fg hover:text-fg border border-white/20 transition-colors">Global Liquidity</a>
       </div>
 
-       <div class="flex items-center gap-3">
-        <a href="#contact_us" class="font-mono-nav px-3 py-2 ml-2 border border-border rounded-sm text-fg hover:bg-secondary transition-colors">Get Started</a>
-      </div>
+      <a href="#contact_us" class="font-mono-nav px-3 py-2 border border-border rounded-sm text-fg hover:bg-secondary transition-colors">
+        Get Started
+      </a>
+
+      <!-- Mobile toggle button -->
       <button id="mobile-toggle" class="md:hidden text-fg">
-        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"/>
+          <line x1="4" x2="20" y1="6" y2="6"/>
+          <line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-bg border-b border-border px-6 pb-6 space-y-3">
-      <a href="#global_payments" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Payments</a>
-      <a href="#global_accounts" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Accounts</a>
-      <a href="#global_payment_rails" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Payment Rails</a>
-      <a href="#global_liquidity" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Liquidity</a>
-      <!-- <a href="#" class="block font-mono-nav py-2 text-fg">Get Started</a> -->
-    </div>
-  </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-bg border-b border-border px-6 pb-6 space-y-3">
+    <a href="#global_payments" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Payments</a>
+    <a href="#global_accounts" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Accounts</a>
+    <a href="#global_payment_rails" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Payment Rails</a>
+    <a href="#global_liquidity" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Liquidity</a>
+  </div>
+</nav>
+
 
 
   <!-- Hero Section -->
@@ -836,12 +858,12 @@ p.text-white-70 {
       <h1 class="fade-up text-4xl md:text-6xl lg:text-5xl font-medium leading-[1.1] max-w-2xl">
         Switch is a global platform for accessing and moving money
       </h1>
-      <p class="fade-up mt-8 text-md md:text-xl max-w-xl" style="transition-delay:0.2s">
+      <p class="fade-up mt-8 text-md text-base font-sans md:text-xl max-w-xl" style="transition-delay:0.2s">
         Trusted access for institutions and businesses navigating cross-border payments, liquidity, international accounts, and volatile currencies.
       </p>
-      <div class="fade-up mt-10 flex flex-wrap gap-4" style="transition-delay:0.4s">
-        <a href="#" class="inline-flex items-center px-6 py-3 bg-fg text-bg text-sm font-medium rounded-sm hover:opacity-90 transition-colors">Start a Conversation</a>
-        <a href="#" class="inline-flex items-center gap-2 px-6 py-3 border border-border text-fg text-sm font-medium rounded-sm hover:bg-secondary transition-colors">
+      <div class="fade-up mt-10 flex flex-wrap gap-3" style="transition-delay:0.4s">
+        <a href="#" class="inline-flex items-center px-4 py-3 bg-fg text-bg text-sm font-medium rounded-sm hover:opacity-90 transition-colors">Start a Conversation</a>
+        <a href="#" class="inline-flex items-center gap-2 px-4 py-3 border border-border text-fg text-sm font-medium rounded-sm hover:bg-secondary transition-colors">
          Watch Demo
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -907,7 +929,7 @@ p.text-white-70 {
               A better way to move money globally
             </h2>
 
-            <p class="text-white-50 fs-5 reveal mx-auto" style="max-width:680px;">
+            <p class="text-white text-base font-sans fs-5 reveal mx-auto" style="max-width:680px;">
               Switch provides access to global accounts, liquidity, and cross-border payments.
               We orchestrate money movement across international accounts and volatile currencies
               with liquidity, compliance, and reliability.
@@ -921,8 +943,8 @@ p.text-white-70 {
             <div class="mb-4">
               <img src="images/global-day-one.svg" alt="Global Day One" style="width: 64px; height: 64px;">
             </div>
-            <h3 class="text-white mb-3">GLOBAL FROM DAY ONE</h3>
-            <p class="text-white-50">
+            <h3 class="text-white text-base font-sans mb-3">GLOBAL FROM DAY ONE</h3>
+            <p class="text-white-50 text-base font-sans">
               Reach 180+ countries with multi-currency support and local payment rails built for global scale.
             </p>
           </div>
@@ -934,8 +956,8 @@ p.text-white-70 {
             <div class="mb-4">
               <img src="images/fast-by-design.svg" alt="Fast by Design" style="width: 64px; height: 64px;">
             </div>
-            <h3 class="font-mono-nav text-white mb-3">FAST BY DESIGN</h3>
-            <p class="text-white-50">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
+            <h3 class="text-base font-sans text-white mb-3">FAST BY DESIGN</h3>
+            <p class="text-white-50 text-base font-sans">Near-instant settlement with 24/7 processing and real-time transaction visibility.</p>
           </div>
         </div>
 
@@ -944,8 +966,8 @@ p.text-white-70 {
             <div class="mb-4">
               <img src="images/intelligent-at-the-core.svg" alt="Intelligent at the Core" style="width: 64px; height: 64px;">
             </div>
-            <h3 class="font-mono-nav text-white mb-3">INTELLIGENT AT THE CORE</h3>
-            <p class="text-white-50">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
+            <h3 class="text-base font-sans text-white mb-3">INTELLIGENT AT THE CORE</h3>
+            <p class="text-white-50 text-base font-sans">Smart routing, automated compliance, and AI-powered fraud detection built into every transaction.</p>
           </div>
         </div>
       </div>
@@ -962,7 +984,7 @@ p.text-white-70 {
           <h2 class="display-4 fw-bold mb-4 reveal">
             Watch Demo
           </h2>
-          <p class="text-white-50 fs-5 reveal">
+          <p class="text-white-50 fs-5 text-base font-sans reveal">
             See how to access global accounts, liquidity,
             and move money across borders with Switch
           </p>
@@ -1005,100 +1027,224 @@ p.text-white-70 {
 
   <!-- Product Showcase -->
 <!-- Product Showcase -->
-  <section class="" id="global_payments">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row gap-16 items-center">
-        <div class="lg:w-1/2 fade-left">
-          <span class="inline-block rounded-md border border-gray-10 px-4 py-1 text-md text-gray-400 mb-4">GLOBAL PAYMENTS</span>
-          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Move money globally</h2>
-          <p class="mt-5 leading-relaxed">Simplify and coordinate money movement across currencies with intelligent routing, liquidity access, and reliable infrastructure for seamless global payments.</p>
-          <div class="mt-20 flex flex-wrap gap-3 font-medium">
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-md text-muted-fg leading-relaxed">Global Virtual Accounts</span>
-            <span class="font-mono-nav  px-4 py-2 border border-border rounded-md text-muted-fg">Multi-Currency Liquidity</span>
-            <span class="font-mono-nav px-4 py-2 border border-border rounded-md text-muted-fg">Same-Day Settlement</span>
-          </div>
-        </div>
-        <div class="lg:w-1/2 fade-right">
-          <div class="aspect-[4/3] flex items-center justify-center">
-              <img src="images/global-payments.jpg" alt="Payment orchestration" class="object-cover w-full h-full">
-          </div>
+  <section class="py-32 lg:py-40" id="global_payments">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+    <div class="flex flex-col lg:flex-row gap-20 lg:gap-32 items-center">
+
+      <!-- Text -->
+      <div class="lg:w-1/2 fade-left">
+
+        <span class="inline-block px-5 py-1.5 text-sm text-base font-sans text-white mb-8 tracking-wider bg-[#141414]">
+          GLOBAL PAYMENTS
+        </span>
+
+        <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.15] mb-8">
+          Move money globally
+        </h2>
+
+        <p class="text-lg lg:text-xl text-white text-base font-sans leading-relaxed max-w-[560px]">
+          Simplify and coordinate money movement across currencies with intelligent routing,
+          liquidity access, and reliable infrastructure for seamless global payments.
+        </p>
+
+        <br /><br /><br /><br />
+        <div class="mt-12 flex flex-wrap gap-3">
+          <span class="px-3 py-2 border border-gray-700 fs-8 rounded-md text-gray-200 text-base font-sans hover:border-purple-500 transition-colors">
+            Global virtual accounts
+          </span>
+
+          <span class="px-3 py-2 border border-gray-700 rounded-md text-gray-200 text-base font-sans hover:border-purple-500 transition-colors">
+            Multi-currency
+          </span>
+
+          <span class="px-3 py-2 border border-gray-700 rounded-md text-gray-200 text-base font-sans hover:border-purple-500 transition-colors">
+            Same-day settlement
+          </span>
         </div>
       </div>
+
+      <!-- Image -->
+      <div class="lg:w-1/2 fade-right flex justify-center lg:justify-end">
+
+        <div class="w-full max-w-[820px]">
+
+          <div class="aspect-[4/3] overflow-hidden rounded-xl bg-gray-900">
+            <img src="images/global-payments.jpg"
+                 alt="Global Payment"
+                 class="object-cover w-full h-full hover:scale-105 transition-transform duration-500">
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
 
 <div class="section-divider"></div>
 
-  <section class="" id="global_accounts">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row-reverse gap-16 items-center">
-        <div class="lg:w-1/2 fade-right">
-           <span class="inline-block rounded-md border border-gray-400 px-4 py-1 text-md text-gray-400 mb-4">GLOBAL ACCOUNTS</span>
-          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Access international accounts and payment rails</h2>
-          <p class="mt-5 leading-relaxed text-lg">Secure USD and multi-currency accounts connected to global banking networks and digital payment rails beyond SWIFT, ACH, IBAN, and other legacy systems. </p>
-          <div class="mt-20 flex flex-wrap gap-3">
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Global USD Accounts</span>
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Multi-Currency Digital Access</span>
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Bank-Grade Security</span>
-          </div>
+  <section class="py-32 lg:py-40" id="global_accounts">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+    <div class="flex flex-col lg:flex-row-reverse gap-20 lg:gap-32 items-center">
+
+      <!-- TEXT -->
+      <div class="lg:w-1/2 fade-right">
+
+        <span class="inline-block px-5 py-1.5 text-sm text-base font-sans text-white mb-8 tracking-wider bg-[#141414]">GLOBAL ACCOUNTS</span>
+          <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.15] mb-8">Access international accounts and payment rails</h2>
+
+        <p class="text-lg lg:text-xl text-white font-sans leading-relaxed max-w-[560px]">
+          Secure USD and multi-currency accounts connected to global banking networks
+          and digital payment rails beyond SWIFT, ACH, IBAN, and other legacy systems.
+        </p>
+
+
+        <br /><br /><br /><br />
+        <div class="mt-12 flex flex-wrap gap-3">
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Global USD accounts</span>
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Multi-Currency digital access
+          </span>
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Bank-Grade security
+          </span>
         </div>
-        <div class="lg:w-1/2 fade-left">
-          <div class="aspect-[4/3] flex items-center justify-center">
-            <img src="images/global-account.svg" alt="Payment orchestration" class="object-cover w-full h-full">
-          </div>
-        </div>
+
       </div>
+
+      <!-- IMAGE -->
+      <div class="lg:w-1/2 fade-left flex justify-center lg:justify-end">
+
+        <div class="w-full max-w-[820px]">
+          <div class="aspect-[4/3] overflow-hidden rounded-xl bg-gray-900">
+            <img src="images/global-account.svg"
+                 alt="Global accounts"
+                 class="object-cover w-full h-full">
+          </div>
+        </div>
+
+      </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
 
 <div class="section-divider"></div>
 
-  <section class="" id="global_payment_rails">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row gap-16 items-center">
-        <div class="lg:w-1/2 fade-left">
-           <span class="inline-block rounded-md border border-gray-400 px-4 py-1 text-md text-gray-400 mb-4">GLOBAL PAYMENT RAILS</span>
-          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Reach New Markets Instantly</h2>
-          <p class="mt-5 leading-relaxed text-lg">Enable compliant, near-instant digital payments worldwide without a local bank account, using settlement rails beyond SWIFT, ACH, and IBAN with intelligent routing and 99.99% uptime.</p>
-          <div class="mt-20 flex flex-wrap gap-3">
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Global reach</span>
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Near-instant settlement</span>
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Compliance built-in</span>
-          </div>
-        </div>
-        <div class="lg:w-1/2 fade-right">
-          <div class="aspect-[4/3] flex items-center justify-center">
-            <img src="images/global-payment-rails.svg" alt="Payment orchestration" class="object-cover w-full h-full">
-          </div>
+
+<section class="py-32 lg:py-40" id="global_payment_rails">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+    <div class="flex flex-col lg:flex-row gap-20 lg:gap-32 items-center">
+
+      <!-- TEXT -->
+      <div class="lg:w-1/2 fade-left">
+
+        <span class="inline-block px-5 py-1.5 text-sm text-base font-sans text-white mb-8 tracking-wider bg-[#141414]">
+          GLOBAL PAYMENT RAILS
+        </span>
+
+        <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.15] mb-8">
+          Reach new markets instantly
+        </h2>
+
+        <p class="text-lg lg:text-xl text-white font-sans leading-relaxed max-w-[560px]">
+          Enable compliant, near-instant digital payments worldwide without a local
+          bank account, using settlement rails beyond SWIFT, ACH, and IBAN with
+          intelligent routing and 99.99% uptime.
+        </p>
+
+        <br /><br /><br /><br />
+        <div class="mt-12 flex flex-wrap gap-3">
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Global reach
+          </span>
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Near-instant settlement
+          </span>
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Compliance built-in
+          </span>
         </div>
       </div>
+
+      <!-- IMAGE -->
+      <div class="lg:w-1/2 fade-right flex justify-center lg:justify-end">
+
+        <div class="w-full max-w-[820px]">
+          <div class="aspect-[4/3] overflow-hidden rounded-xl bg-gray-900">
+            <img src="images/global-payment-rails.svg"
+                 alt="Global payment rails"
+                 class="object-cover w-full h-full">
+          </div>
+        </div>
+
+      </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
 
 <div class="section-divider"></div>
 
-  <section class="" id="global_liquidity">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row-reverse gap-16 items-center">
-        <div class="lg:w-1/2 fade-right">
-           <span class="inline-block rounded-md border border-gray-400 px-4 py-1 text-md text-gray-400 mb-4">GLOBAL LIQUIDITY</span>
-          <h2 class="text-2xl md:text-4xl font-medium leading-tight">Navigate volatile currencies</h2>
-          <p class="mt-5 leading-relaxed text-lg">Access deep global liquidity to convert volatile local currencies and move funds across borders reliably, with transparency, compliance, and trusted liquidity partners.</p>
 
-          <div class="mt-20 flex flex-wrap gap-3">
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Volatile currency markets</span>
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Alternative payment rails</span>
-            <span class="font-mono-nav px-3 py-1.5 border border-border rounded-md text-muted-fg">Compliant settlement</span>
-          </div>
+<section class="py-32 lg:py-40" id="global_liquidity">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+    <div class="flex flex-col lg:flex-row-reverse gap-20 lg:gap-32 items-center">
+
+      <!-- TEXT -->
+      <div class="lg:w-1/2 fade-right">
+
+        <span class="inline-block px-5 py-1.5 text-sm text-base font-sans text-white mb-8 tracking-wider bg-[#141414]">
+          GLOBAL LIQUIDITY
+        </span>
+
+        <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.15] mb-8">
+          Navigate volatile currencies
+        </h2>
+
+        <p class="text-lg lg:text-xl text-white font-sans leading-relaxed max-w-[560px]">
+          Access deep global liquidity to convert volatile local currencies and move
+          funds across borders reliably, with transparency, compliance, and trusted
+          liquidity partners.
+        </p>
+
+        <br /><br /><br /><br />
+        <div class="mt-12 flex flex-wrap gap-3">
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Volatile currency markets
+          </span>
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Alternative payment rails
+          </span>
+          <span class="px-3 py-2 border border-white/20 rounded-md text-sm text-gray-200 text-base font-sans">
+            Compliant settlement
+          </span>
         </div>
-        <div class="lg:w-1/2 fade-left">
-          <div class="aspect-[4/3] flex items-center justify-center">
-            <img src="images/global-liquidity.svg" alt="Global settlements" class="object-cover w-full h-full">
+      </div>
+
+      <!-- IMAGE -->
+      <div class="lg:w-1/2 fade-left flex justify-center lg:justify-end">
+
+        <div class="w-full max-w-[820px]">
+          <div class="aspect-[4/3] overflow-hidden rounded-xl bg-gray-900">
+            <img src="images/global-liquidity.svg"
+                 alt="Global liquidity"
+                 class="object-cover w-full h-full">
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <div class="section-divider"></div>
 
