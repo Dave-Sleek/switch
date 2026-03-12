@@ -797,40 +797,30 @@ p.text-white-70 {
   </div>
 
   <!-- Navbar -->
-<nav id="navbar" class="fixed-top navbar-glass py-3" style="z-index: 40;">
-  <div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center w-100">
-      <!-- Logo + Links -->
-      <div class="d-flex align-items-center gap-5">
-        <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img">
-        <div class="d-none d-lg-flex gap-4">
-          <a href="#" class="nav-link-custom">Products</a>
-          <a href="#" class="nav-link-custom">Developers</a>
-          <a href="#" class="nav-link-custom">Resources</a>
-          <a href="#" class="nav-link-custom">Blog</a>
-        </div>
+<!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <span class="font-mono-nav text-sm tracking-[0.2em] font-medium text-fg"><img src="logo/switch_logo.png" alt="Switch" style="width: 130px;"></span>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Global Payments</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Global Accounts</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Global Payment Rails</a>
+        <a href="#" class="font-mono-nav px-4 py-2 text-muted-fg hover:text-fg transition-colors">Global Liquidity</a>
+        <a href="#" class="font-mono-nav px-4 py-2 ml-2 border border-border rounded-sm text-fg hover:bg-secondary transition-colors">Get Started</a>
       </div>
-
-      <!-- CTA Button -->
-      <div class="d-flex align-items-center gap-3">
-        <a href="#" class="btn-custom-primary">Get Started</a>
-      </div>
-
-      <!-- Mobile Toggle -->
-      <button id="mobile-toggle" class="d-lg-none btn text-white p-0 border-0 bg-transparent">
-        <i class="fas fa-bars fs-2"></i>
+      <button id="mobile-toggle" class="md:hidden text-fg">
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="mobile-menu d-lg-none" style="display: none;">
-    <a href="#" class="d-block py-2">Products</a>
-    <a href="#" class="d-block py-2">Developers</a>
-    <a href="#" class="d-block py-2">Resources</a>
-    <a href="#" class="d-block py-2">Blog</a>
-  </div>
-</nav>
+    <div id="mobile-menu" class="hidden md:hidden bg-bg border-b border-border px-6 pb-6 space-y-3">
+      <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Payments</a>
+      <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Accounts</a>
+      <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Payment Rails</a>
+      <a href="#" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Liquidity</a>
+      <a href="#" class="block font-mono-nav py-2 text-fg">Get Started</a>
+    </div>
+  </nav>
 
 
   <!-- Hero Section -->
