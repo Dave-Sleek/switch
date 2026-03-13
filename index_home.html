@@ -798,56 +798,81 @@ p.text-white-70 {
 
 <!-- Navbar -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
-  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <!-- Logo on the left -->
-    <span class="font-mono-nav text-sm tracking-[0.2em] font-medium text-fg">
-      <img src="logo/switch_logo.png" alt="Switch" style="width: 130px;">
-    </span>
-    
-    <!-- Menu + Get Started aligned right -->
-   <div class="flex items-center gap-4 ml-auto">
-      <div class="hidden md:flex items-center gap-3">
-        <a href="#global_payments" class="font-mono-nav px-2 py-2 text-muted-fg hover:text-fg border border-white/20 transition-colors">Global Payments</a>
-        <a href="#global_accounts" class="font-mono-nav px-2 py-2 text-muted-fg hover:text-fg border border-white/20 transition-colors">Global Accounts</a>
-        <a href="#global_payment_rails" class="font-mono-nav px-2 py-2 text-muted-fg hover:text-fg border border-white/20 transition-colors">Global Payment Rails</a>
-        <a href="#global_liquidity" class="font-mono-nav px-2 py-2 text-muted-fg hover:text-fg border border-white/20 transition-colors">Global Liquidity</a>
-      </div>
 
-   
+  <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
 
-      <!-- <a href="#contact_us" class="font-mono-nav px-3 py-2 border border-border rounded-sm text-fg hover:bg-secondary transition-colors">
-        Get Started
-      </a> -->
+    <!-- Logo -->
+    <a href="#" class="flex items-center">
+      <img src="logo/switch_logo.png" alt="Switch" class="w-[120px]">
+    </a>
 
-      <!-- Mobile toggle button -->
-      <button id="mobile-toggle" class="md:hidden text-fg">
-        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
-             stroke-linecap="round" stroke-linejoin="round">
-          <line x1="4" x2="20" y1="12" y2="12"/>
-          <line x1="4" x2="20" y1="6" y2="6"/>
-          <line x1="4" x2="20" y1="18" y2="18"/>
-        </svg>
-        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
-             stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 6 6 18"/>
-          <path d="m6 6 12 12"/>
-        </svg>
-      </button>
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-6 ml-auto">
+
+      <a href="#global_payments"
+         class="font-mono-nav text-sm text-white/70 hover:text-white transition-colors">
+         Global Payments
+      </a>
+
+      <a href="#global_accounts"
+         class="font-mono-nav text-sm text-white/70 hover:text-white transition-colors">
+         Global Accounts
+      </a>
+
+      <a href="#global_payment_rails"
+         class="font-mono-nav text-sm text-white/70 hover:text-white transition-colors">
+         Global Payment Rails
+      </a>
+
+      <a href="#global_liquidity"
+         class="font-mono-nav text-sm text-white/70 hover:text-white transition-colors">
+         Global Liquidity
+      </a>
+
     </div>
+
+    <!-- Mobile Toggle -->
+    <button id="mobile-toggle" class="md:hidden text-fg ml-4">
+
+      <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="4" x2="20" y1="12" y2="12"/>
+        <line x1="4" x2="20" y1="6" y2="6"/>
+        <line x1="4" x2="20" y1="18" y2="18"/>
+      </svg>
+
+      <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg"
+        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18"/>
+        <path d="m6 6 12 12"/>
+      </svg>
+
+    </button>
+
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-bg border-b border-border px-6 pb-6 space-y-3">
-    <a href="#global_payments" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Payments</a>
-    <a href="#global_accounts" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Accounts</a>
-    <a href="#global_payment_rails" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Payment Rails</a>
-    <a href="#global_liquidity" class="block font-mono-nav py-2 text-muted-fg hover:text-fg transition-colors">Global Liquidity</a>
-    <a href="#contact_us" class="font-mono-nav px-3 py-2 border border-border rounded-sm text-fg hover:bg-secondary transition-colors">Get Started</a>
-  </div>
-</nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-bg border-b border-border px-6 pb-6 space-y-4">
 
+    <a href="#global_payments" class="block text-white/70 hover:text-white transition">
+      Global Payments
+    </a>
+
+    <a href="#global_accounts" class="block text-white/70 hover:text-white transition">
+      Global Accounts
+    </a>
+
+    <a href="#global_payment_rails" class="block text-white/70 hover:text-white transition">
+      Global Payment Rails
+    </a>
+
+    <a href="#global_liquidity" class="block text-white/70 hover:text-white transition">
+      Global Liquidity
+    </a>
+
+  </div>
+
+</nav>
 
   <!-- Hero Section -->
   <section class="relative min-h-screen overflow-hidden">
