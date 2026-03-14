@@ -42,6 +42,754 @@
     .fade-right.visible { opacity: 1; transform: translateX(0); }
   </style>
 </head>
+
+
+
+<style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    @font-face {
+      font-family: 'Ivar Soft';
+      src: url('/fonts/ivar-soft.woff2') format('woff2'),
+          url('/fonts/ivar-soft.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Ivar Soft';
+      src: url('/fonts/ivar-soft-bold.woff2') format('woff2'),
+          url('/fonts/ivar-soft-bold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Maison Neue';
+      src: url('/fonts/MaisonNeue.woff2') format('woff2'),
+          url('/fonts/MaisonNeue.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Maison Neue Bold';
+      src: url('/fonts/MaisonNeueBold.woff2') format('woff2'),
+          url('/fonts/MaisonNeueBold.woff') format('woff');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Maison Neue Mono';
+      src: url('/fonts/Maison-neue-mono.woff2') format('woff2'),
+          url('/fonts/Maison-neue-mono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body { 
+      font-family: 'Ivar Soft', serif; 
+      background: #000000;
+      color: #ffffff; 
+      -webkit-font-smoothing: antialiased; 
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Ivar Soft', serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    p, li, a:not(.btn-custom-primary):not(.btn-custom-secondary) {
+      font-family: 'Maison Neue', sans-serif;
+    }
+
+    strong, b {
+      font-family: 'Maison Neue Bold', sans-serif;
+    }
+
+    code, pre, .font-mono {
+      font-family: 'Maison Neue Mono', monospace;
+    }
+
+    .font-mono-nav { 
+      font-family: 'Maison Neue Mono', monospace; 
+      font-size: 0.75rem; 
+      letter-spacing: 0.1em; 
+      text-transform: uppercase; 
+      font-weight: 500;
+    }
+    
+    /* Brand accent - used sparingly */
+    .text-brand-blue {
+      color: #007BFF;
+    }
+    
+    .text-brand-purple {
+      color: #8A2BE2;
+    }
+    
+    .border-brand {
+      border-color: #8A2BE2;
+    }
+    
+    .bg-brand-purple {
+      background-color: #8A2BE2;
+    }
+    
+    .bg-brand-blue {
+      background-color: #007BFF;
+    }
+    
+    /* Custom Button styles */
+    .btn-custom-primary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 0.75rem 2rem;
+      font-family: 'Maison Neue Mono', monospace;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border-radius: 0;
+      display: inline-block;
+      text-decoration: none;
+    }
+    
+    .btn-custom-primary:hover {
+      border-color: #8A2BE2;
+      background: rgba(138, 43, 226, 0.1);
+      color: white;
+    }
+    
+    .btn-custom-secondary {
+      background: #8A2BE2;
+      color: white;
+      padding: 0.75rem 2rem;
+      font-family: 'Maison Neue Mono', monospace;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border-radius: 0;
+      display: inline-block;
+      text-decoration: none;
+    }
+    
+    .btn-custom-secondary:hover {
+      background: #7b1fa2;
+      color: white;
+    }
+    
+    /* Dark backgrounds for depth */
+    .bg-dark-100 {
+      background-color: #000000;
+    }
+    
+    .bg-dark-200 {
+      background-color: #0a0a0a;
+    }
+    
+    .bg-dark-300 {
+      background-color: #111111;
+    }
+    
+    .bg-dark-400 {
+      background-color: #1a1a1a;
+    }
+    
+    .border-dark {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .text-muted-custom {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Glass effect - more subtle */
+    .glass-subtle {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Card styles - dark with subtle borders */
+    .feature-card {
+      background: #0a0a0a;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+      padding: 2rem;
+      height: 100%;
+    }
+    
+    .feature-card:hover {
+      /* border-color: rgba(138, 43, 226, 0.3); */
+      transform: translateY(-4px);
+    }
+    
+    /* Loading animation - simplified */
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border-top-color: #8A2BE2;
+      animation: spin 1s ease-in-out infinite;
+      margin: 0 auto 2rem;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-scale.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* Counter animation */
+    .counter {
+      font-feature-settings: "tnum";
+      font-variant-numeric: tabular-nums;
+      font-family: 'Ivar Soft', serif;
+    }
+    
+    /* Animation delays */
+    .animation-delay-1000 { animation-delay: 1s; }
+    .animation-delay-2000 { animation-delay: 2s; }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Loading screen transition */
+    #loading-screen {
+      transition: opacity 1s ease-in-out;
+    }
+
+    /* Video Section Styles - minimal */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      background: #111111;
+      cursor: pointer;
+    }
+    
+    .video-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+      background: rgba(138, 43, 226, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    
+    .video-play-button:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: #8A2BE2;
+    }
+    
+    .video-play-button i {
+      font-size: 24px;
+      color: white;
+      margin-left: 4px;
+    }
+    
+    /* Modal */
+    .modal-custom {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+    }
+    
+    .modal-custom.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content-custom {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .modal-close:hover {
+      color: #8A2BE2;
+    }
+    
+    .modal-video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
+    
+    .modal-video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Logo styling */
+    .logo-img {
+      height: 40px;
+      width: auto;
+    }
+
+    /* Aspect container for product images */
+    .aspect-container{
+  width:100%;
+  max-width:618px;
+  height:auto;
+  aspect-ratio:618/501;
+  margin:auto;
+  overflow:hidden;
+  background:#111;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.aspect-container img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+    .aspect-container img:hover {
+      opacity: 1;
+    }
+
+    /* Desktop */
+    @media (max-width:768px){
+
+  .aspect-container{
+    max-width:383px;
+    aspect-ratio:383/253;
+  }
+
+}
+    /* Section dividers */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      margin: 2rem 0;
+    }
+
+    /* Contact section icons */
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      text-decoration: none;
+    }
+
+    .contact-icon:hover {
+      border-color: #8A2BE2;
+      background: rgba(138, 43, 226, 0.1);
+      color: #8A2BE2;
+    }
+
+    .contact-icon i {
+      font-size: 20px;
+    }
+
+    /* Stats */
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 600;
+      font-family: 'Ivar Soft', serif;
+      color: white;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: 'Maison Neue Mono', monospace;
+    }
+
+    /* Footer links */
+    .footer-link {
+      color: rgba(255, 255, 255, 0.5);
+      transition: color 0.3s ease;
+      font-size: 0.875rem;
+      font-family: 'Maison Neue', sans-serif;
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      color: #8A2BE2;
+    }
+
+    /* Three.js canvas positioning */
+    #globe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: transparent !important;
+      pointer-events: none;
+    }
+
+    /* Hero content positioning */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      background-color: #0a0a0a;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 20;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .globe-container {
+      position: absolute;
+      left: 0;
+      bottom: -350px;
+      width: 100%;
+      height: 650px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, #000);
+      pointer-events: none;
+    }
+
+    /* Keep globe labels exactly as they were */
+    .globe-label {
+      position: absolute;
+      color: white;
+      font-size: 13px;
+      background: #141414;
+      padding: 5px 10px;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      font-family: Arial;
+    }
+
+    /* Loading screen text */
+    .loading-text {
+      font-family: 'Ivar Soft', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Navbar links */
+    .nav-link-custom {
+      font-family: 'Maison Neue', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+      text-decoration: none;
+      margin: 0 1rem;
+    }
+
+    .nav-link-custom:hover {
+      color: white;
+    }
+
+    /* Feature card headings */
+    .feature-card h3 {
+      font-family: 'Ivar Soft', serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Product section tags */
+    .product-tags {
+        margin-top: 1.5rem; /* space above tags */
+      }
+      .product-tag {
+        display: inline-block;
+        background: rgba(255,255,255,0.05);
+        color: #fff;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.853rem;
+        margin-right: 0.5rem;  /* horizontal spacing */
+        margin-bottom: 0.5rem; /* vertical spacing when wrapping */
+        font-family: 'Ivar Soft', serif;
+      }
+
+      .product-section {
+  margin-bottom: 4rem; /* adjust spacing */
+}
+
+h2.display-4{
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  white-space: normal;
+}
+
+p.text-white-70 {
+  margin-bottom: 1.5rem; /* space below description */
+  font-size: 1.1rem;  /* slightly smaller than fs-5 */
+  line-height: 1.4;
+  /* font-family: 'Maison Neue Mono', monospace; */
+  /* font-size: 1.2rem; */
+}
+
+
+    /* Section labels */
+    .section-label {
+      font-family: 'Maison Neue Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgb(255, 255, 255);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Bootstrap overrides */
+    .container-fluid {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* Remove Bootstrap default link styles */
+    a {
+      text-decoration: none;
+    }
+
+    /* Navbar customization */
+    .navbar-glass {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      background: #111111;
+      padding: 1.5rem;
+    }
+
+    .mobile-menu a {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 0.5rem 0;
+      text-decoration: none;
+    }
+
+    .mobile-menu a:hover {
+      color: white;
+    }
+
+
+    .feature-card {
+      padding: 2rem; /* more breathing room inside the box */
+      text-align: left;
+    }
+
+.feature-card h3 {
+  font-family: 'Ivar Soft', sans-serif; /* apply Ivar Soft */
+  font-size: 1.5rem;  /* bigger than default */
+  /* font-weight: 600; */
+}
+
+.feature-card p {
+  font-family: 'Ivar Soft', sans-serif; /* apply Ivar Soft */
+  font-size: 1.1rem;  /* slightly larger body text */
+  line-height: 1.6;
+}
+
+
+.feature-card h3 {
+  font-size: 1rem;        /* smaller heading size */
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.feature-card p {
+  font-size: 0.9rem;      /* smaller body text */
+  line-height: 1.4;
+}
+
+.feature-card h3,
+.feature-card p {
+  font-family: 'Ivar Soft', sans-serif;
+}
+
+
+
+/* Navbar background and spacing */
+#navbar {
+  background: rgba(20, 20, 20, 0.85); /* subtle glass effect */
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Logo size */
+.logo-img {
+  height: 50px;   /* consistent height */
+  width: auto;    /* keeps aspect ratio */
+}
+
+/* Nav links */
+.nav-link-custom {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  color: #00c4ff; /* highlight color on hover */
+}
+
+/* Mobile menu */
+.mobile-menu {
+  background-color: #141414;
+  padding: 1rem;
+}
+
+.mobile-menu a {
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.mobile-menu a:hover {
+  color: #00c4ff;
+}
+
+
+@media (max-width:768px){
+
+  section{
+    padding-top:80px;
+    padding-bottom:80px;
+  }
+
+  .hero-content{
+    padding-top:120px;
+  }
+
+}
+
+
+    
+    /* @media (min-width: 100px) {
+  h2.display-4 {
+    white-space: nowrap;
+    font-size: 2.5rem;
+  }
+} */
+
+  </style>
 <body>
 
   <!-- Navbar -->
