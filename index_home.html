@@ -832,22 +832,22 @@ p.text-white-70 {
         <!-- Desktop Menu - aligned to extreme right -->
         <div class="hidden md:flex items-center ml-auto">
           <a href="#global_payments"
-            class="text-sm font-sans text-white px-2 py-1 border-r border-gray-700">
+            class="text-sm font-sans text-white/80 px-2 py-1 border-r border-gray-700">
             GLOBAL PAYMENTS
           </a>
 
           <a href="#global_accounts"
-            class="text-sm font-sans text-white px-2 py-1 border-r border-gray-700">
+            class="text-sm font-sans text-white/80 px-2 py-1 border-r border-gray-700">
             GLOBAL ACCOUNTS
           </a>
 
           <a href="#global_payment_rails"
-            class="text-sm font-sans text-white px-2 py-1 border-r border-gray-700">
+            class="text-sm font-sans text-white/80 px-2 py-1 border-r border-gray-700">
             GLOBAL PAYMENT RAILS
           </a>
 
           <a href="#global_liquidity"
-            class="text-sm font-sans text-white px-2 py-1 border-r border-gray-700">
+            class="text-sm font-sans text-white/80 px-2 py-1 border-r border-gray-700">
             GLOBAL LIQUIDITY
           </a>
 
@@ -1651,7 +1651,8 @@ p.text-white-70 {
 
       const isMobile = window.innerWidth < 768;
 
-      globeGroup.position.y = -1.85;
+      globeGroup.position.y = -1.95;
+      globeGroup.rotation.x = -0.3;
       globeGroup.position.x = isMobile ? 0 : 0.4;
       globeGroup.scale.set(isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9);
 
@@ -1688,12 +1689,19 @@ p.text-white-70 {
       /* ---------------------------
          LABEL DATA
       --------------------------- */
-      const labelData = [
-        { name: "ACH", position: new THREE.Vector3(1.5, 0.75, 0) },
-        { name: "SWIFT", position: new THREE.Vector3(-1.2, 0.65, 0.9) },
-        { name: "FEDWIRE", position: new THREE.Vector3(0, -0.35, 1.2) },
-        { name: "USDC", position: new THREE.Vector3(1.05, -0.5, -0.9) }
-      ];
+      // const labelData = [
+      //   { name: "ACH", position: new THREE.Vector3(1.5, 0.75, 0) },
+      //   { name: "SWIFT", position: new THREE.Vector3(-1.2, 0.65, 0.9) },
+      //   { name: "FEDWIRE", position: new THREE.Vector3(0, -0.35, 1.2) },
+      //   { name: "USDC", position: new THREE.Vector3(1.05, -0.5, -0.9) }
+      // ];
+
+        const labelData = [
+              { name: "ACH", position: new THREE.Vector3(1.5, 1.0, 0) },
+              { name: "SWIFT", position: new THREE.Vector3(-1.2, 1.1, 0.9) },
+              { name: "FEDWIRE", position: new THREE.Vector3(0, 0.9, 1.2) },
+              { name: "USDC", position: new THREE.Vector3(1.05, 1.0, -0.9) }
+            ];
 
       const labels = [];
       const nodes = [];
@@ -1748,8 +1756,26 @@ p.text-white-70 {
         nodes.forEach((end, j) => {
           if (i >= j) return;
 
+          // const mid = start.clone().add(end).multiplyScalar(0.5);
+          // mid.normalize().multiplyScalar(1.7);
+
           const mid = start.clone().add(end).multiplyScalar(0.5);
-          mid.normalize().multiplyScalar(1.7);
+
+            const spreadFactor = 0.3;
+
+            // upward bias
+            mid.y += 1.1 + Math.random() * 0.4;
+
+            // horizontal spread
+            mid.x += (Math.random() - 0.5) * spreadFactor;
+            mid.z += (Math.random() - 0.5) * spreadFactor;
+
+            // push outward from center
+            const centerPush = start.clone().add(end).normalize();
+            mid.add(centerPush.multiplyScalar(0.6));
+
+            // final distance from globe
+            mid.normalize().multiplyScalar(2.6 + Math.random() * 0.3);
 
           const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
           curves.push(curve);
@@ -1862,7 +1888,7 @@ p.text-white-70 {
           const y = (-pos.y * 0.5 + 0.5) * rect.height;
 
           // if (pos.z < 1) {
-          if (pos.z < 1 && y <rect.height * 0.78){
+          if (pos.z < 1 && y < rect.height * 0.78){
             label.element.style.display = "block";
             label.element.style.left = `${x}px`;
             label.element.style.top = `${y}px`;
