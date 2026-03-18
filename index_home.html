@@ -460,8 +460,16 @@
     .section-divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      margin: 2rem 0;
+      margin: 2rem 0; /* default for desktop */
     }
+
+    /* Mobile override */
+    @media (max-width: 768px) {
+      .section-divider {
+        margin: 0.5rem 0; /* tighter spacing on mobile */
+      }
+    }
+
 
     /* Contact section icons */
     .contact-icon {
@@ -1025,35 +1033,35 @@ p.text-white-70 {
       <!-- Tether/USDT -->
       <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center">
-          <img src="images/logos/tether-horizontal-white.svg" alt="Tether" class="img-fluid mx-auto" style="max-height:60px; width:auto;">
+          <img src="images/logos/tether-horizontal-white.svg" alt="Tether" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
       </div>
       
       <!-- Santander -->
       <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.05s">
-          <img src="images/logos/santander-logo.png" alt="Santander" class="img-fluid mx-auto" style="max-height:60px; width:auto;">
+          <img src="images/logos/santander-logo.png" alt="Santander" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
       </div>
       
       <!-- HSBC -->
       <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.1s">
-          <img src="images/logos/HSBC_img.png" alt="HSBC" class="img-fluid mx-auto" style="max-height:60px; width:auto;">
+          <img src="images/logos/HSBC_img.png" alt="HSBC" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
       </div>
 
       <!-- BNY Mellon -->
       <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.15s">
-          <img src="images/logos/bank-of-new-york-mellon-vector-logo.png" alt="BNY Mellon" class="img-fluid mx-auto" style="max-height:60px; width:auto;">
+          <img src="images/logos/bank-of-new-york-mellon-vector-logo.png" alt="BNY Mellon" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
       </div>
 
       <!-- Circle -->
       <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.2s">
-          <img src="images/logos/circle-img.png" alt="Circle" class="img-fluid mx-auto" style="max-height:60px; width:auto;">
+          <img src="images/logos/circle-img.png" alt="Circle" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
       </div>
     </div>
