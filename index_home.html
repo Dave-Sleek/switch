@@ -29,6 +29,8 @@
 
   <!-- Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   
   <!-- Font Preloads -->
   <link rel="preload" href="/fonts/Ivar-soft.woff2" as="font" type="font/woff2" crossorigin>
@@ -799,6 +801,25 @@ p.text-white-70 {
 }
 
 
+/* Default state (top of page) */
+#navbar {
+  background: transparent;
+}
+
+.logo {
+  color: white;
+}
+
+/* When scrolled */
+#navbar.scrolled {
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+#navbar.scrolled .logo {
+  color: black;
+}
+
     
     /* @media (min-width: 100px) {
   h2.display-4 {
@@ -820,17 +841,36 @@ p.text-white-70 {
   </div>
 
 <!-- Navbar -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-black">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-black">
 
   <div class="flex items-center justify-between w-full px-6 lg:px-10 h-16">
 
     <!-- Logo -->
      <!-- Logo -->
         <div class="flex-shrink-0">
-          <a href="index.html" id="logo-link">
+          <a href="index.html">
             <img src="logo/switch_logo.png" alt="Switch" class="w-[135px] cursor-pointer">
           </a>
         </div>
+
+        <!-- Logo -->
+          <!-- <a href="index.html" class="flex items-center">
+            <div class="flex items-center gap-2">
+              <svg 
+                viewBox="0 0 48 48" 
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-[100px] h-[100px] logo"
+              >
+                <path d="M23.5,5.5 C19.7675,7.13069 15.7675,8.13069 11.5,8.5 
+                        C9.19883,9.95592 6.8655,10.2892 4.5,9.5 
+                        C3.60895,10.1098 2.60895,10.4431 1.5,10.5 
+                        C3.88953,7.97171 6.88953,6.47171 10.5,6 
+                        C14.8206,5.50098 19.1539,5.33432 23.5,5.5 Z" 
+                      fill="#60cfee"/>
+              </svg>
+              <span class="text-white font-medium text-lg">switch</span>
+            </div>
+          </a> -->
 
         <!-- Desktop Menu - aligned to extreme right -->
         <div class="hidden md:flex items-center ml-auto">
@@ -1029,42 +1069,37 @@ p.text-white-70 {
       <p class="text-center text-white-50 text-lg md:text-xl font-mono-nav mb-5 reveal">
       POWERED BY GLOBAL FINANCIAL NETWORKS
       </p>
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-2 g-md-4 align-items-center justify-content-center">
+    <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
       
       <!-- Tether/USDT -->
-      <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center">
-          <img src="images/logos/tether-horizontal-white.svg" alt="Tether" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
+          <img src="images/logos/tether-horizontal-white.png" alt="Tether" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
-      </div>
       
       <!-- Santander -->
-      <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.05s">
           <img src="images/logos/santander-logo.png" alt="Santander" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
-      </div>
       
       <!-- HSBC -->
-      <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.1s">
           <img src="images/logos/HSBC_img.png" alt="HSBC" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
-      </div>
 
       <!-- BNY Mellon -->
-      <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.15s">
           <img src="images/logos/bank-of-new-york-mellon-vector-logo.png" alt="BNY Mellon" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
-      </div>
 
       <!-- Circle -->
-      <div class="col mb-3">
         <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.2s">
           <img src="images/logos/circle-img.png" alt="Circle" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
         </div>
-      </div>
+
+      <!-- Standard Chartered -->
+        <div class="reveal-scale opacity-50 hover-opacity-75 transition-opacity text-center" style="transition-delay:0.2s">
+          <img src="images/logos/standard-chartered.png" alt="Circle" class="img-fluid mx-auto" style="max-height:40px; width:auto;">
+        </div>
     </div>
   </div>
 </section>
@@ -1476,12 +1511,80 @@ p.text-white-70 {
 </section> -->
 
 
+<section class="py-16 bg-black border-t border-white/10">
+  <div class="max-w-[1000px] mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl text-base font-sans font-medium text-white mb-8">
+      Contact Us
+    </h2>
+    <div class="flex justify-center gap-6">
+      <button class="flex items-center gap-2 px-7 py-3 bg-[#141414] border border-white/20 text-base font-sans text-white hover:border-white transition">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+      <button class="flex items-center gap-2 px-7 py-3 bg-[#141414] text-base font-sans border border-white/20 text-white hover:border-white transition">
+        <i class="fab fa-telegram"></i> Telegram
+      </button>
+      <form class="flex items-center gap-2 bg-[#141414] border border-white/20 px-7 py-3 w-[280px]">
+        <input type="email" placeholder="Your email" 
+          class="flex-1 px-3 py-2 text-base font-sans bg-transparent border border-white/20 text-white outline-none">
+        <button type="submit" class="text-white hover:text-gray-300 text-base font-sans">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 bg-black border-t border-white/10">
+  <div class="max-w-[1000px] mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-medium text-white text-base font-sans mb-12">
+      Contact Us
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- WhatsApp -->
+      <div class="bg-[#141414] border border-white/10 p-8 hover:border-white/30 transition">
+        <h3 class="text-white font-semibold mb-2 text-base font-sans">WhatsApp</h3>
+        <p class="text-white/60 text-sm text-base font-sans">Chat with our team instantly</p>
+        <button class="mt-4 w-full py-3 bg-white text-black text-base font-sans font-medium hover:bg-gray-200 transition">
+          Open WhatsApp →
+        </button>
+      </div>
+
+      <!-- Telegram -->
+      <div class="bg-[#141414] border border-white/10 p-8 hover:border-white/30 transition">
+        <h3 class="text-white font-semibold mb-2 text-base font-sans">Telegram</h3>
+        <p class="text-white/60 text-sm text-base font-sans">Join our community channel</p>
+        <button class="mt-4 w-full py-3 bg-white text-black text-base font-sans font-medium hover:bg-gray-200 transition">
+          Open Telegram →
+        </button>
+      </div>
+
+      <!-- Email -->
+      <div class="bg-[#141414] border border-white/10 p-8 hover:border-white/30 transition">
+        <h3 class="text-white font-semibold mb-2 text-base font-sans">Email</h3>
+        <p class="text-white/60 text-sm text-base font-sans">Send us a quick message</p>
+        <form class="mt-4 flex gap-2">
+          <input type="email" placeholder="Your email"
+            class="flex-1 px-4 py-3 text-base font-sans bg-transparent border border-white/20 text-white outline-none">
+          <button type="submit"
+            class="px-6 py-3 bg-white text-black text-base font-sans font-medium hover:bg-gray-200 transition">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
   <!-- Simplified Footer -->
   <footer class="bg-dark-300 py-4">
     <div class="container">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
         <div class="d-flex align-items-center gap-4">
-          <a href="#top">
+          <a href="index.html">
           <img src="logo/switch_logo.png" alt="Switch Logo" class="logo-img" style="width: 128px;">
           </a>
           <span class="text-white-50 small">© 2026 Switch</span>
@@ -1496,17 +1599,19 @@ p.text-white-70 {
     </div>
   </footer>
 
-  <script>
-  document.getElementById("logo-link").addEventListener("click", function(e) {
-    // Check if we are already on index.html
-    if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
-      e.preventDefault(); // prevent reload
-      window.scrollTo({ top: 0, behavior: "smooth" }); // smooth scroll to top
+
+
+  <script id="scroll-logo-js">
+  const navbar = document.getElementById("navbar");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
     }
-    // If not on index.html, the link will reload the homepage as usual
   });
 </script>
-
   <script>
     // Video Modal Functions
     function openVideoModal(videoUrl) {
@@ -1642,6 +1747,7 @@ p.text-white-70 {
 
       // camera.position.z = 3.1;
       camera.position.z = 3.9;
+      camera.lookAt(0, 0.5, 0);
 
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       // renderer.setSize(window.innerWidth, window.innerHeight);
@@ -1667,7 +1773,8 @@ p.text-white-70 {
 
       const isMobile = window.innerWidth < 768;
 
-      globeGroup.position.y = -1.95;
+      // globeGroup.position.y = -1.95;
+      globeGroup.position.y = isMobile ? -1.95 : -1.75;
       globeGroup.rotation.x = -0.3;
       globeGroup.position.x = isMobile ? 0 : 0.4;
       globeGroup.scale.set(isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9);
@@ -1903,13 +2010,13 @@ p.text-white-70 {
           const x = (pos.x * 0.5 + 0.5) * rect.width;
           const y = (-pos.y * 0.5 + 0.5) * rect.height;
 
-          // if (pos.z < 1) {
-          if (pos.z < 1 && y < rect.height * 0.78){
-            label.element.style.display = "block";
+          const isVisible = pos.z < 1;
+
+          label.element.style.display = isVisible ? "block" : "none";
+
+          if (isVisible) {
             label.element.style.left = `${x}px`;
             label.element.style.top = `${y}px`;
-          } else {
-            label.element.style.display = "none";
           }
         });
 
@@ -1946,7 +2053,13 @@ window.addEventListener("resize", () => {
   const isMobile = window.innerWidth < 768;
 
   globeGroup.position.x = isMobile ? 0 : 0.4;
-  globeGroup.scale.set(isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9);
+
+  if (isMobile) {
+        globeGroup.scale.set(0.8, 0.8, 0.8);
+      } else {
+        globeGroup.scale.set(1.25, 1.25, 1.25); // 👈 bigger, more hero-like
+    }
+  // globeGroup.scale.set(isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9);
 
 });
     })();
