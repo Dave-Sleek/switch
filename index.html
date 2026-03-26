@@ -990,6 +990,105 @@ p.text-white-70 {
     </div>
   </section>
 
+  <section class="py-20 bg-zinc-900 reveal">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <h2 class="text-6xl md:text-7xl font-black text-white/10 leading-none">CONTACT</h2>
+      <div class="mt-[-1.5rem]">
+        <p class="text-white/40 text-xs font-sans">01. REACH OUT</p>
+        <h3 class="text-3xl md:text-4xl font-semibold text-white">Talk to our team</h3>
+        <p class="text-white/50 text-sm mt-2">For partnerships, onboarding, and inquiries</p>
+      </div>
+    </div>
+
+    <!-- Two Column Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border border-white/10 p-8 md:p-12">
+
+      <!-- Left Column -->
+      <div>
+        <p class="text-white/70 text-lg leading-relaxed mb-6">
+          We work with institutions, platforms, and high-growth businesses globally.
+        </p>
+        <p class="text-white/70 text-sm mb-2">contact@yourdomain.com</p>
+        <p class="text-white/50 text-xs mb-6">Typically responds within 24 hrs</p>
+      </div>
+
+      <!-- Right Column -->
+      <div>
+        <!-- Step 1: Email + CTA -->
+        <form id="email-step" class="space-y-4">
+          <input 
+            type="email" 
+            placeholder="Enter your email"
+            required
+            class="w-full px-4 py-3 bg-transparent border border-white/20 text-white text-sm placeholder-white/30 outline-none focus:border-white/40"
+          >
+          <button type="button" id="show-form" 
+            class="w-full py-3 bg-white text-zinc-900 text-sm font-semibold hover:bg-gray-200 transition">
+            Talk to Sales
+          </button>
+        </form>
+
+        <!-- Step 2: Full Form (hidden initially) -->
+        <form id="full-form" class="space-y-4 hidden mt-6">
+          <div>
+            <label class="block text-white/70 text-sm mb-1">Full Name</label>
+            <input type="text" class="w-full px-4 py-3 bg-transparent border border-white/20 text-white text-sm placeholder-white/30 outline-none focus:border-white/40" placeholder="Your name">
+          </div>
+
+          <div>
+            <label class="block text-white/70 text-sm mb-1">Company</label>
+            <input type="text" class="w-full px-4 py-3 bg-transparent border border-white/20 text-white text-sm placeholder-white/30 outline-none focus:border-white/40" placeholder="Company name">
+          </div>
+
+          <div>
+            <label class="block text-white/70 text-sm mb-1">Work Email</label>
+            <input type="email" class="w-full px-4 py-3 bg-transparent border border-white/20 text-white text-sm placeholder-white/30 outline-none focus:border-white/40" placeholder="your@email.com">
+          </div>
+
+          <div>
+            <label class="block text-white/70 text-sm mb-1">Inquiry Type</label>
+            <select class="w-full px-4 py-3 bg-transparent border border-white/20 text-white text-sm outline-none focus:border-white/40">
+              <option class="bg-zinc-900" value="">Select...</option>
+              <option class="bg-zinc-900">Global Payments</option>
+              <option class="bg-zinc-900">Global Accounts</option>
+              <option class="bg-zinc-900">Global Payment Rails</option>
+              <option class="bg-zinc-900">Global Liquidity</option>
+              <option class="bg-zinc-900">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-white/70 text-sm mb-1">Message</label>
+            <textarea rows="4" class="w-full px-4 py-3 bg-transparent border border-white/20 text-white text-sm placeholder-white/30 outline-none focus:border-white/40" placeholder="Write your message..."></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-3 bg-white text-zinc-900 text-sm font-semibold hover:bg-gray-200 transition">
+            Submit Inquiry
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <p class="text-center text-white/40 text-xs mt-8">
+      Your information is kept confidential and used solely for communication purposes.
+    </p>
+
+  </div>
+</section>
+
+<script>
+  // Reveal full form when Talk to Sales is clicked
+  document.getElementById("show-form").addEventListener("click", function() {
+    document.getElementById("email-step").classList.add("hidden");
+    document.getElementById("full-form").classList.remove("hidden");
+  });
+</script>
+
+
   <!-- Footer -->
   <footer class="border-t border-border py-16">
     <div class="max-w-7xl mx-auto px-6">

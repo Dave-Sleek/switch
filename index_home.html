@@ -860,25 +860,6 @@ p.text-white-70 {
           </a>
         </div>
 
-        <!-- Logo -->
-          <!-- <a href="index.html" class="flex items-center">
-            <div class="flex items-center gap-2">
-              <svg 
-                viewBox="0 0 48 48" 
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-[100px] h-[100px] logo"
-              >
-                <path d="M23.5,5.5 C19.7675,7.13069 15.7675,8.13069 11.5,8.5 
-                        C9.19883,9.95592 6.8655,10.2892 4.5,9.5 
-                        C3.60895,10.1098 2.60895,10.4431 1.5,10.5 
-                        C3.88953,7.97171 6.88953,6.47171 10.5,6 
-                        C14.8206,5.50098 19.1539,5.33432 23.5,5.5 Z" 
-                      fill="#60cfee"/>
-              </svg>
-              <span class="text-white font-medium text-lg">switch</span>
-            </div>
-          </a> -->
-
         <!-- Desktop Menu - aligned to extreme right -->
         <div class="hidden md:flex items-center ml-auto">
           <a href="#global_payments"
@@ -901,10 +882,6 @@ p.text-white-70 {
             GLOBAL LIQUIDITY
           </a>
 
-          <!-- <a href="#contact_us"
-            class="text-sm font-sans text-white px-4 py-2 border-r border-gray-700 hover:bg-[#141414]">
-            CONTACT US
-          </a> -->
         </div>
 
     <!-- Mobile Toggle -->
@@ -950,7 +927,7 @@ p.text-white-70 {
           <div id="globe" class="globe-container absolute inset-0 pointer-events-none" style="width:100%;height:100%"></div>
         </div>
 
-      <div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-8 pt-6 md:pt-16 lg:pt-24">
+      <div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-8 pt-6 md:pt-16 lg:pt-24 pt-10 md:pt-16 pb-10 md:pb-0">
 
         <h1 class="fade-up text-[34px] md:text-[46px] lg:text-[54px] font-medium leading-[1.2] max-w-[340px] md:max-w-[720px] lg:max-w-[820px] reveal">
             Switch is a global platform for accessing and moving money
@@ -987,6 +964,7 @@ p.text-white-70 {
   </div>
 </section>
 
+<div class="section-divider"></div>
 
  <!-- Trusted By Section -->
 <section class="py-2 bg-dark-100">
@@ -1401,7 +1379,7 @@ p.text-white-70 {
 
 <!-- <div class="section-divider"></div> -->
 
-<section id="contact_us" class="py-20 lg:py-28 border-t border-white/10">
+<section id="contact_us" class="py-20 lg:py-28 border-t border-white/10 reveal">
   <div class="max-w-[1100px] mx-auto px-6">
 
     <!-- Heading -->
@@ -1418,73 +1396,99 @@ p.text-white-70 {
         id="initialEmail"
         type="email" 
         placeholder="Enter your email"
-        class="flex-1 w-full bg-transparent text-white placeholder-white/40 
+        class="flex-1 w-full px-4 py-3 bg-transparent font-sans text-white placeholder-white/40 
                text-base md:text-lg outline-none"
       >
 
       <button 
         type="submit"
         class="w-full md:w-auto px-6 py-3 bg-[#d9d6cf] text-black 
-               text-sm md:text-base font-medium hover:opacity-90 transition">
+               text-sm md:text-base font-sans font-medium hover:opacity-90 transition">
         Talk to Sales
       </button>
 
     </form>
 
     <!-- STEP 2: EXPANDED FORM -->
-    <form id="fullForm"
-      class="mt-6 hidden opacity-0 translate-y-4 transition-all duration-500">
+    <!-- STEP 2: EXPANDED FORM -->
+<form id="fullForm" class="mt-6 hidden opacity-0 translate-y-4 transition-all duration-500">
 
-      <!-- Horizontal layout on desktop -->
-      <div class="bg-[#0b0b0b] border border-white/10 p-4 md:p-6 
-                  flex flex-col md:flex-row md:flex-wrap gap-4 md:gap-6">
+  <div class="bg-[#0b0b0b] border border-white/10 p-4 md:p-6 flex flex-col gap-6 rounded-md">
 
-        <!-- Name -->
-        <input type="text" placeholder="Full Name"
-          class="flex-1 min-w-[200px] bg-transparent border border-white/20 
-                 px-4 py-3 text-white placeholder-white/40 outline-none">
+    <!-- New Heading -->
+    <h3 class="text-xl md:text-2xl font-semibold text-white mb-4">
+      Get in Touch
+    </h3>
 
-        <!-- Company -->
-        <input type="text" placeholder="Company"
-          class="flex-1 min-w-[200px] bg-transparent border border-white/20 
-                 px-4 py-3 text-white placeholder-white/40 outline-none">
-
-        <!-- Email -->
-        <input id="finalEmail" type="email" placeholder="Work Email"
-          class="flex-1 min-w-[200px] bg-transparent border border-white/20 
-                 px-4 py-3 text-white placeholder-white/40 outline-none">
-
-        <!-- Inquiry -->
-        <select 
-          class="flex-1 min-w-[200px] bg-transparent border border-white/20 
-                 px-4 py-3 text-white outline-none">
-          <option class="bg-black">Inquiry Type</option>
-          <option class="bg-black">Global Payments</option>
-          <option class="bg-black">Accounts</option>
-          <option class="bg-black">Liquidity</option>
-        </select>
-
-        <!-- Message (full width) -->
-        <textarea rows="3" placeholder="Message"
-          class="w-full bg-transparent border border-white/20 
-                 px-4 py-3 text-white placeholder-white/40 outline-none"></textarea>
-
-        <!-- Submit -->
-        <div class="w-full flex justify-end">
-          <button 
-            type="submit"
-            class="px-6 py-3 bg-[#d9d6cf] text-black font-medium 
-                   hover:opacity-90 transition">
-            Submit Inquiry
-          </button>
-        </div>
-
+    <!-- Row 1: Name + Company -->
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="relative flex-1">
+        <input type="text" id="fullName" placeholder=" " 
+          class="w-full bg-transparent border border-white/20 px-4 py-3 text-white text-base rounded-md font-sans outline-none peer placeholder-transparent">
+        <label for="fullName" class="absolute left-4 top-2 px-1 text-white/50 text-sm font-sans transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40">
+          Full Name
+        </label>
       </div>
 
-    </form>
+      <div class="relative flex-1">
+        <input type="text" id="company" placeholder=" " 
+          class="w-full bg-transparent border border-white/20 px-4 py-3 text-white text-base rounded-md font-sans outline-none peer placeholder-transparent">
+        <label for="company" class="absolute left-4 top-2 px-1 text-white/50 text-sm font-sans transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40">
+          Company
+        </label>
+      </div>
+    </div>
 
+    <!-- Row 2: Email + Inquiry -->
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="relative flex-1">
+        <input type="email" id="finalEmail" placeholder=" " 
+          class="w-full bg-transparent border border-white/20 px-4 py-3 text-white text-base rounded-md font-sans outline-none peer placeholder-transparent">
+        <label for="finalEmail" class="absolute left-4 top-2 px-1 text-white/50 text-sm font-sans transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40">
+          Work Email
+        </label>
+      </div>
+
+      <div class="relative flex-1">
+        <select id="inquiryType"
+          class="w-full bg-transparent border border-white/20 px-4 py-3 text-white text-base rounded-md font-sans outline-none">
+          <option class="bg-zinc-900" value="">Select Inquiry Type...</option>
+          <option class="bg-zinc-900" value="global-payments">Global Payments</option>
+          <option class="bg-zinc-900" value="global-accounts">Global Accounts</option>
+          <option class="bg-zinc-900" value="global-payment-rails">Global Payment Rails</option>
+          <option class="bg-zinc-900" value="global-liquidity">Global Liquidity</option>
+          <option class="bg-zinc-900" value="other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Row 3: Message -->
+    <div class="relative">
+      <textarea id="message" rows="4" placeholder=" " 
+        class="w-full bg-transparent border border-white/20 px-4 py-3 text-white text-base rounded-md font-sans outline-none peer placeholder-transparent"></textarea>
+      <label for="message" class="absolute left-4 top-2 px-1 text-white/50 text-sm font-sans transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40">
+        Message
+      </label>
+    </div>
+
+    <!-- Row 4: Submit -->
+    <div class="w-full flex justify-end">
+      <button type="submit"
+        class="px-6 py-3 text-black text-base bg-white font-sans font-medium hover:opacity-90 transition">
+        Submit Inquiry
+      </button>
+    </div>
+
+    <p class="text-center text-white/40 text-xs mt-8">
+      Your information is kept confidential and used solely for communication purposes.
+    </p>
+  </div>
+</form>
+
+    <!-- Footer Note -->
   </div>
 </section>
+
 
   <!-- Floating WhatsApp Button -->
 <a id="whatsapp-btn" 
@@ -1521,32 +1525,35 @@ p.text-white-70 {
   </footer>
 
 <script>
-
   document.getElementById("emailStep").addEventListener("submit", function(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  const emailInput = document.getElementById("initialEmail");
-  const fullForm = document.getElementById("fullForm");
-  const finalEmail = document.getElementById("finalEmail");
+    const emailInput = document.getElementById("initialEmail");
+    const fullForm = document.getElementById("fullForm");
+    const finalEmail = document.getElementById("finalEmail");
 
-  if (!emailInput.value) return;
+    if (!emailInput.value) return;
 
-  // copy email
-  finalEmail.value = emailInput.value;
+    // copy email into the full form
+    finalEmail.value = emailInput.value;
 
-  // show form
-  fullForm.classList.remove("hidden");
+    // hide the first step (email + button)
+    document.getElementById("emailStep").classList.add("hidden");
 
-  // animate
-  setTimeout(() => {
-    fullForm.classList.remove("opacity-0", "translate-y-4");
-    fullForm.classList.add("opacity-100", "translate-y-0");
-  }, 10);
+    // show the full form
+    fullForm.classList.remove("hidden");
 
-  // smooth scroll (optional)
-  fullForm.scrollIntoView({ behavior: "smooth", block: "start" });
-});
+    // animate reveal
+    setTimeout(() => {
+      fullForm.classList.remove("opacity-0", "translate-y-4");
+      fullForm.classList.add("opacity-100", "translate-y-0");
+    }, 10);
+
+    // optional smooth scroll
+    fullForm.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 </script>
+
 
   <script>
   // Show button after scrolling down
@@ -1795,7 +1802,7 @@ document.getElementById("emailStep").addEventListener("submit", function(e) {
       //   { name: "FEDWIRE", position: new THREE.Vector3(0, -0.35, 1.2) },
       //   { name: "USDC", position: new THREE.Vector3(1.05, -0.5, -0.9) }
       // ];
-
+        const rings = [{tilt:0.3,phase:0},{tilt:-0.5,phase:1.2},{tilt:0.1,phase:2.5}];
         const labelData = [
               { name: "BANKS", position: new THREE.Vector3(1.5, 1.0, 0) },
               { name: "USDC", position: new THREE.Vector3(-1.2, 1.1, 0.9) },
