@@ -563,7 +563,7 @@
       align-items: center;
     }
 
-    .globe-container {
+    /* .globe-container {
       position: absolute;
       left: 0;
       bottom: -350px;
@@ -571,7 +571,7 @@
       height: 850px;
       pointer-events: none;
       z-index: 1;
-    }
+    } */
 
     .hero::after {
       content: "";
@@ -966,7 +966,7 @@ p.text-white-70 {
 
 
  <!-- Trusted By Section -->
-<section class="py-2 md:mt-10 reveal" style="background-color: #141414;">
+<section class="py-2 md:mt-10 reveal">
   <div class="container">
       <p class="text-center text-white-50 text-lg md:text-xl font-mono-nav mb-5">
       POWERED BY GLOBAL FINANCIAL NETWORKS
@@ -1757,7 +1757,7 @@ document.getElementById("emailStep").addEventListener("submit", function(e) {
       const isMobile = window.innerWidth < 768;
 
       // globeGroup.position.y = -1.95;
-      globeGroup.position.y = isMobile ? -1.95 : -1.75;
+      globeGroup.position.y = isMobile ? -1.5 : -1.75;
       globeGroup.rotation.x = -0.3;
       globeGroup.position.x = isMobile ? 0 : 0.4;
       globeGroup.scale.set(isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9, isMobile ? 0.8 : 0.9);
