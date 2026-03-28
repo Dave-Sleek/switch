@@ -1389,16 +1389,24 @@ p.text-white-70 {
 
     <!-- STEP 1: Email Row -->
      <!-- STEP 1 -->
-    <form id="emailStep" class="w-full bg-[#0b0b0b] px-4 py-4 flex items-center justify-between gap-4">
+        <form id="emailStep" 
+      class="w-full bg-[#0b0b0b] px-4 py-4 flex flex-col md:flex-row items-start md:items-center gap-4 rounded-md">
 
-      <input id="initialEmail" type="email" placeholder="Enter your work email" class="flex-1 bg-[#0b0b0b] px-4 py-3 text-white text-base font-sans outline-none placeholder-white/40 focus:border-white/30 transition">
-      <!-- Inline error message -->
+      <!-- Input + Error -->
+      <div class="flex-1 w-full">
+        <input id="initialEmail" type="email" placeholder="Enter your work email"
+          class="w-full bg-[#0b0b0b] border border-white/20 rounded-md px-4 py-3 text-white text-base font-sans outline-none placeholder-white/40 focus:border-white/40 transition">
+        <!-- Inline error message -->
         <p id="emailError" class="hidden text-red-400 text-sm mt-2">Please enter a valid email address.</p>
+      </div>
 
-      <button type="submit" class="px-6 py-3 bg-[#d9d6cf] text-black text-base font-sans text-sm font-medium whitespace-nowrap hover:opacity-90 transition">
+      <!-- Button (inside form) -->
+      <button type="submit"
+        class="px-6 py-3 bg-[#d9d6cf] text-black text-base font-sans font-medium rounded-md whitespace-nowrap hover:opacity-90 transition">
         Talk to Sales
       </button>
     </form>
+
 
 <!-- STEP 2: EXPANDED FORM -->
 <form id="fullForm" class="mt-6 hidden bg-[#0b0b0b] opacity-0 translate-y-4 transition-all duration-500">
